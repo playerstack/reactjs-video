@@ -41,7 +41,7 @@
     "react-dom": "^18.3.1"
   },
   "dependencies": {
-    "@playerstack/web-core": "alpha",
+    "@playerstack/web-core": "git+https://github.com/playerstack/web-core.git#main",
     "deepmerge": "^4.0.0",
     "memoize-one": "^5.1.1",
     "prop-types": "^15.7.2",

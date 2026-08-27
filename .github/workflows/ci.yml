@@ -84,6 +84,7 @@ jobs:
         run: |
           mkdir -p node_modules/@playerstack
           ln -sfn "${{ github.workspace }}/.core-dep" node_modules/@playerstack/web-core
+          node -e "const f='package-lock.json',fs=require('fs'),j=JSON.parse(fs.readFileSync(f));delete j.packages['node_modules/@playerstack/web-core'];if(j.dependencies)delete j.dependencies['@playerstack/web-core'];fs.writeFileSync(f,JSON.stringify(j,null,2))"
       - run: npm install --no-audit --no-fund
       - run: npm run lint
 
@@ -110,6 +111,7 @@ jobs:
         run: |
           mkdir -p node_modules/@playerstack
           ln -sfn "${{ github.workspace }}/.core-dep" node_modules/@playerstack/web-core
+          node -e "const f='package-lock.json',fs=require('fs'),j=JSON.parse(fs.readFileSync(f));delete j.packages['node_modules/@playerstack/web-core'];if(j.dependencies)delete j.dependencies['@playerstack/web-core'];fs.writeFileSync(f,JSON.stringify(j,null,2))"
       - run: npm install --no-audit --no-fund
       - run: npm run test:cov
       - name: Upload coverage to Codecov
@@ -145,6 +147,7 @@ jobs:
         run: |
           mkdir -p node_modules/@playerstack
           ln -sfn "${{ github.workspace }}/.core-dep" node_modules/@playerstack/web-core
+          node -e "const f='package-lock.json',fs=require('fs'),j=JSON.parse(fs.readFileSync(f));delete j.packages['node_modules/@playerstack/web-core'];if(j.dependencies)delete j.dependencies['@playerstack/web-core'];fs.writeFileSync(f,JSON.stringify(j,null,2))"
       - run: npm install --no-audit --no-fund
       - run: npm run build:lib
       - run: npm run build:dist
