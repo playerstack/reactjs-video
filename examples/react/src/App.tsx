@@ -513,9 +513,9 @@ const App = () => {
       <footer className="footer">
         Version <strong>{version}</strong>
         {SEPARATOR}
-        <a href="https://github.com/playerstack/reactjs">GitHub</a>
+        <a href="https://github.com/playerstack/reactjs-video">GitHub</a>
         {SEPARATOR}
-        <a href="https://www.npmjs.com/package/@playerstack/reactjs">npm</a>
+        <a href="https://www.npmjs.com/package/@playerstack/reactjs-video">npm</a>
       </footer>
     </div>
   );

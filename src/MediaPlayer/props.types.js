@@ -1,5 +1,5 @@
 import PropTypes, { node } from 'prop-types';
-import { en, es, defaultMediaConfig, DEFAULT_PROGRESS_INTERVAL } from '@playerstack/core';
+import { en, es, defaultMediaConfig, DEFAULT_PROGRESS_INTERVAL } from '@playerstack/web-core';
 
 const i18n = { en, es };
 const { string, bool, number, array, oneOfType, shape, object, func } = PropTypes;

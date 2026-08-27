@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CastController } from '@playerstack/core';
+import { CastController } from '@playerstack/web-core';
 
 import { createWebCastAdapter } from '@utils/castAdapter';
 

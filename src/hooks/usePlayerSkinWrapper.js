@@ -3,10 +3,10 @@ import React from 'react';
 import { useVolume } from '@hooks/useVolume';
 import { createWebVolumeAdapter } from '@utils/volumeAdapter';
 import useFullscreen from '@hooks/useFullscreen';
-import { buildSettingsLabel } from '@playerstack/core';
+import { buildSettingsLabel } from '@playerstack/web-core';
 import { useAppSelector } from '@context/index';
-import { eventsKeyCodes, keyMappings } from '@playerstack/core';
-import { reduceSeekState } from '@playerstack/core';
+import { eventsKeyCodes, keyMappings } from '@playerstack/web-core';
+import { reduceSeekState } from '@playerstack/web-core';
 
 const usePlayerSkinWrapper = ({
   ref,

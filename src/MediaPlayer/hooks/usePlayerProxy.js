@@ -6,7 +6,7 @@ import {
   measureNetworkSpeed,
   selectAutoQuality,
   validateFullHDBreak,
-} from '@playerstack/core';
+} from '@playerstack/web-core';
 
 import { useDeepCompareMemoize } from '@hooks/useDeepCompareMemoize';
 

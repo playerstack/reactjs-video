@@ -22,7 +22,7 @@ import { createWebSpriteAdapter } from '@utils/spriteAdapter';
  *
  * @returns {{
  *   spritePreviewRef: React.MutableRefObject<HTMLElement | null>,
- *   spriteAdapter: import('@playerstack/core').SpriteAdapter,
+ *   spriteAdapter: import('@playerstack/web-core').SpriteAdapter,
  *   scrubbing: boolean,
  *   scrubTime: number,
  *   handleScrubbingRequest: (event: CustomEvent) => void,

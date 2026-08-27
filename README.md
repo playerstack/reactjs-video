@@ -3,8 +3,8 @@
 </h1>
 
 <p align='center'>
-  <a href='https://www.npmjs.com/package/@playerstack/reactjs'><img src='https://img.shields.io/npm/v/@playerstack/reactjs.svg' alt='Latest npm version'></a>
-  <a href='https://codecov.io/gh/playerstack/reactjs'><img src='https://img.shields.io/codecov/c/github/playerstack/reactjs.svg' alt='Test Coverage'></a>
+  <a href='https://www.npmjs.com/package/@playerstack/reactjs-video'><img src='https://img.shields.io/npm/v/@playerstack/reactjs-video.svg' alt='Latest npm version'></a>
+  <a href='https://codecov.io/gh/playerstack/reactjs-video'><img src='https://img.shields.io/codecov/c/github/playerstack/reactjs-video.svg' alt='Test Coverage'></a>
   <a href='LICENSE.md'><img src='https://img.shields.io/badge/license-PolyForm%20Shield%201.0.0-blue.svg' alt='License'></a>
   <a href='https://www.patreon.com/soyvillareal'><img src='https://img.shields.io/badge/sponsor-patreon-fa6854.svg' alt='Become a sponsor on Patreon'></a>
 </p>
@@ -13,7 +13,7 @@
   A React component for playing HLS, FLV, DASH and native media files.
 </p>
 
-> **Note:** This package was previously published as [`reactjs-media-player`](https://www.npmjs.com/package/reactjs-media-player). That package is now deprecated — please use `@playerstack/reactjs` instead.
+> **Note:** This package was previously published as [`reactjs-media-player`](https://www.npmjs.com/package/reactjs-media-player). That package is now deprecated — please use `@playerstack/reactjs-video` instead.
 
 ---
 
@@ -25,22 +25,22 @@ Player Stack is and will remain **source-available** under the [PolyForm Shield]
 ### Usage
 
 ```bash
-npm install @playerstack/reactjs # or yarn add @playerstack/reactjs
+npm install @playerstack/reactjs-video # or yarn add @playerstack/reactjs-video
 ```
 
 ```jsx
 import React from 'react';
-import PlayerStack from '@playerstack/reactjs';
+import PlayerStack from '@playerstack/reactjs-video';
 
 // Render a HLS video player
 <PlayerStack url="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8" />;
 ```
 
-If your build system supports `import()` statements, use `@playerstack/reactjs/lazy` to lazy load the appropriate player for the `url` you pass in. This adds several `Player Stack` chunks to your output, but reduces your main bundle size.
+If your build system supports `import()` statements, use `@playerstack/reactjs-video/lazy` to lazy load the appropriate player for the `url` you pass in. This adds several `Player Stack` chunks to your output, but reduces your main bundle size.
 
 ```jsx
 import React from 'react';
-import PlayerStackLazy from '@playerstack/reactjs/lazy';
+import PlayerStackLazy from '@playerstack/reactjs-video/lazy';
 
 // Lazy load the player
 <PlayerStackLazy url="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8" />;
@@ -48,7 +48,7 @@ import PlayerStackLazy from '@playerstack/reactjs/lazy';
 
 Demo page: [`https://playerstack.github.io/reactjs`](https://playerstack.github.io/reactjs)
 
-The component parses a URL and loads in the appropriate markup and external SDKs to play media from [various sources](#supported-media). [Props](#props) can be passed in to control playback and react to events such as buffering or media ending. See [the demo source](https://github.com/playerstack/reactjs/blob/master/examples/react/src/App.jsx) for a full example.
+The component parses a URL and loads in the appropriate markup and external SDKs to play media from [various sources](#supported-media). [Props](#props) can be passed in to control playback and react to events such as buffering or media ending. See [the demo source](https://github.com/playerstack/reactjs-video/blob/master/examples/react/src/App.jsx) for a full example.
 
 For platforms without direct use of `npm` modules, a minified version of `Player Stack` is located in `dist` after installing. To generate this file yourself, checkout the repo and run `npm run build:dist`.
 
@@ -199,11 +199,11 @@ Method | Description
 
 ### Contributing
 
-See the [contribution guidelines](https://github.com/playerstack/reactjs/blob/master/CONTRIBUTING.md) before creating a pull request.
+See the [contribution guidelines](https://github.com/playerstack/reactjs-video/blob/master/CONTRIBUTING.md) before creating a pull request.
 
 ### Thanks
 
-- Thanks to anyone who has [contributed](https://github.com/playerstack/reactjs/graphs/contributors).
+- Thanks to anyone who has [contributed](https://github.com/playerstack/reactjs-video/graphs/contributors).
 - Big thanks to my [Patreon](https://patreon.com/soyvillareal) supporters!
 
 ### License

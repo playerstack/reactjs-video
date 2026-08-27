@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       core_ref:
-        description: '@playerstack/core branch/tag/SHA to build the skin against (blank = auto-resolve)'
+        description: '@playerstack/web-core branch/tag/SHA to build the skin against (blank = auto-resolve)'
         required: false
         type: string
 
@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Resolve which @playerstack/core ref the skin is verified against. This lets a PR run its
+  # Resolve which @playerstack/web-core ref the skin is verified against. This lets a PR run its
   # checks against unreleased core changes without publishing a new npm version. Priority:
   #   1. Manual workflow_dispatch input `core_ref`.
   #   2. A "Core-Branch: <ref>" line in the pull request body.
@@ -34,7 +34,7 @@ jobs:
           PR_BODY: ${{ github.event.pull_request.body }}
         run: |
           set -euo pipefail
-          CORE_REPO="https://github.com/playerstack/core.git"
+          CORE_REPO="https://github.com/playerstack/web-web-core.git"
           pick=""
 
           # 1) Explicit manual override.
@@ -59,7 +59,7 @@ jobs:
           if [ -z "$pick" ]; then pick="main"; fi
 
           echo "ref=$pick" >> "$GITHUB_OUTPUT"
-          echo "Resolved @playerstack/core ref: $pick"
+          echo "Resolved @playerstack/web-core ref: $pick"
 
   lint:
     needs: resolve-core
@@ -76,7 +76,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: npm
-      - name: Build & link @playerstack/core
+      - name: Build & link @playerstack/web-core
         uses: ./.github/actions/setup-core
         with:
           ref: ${{ needs.resolve-core.outputs.ref }}
@@ -98,7 +98,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: npm
-      - name: Build & link @playerstack/core
+      - name: Build & link @playerstack/web-core
         uses: ./.github/actions/setup-core
         with:
           ref: ${{ needs.resolve-core.outputs.ref }}
@@ -129,7 +129,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: npm
-      - name: Build & link @playerstack/core
+      - name: Build & link @playerstack/web-core
         uses: ./.github/actions/setup-core
         with:
           ref: ${{ needs.resolve-core.outputs.ref }}

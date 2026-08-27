@@ -1,5 +1,5 @@
 import React from 'react';
-import { parseVTTCaptions, DEFAULT_CAPTION_STYLE, getCookie, setCookie } from '@playerstack/core';
+import { parseVTTCaptions, DEFAULT_CAPTION_STYLE, getCookie, setCookie } from '@playerstack/web-core';
 
 const CAPTION_STYLE_COOKIE = 'caption_style';
 

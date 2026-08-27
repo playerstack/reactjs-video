@@ -1,4 +1,4 @@
-import { omit } from '@playerstack/core';
+import { omit } from '@playerstack/web-core';
 
 const object = {
   a: 1,

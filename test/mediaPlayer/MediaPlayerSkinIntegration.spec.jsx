@@ -29,7 +29,7 @@ jest.mock('../../src/core/VideoElement', () => {
   return { __esModule: true, default: VideoElementMock };
 });
 
-jest.mock('@playerstack/core', () => ({ ...jest.requireActual('@playerstack/core'),
+jest.mock('@playerstack/web-core', () => ({ ...jest.requireActual('@playerstack/web-core'),
   measureNetworkSpeed: jest.fn().mockResolvedValue(5),
   getRecommendedVideoQuality: jest.fn().mockReturnValue(720),
 }));

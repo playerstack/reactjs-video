@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { castIcon, captionsIcon, captionsActiveIcon } from '@playerstack/core/icons';
+import { castIcon, captionsIcon, captionsActiveIcon } from '@playerstack/web-core/icons';
 
 import { PlayerstackSettings, PlayerstackFullscreenButton, PlayerstackIcon } from '@adapter/elements';
 

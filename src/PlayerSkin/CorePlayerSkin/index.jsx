@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { isMobile, IS_LIVE_DVR_SUPPORTED } from '@playerstack/core';
+import { isMobile, IS_LIVE_DVR_SUPPORTED } from '@playerstack/web-core';
 
 import { useCoreMediaBridge } from '@hooks/useCoreMediaBridge';
 import { useCoreAutoHide } from '@hooks/useCoreAutoHide';

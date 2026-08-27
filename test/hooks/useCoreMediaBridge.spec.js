@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react';
 
-import { createMediaStore } from '@playerstack/core/ui';
+import { createMediaStore } from '@playerstack/web-core/ui';
 
 import { useCoreMediaBridge } from '@hooks/useCoreMediaBridge';
 

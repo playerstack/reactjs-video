@@ -1,8 +1,8 @@
 import { createRef } from 'react';
 import { render, act } from '@testing-library/react';
 
-import { domFrameworkAdapter } from '@playerstack/core/adapters/framework';
-import { registerPlayerstackElements } from '@playerstack/core/ui';
+import { domFrameworkAdapter } from '@playerstack/web-core/adapters/framework';
+import { registerPlayerstackElements } from '@playerstack/web-core/ui';
 
 import { createReactElement } from '@adapter/createReactElement';
 

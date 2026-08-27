@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { AdsController, computeAdPlaybackState } from '@playerstack/core';
+import { AdsController, computeAdPlaybackState } from '@playerstack/web-core';
 
 /**
  * Thin React wrapper over core's `AdsController` + `computeAdPlaybackState` (framework-agnostic

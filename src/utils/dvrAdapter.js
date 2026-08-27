@@ -4,7 +4,7 @@
  * via the video element's native APIs.
  *
  * @param {React.RefObject<HTMLMediaElement>} videoRef
- * @returns {import('@playerstack/core/adapters').DVRAdapter}
+ * @returns {import('@playerstack/web-core/adapters').DVRAdapter}
  */
 export function createWebDVRAdapter(videoRef) {
   return {

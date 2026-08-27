@@ -17,8 +17,8 @@
  * Custom Elements exist before any wrapper renders (Style_Auto_Injection then
  * applies the Style_Layer on connect — the consumer imports no CSS, Req 7.4).
  */
-import { UI_ELEMENT_BINDINGS } from '@playerstack/core/adapters/framework';
-import { registerPlayerstackElements } from '@playerstack/core/ui';
+import { UI_ELEMENT_BINDINGS } from '@playerstack/web-core/adapters/framework';
+import { registerPlayerstackElements } from '@playerstack/web-core/ui';
 
 import { createReactElement } from '@adapter/createReactElement';
 

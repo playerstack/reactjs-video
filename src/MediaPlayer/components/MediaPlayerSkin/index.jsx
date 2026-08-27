@@ -3,7 +3,7 @@ import isEqual from 'react-fast-compare';
 
 import VideoElement from '@core/VideoElement';
 import PlayerSkin from '@PlayerSkin';
-import { playerStateInitial } from '@playerstack/core';
+import { playerStateInitial } from '@playerstack/web-core';
 import MediaPlayerWrapper from '@MediaPlayer/components/MediaPlayerWrapper';
 import usePlayerProxy from '@MediaPlayer/hooks/usePlayerProxy';
 

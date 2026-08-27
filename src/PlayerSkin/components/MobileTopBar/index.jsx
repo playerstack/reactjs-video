@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
-import { mobileSettingsGearIcon } from '@playerstack/core/icons/mobile';
-import { castIcon, captionsIcon, captionsActiveIcon } from '@playerstack/core/icons';
+import { mobileSettingsGearIcon } from '@playerstack/web-core/icons/mobile';
+import { castIcon, captionsIcon, captionsActiveIcon } from '@playerstack/web-core/icons';
 
 import { PlayerstackIcon } from '@adapter/elements';
 

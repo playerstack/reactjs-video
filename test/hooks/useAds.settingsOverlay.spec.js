@@ -1,4 +1,4 @@
-import { buildSettingsOptions as settingsOverlayFn } from '@playerstack/core';
+import { buildSettingsOptions as settingsOverlayFn } from '@playerstack/web-core';
 
 const i18n = { speed: 'Speed', quality: 'Quality', captions: 'Captions', auto: 'Auto', off: 'Off' };
 

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react';
 
-import { VolumeController } from '@playerstack/core';
+import { VolumeController } from '@playerstack/web-core';
 
 /**
  * Thin React wrapper over core's `VolumeController` (framework-agnostic volume state machine).

@@ -2,12 +2,12 @@ const path = require('path');
 const fs = require('fs');
 
 const srcDir = path.resolve(__dirname, 'src');
-const coreSrcDir = path.resolve(__dirname, '../core/src');
+const coreSrcDir = path.resolve(__dirname, '../web-core/src');
 
 /**
  * Custom Jest resolver that handles @alias imports.
  * Resolves @foo/bar to src/foo/bar (with extension resolution).
- * When the importer is inside core/src, resolves relative to core/src.
+ * When the importer is inside web-core/src, resolves relative to web-core/src.
  * Falls back to default resolution for npm scoped packages.
  */
 module.exports = (request, options) => {
@@ -16,7 +16,7 @@ module.exports = (request, options) => {
 
     // Determine which src root to use based on the importer's location
     const importer = options.basedir || '';
-    const resolveRoot = importer.replace(/\\/g, '/').includes('/core/src') ? coreSrcDir : srcDir;
+    const resolveRoot = importer.replace(/\\/g, '/').includes('/web-core/src') ? coreSrcDir : srcDir;
 
     // Map @typings/ to types/ directory
     const mappedPath = stripped.startsWith('typings/') ? 'types/' + stripped.slice('typings/'.length) : stripped;

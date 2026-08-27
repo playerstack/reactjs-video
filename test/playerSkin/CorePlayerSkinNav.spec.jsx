@@ -6,8 +6,8 @@ import { Provider } from '@context/index';
 
 // Keep the skin in desktop mode by default so the desktop control-bar branch (which renders
 // the prev/next nav cluster) is exercised deterministically regardless of the test env.
-jest.mock('@playerstack/core', () => {
-  const actual = jest.requireActual('@playerstack/core');
+jest.mock('@playerstack/web-core', () => {
+  const actual = jest.requireActual('@playerstack/web-core');
   return {
     ...actual,
     isMobile: false,

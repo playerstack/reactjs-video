@@ -1,4 +1,4 @@
-import { reduceSeekState } from '@playerstack/core';
+import { reduceSeekState } from '@playerstack/web-core';
 
 describe('playerState.reducers', () => {
   describe('reduceSeekState', () => {

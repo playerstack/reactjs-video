@@ -1,6 +1,6 @@
-import { buildSettingsLabel } from '@playerstack/core';
-import { buildSettingsOptions as settingsOverlayFn } from '@playerstack/core';
-import { en } from '@playerstack/core';
+import { buildSettingsLabel } from '@playerstack/web-core';
+import { buildSettingsOptions as settingsOverlayFn } from '@playerstack/web-core';
+import { en } from '@playerstack/web-core';
 
 describe('buildSettingsLabel', () => {
   test('returns quality label as "<value>p" for quality type', () => {

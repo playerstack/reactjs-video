@@ -18,7 +18,7 @@
 ## Core dependency (optional)
 
 <!--
-  If this PR needs UNRELEASED changes from @playerstack/core, tell CI which core branch/tag/SHA
+  If this PR needs UNRELEASED changes from @playerstack/web-core, tell CI which core branch/tag/SHA
   to build the skin against — no need to publish a new core version. Uncomment the line below
   and set the ref (the "Core-Branch:" prefix is required, it is matched by CI as Core-Branch:\s*<ref>):
 

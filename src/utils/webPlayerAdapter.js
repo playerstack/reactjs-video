@@ -2,11 +2,11 @@
  * Web PlayerAdapter wrapping an HTMLMediaElement for use with usePlayerOrchestration.
  *
  * This is the adapter equivalent of the class-based PlayerProxy for new components
- * that want to adopt the hook-based pattern from @playerstack/core/hooks.
+ * that want to adopt the hook-based pattern from @playerstack/web-core/hooks.
  * The existing PlayerProxy class component remains functional for current consumers.
  *
  * @param {React.RefObject<HTMLMediaElement>} videoRef - ref to the underlying <video> element
- * @returns {import('@playerstack/core/adapters').PlayerAdapter}
+ * @returns {import('@playerstack/web-core/adapters').PlayerAdapter}
  */
 export function createWebPlayerAdapter(videoRef) {
   return {

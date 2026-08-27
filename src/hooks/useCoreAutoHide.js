@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { UIController } from '@playerstack/core';
+import { UIController } from '@playerstack/web-core';
 
 /**
  * Thin React wrapper over core's `UIController` for the light-DOM skin's auto-hide.

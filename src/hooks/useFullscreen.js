@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { FullscreenController } from '@playerstack/core';
+import { FullscreenController } from '@playerstack/web-core';
 
 import { createWebFullscreenAdapter } from '@utils/fullscreenAdapter';
 

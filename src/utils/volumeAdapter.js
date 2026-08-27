@@ -1,6 +1,6 @@
 /**
  * Web VolumeAdapter implementation wrapping an HTMLMediaElement ref.
- * Used with the core useVolume hook from @playerstack/core/hooks.
+ * Used with the core useVolume hook from @playerstack/web-core/hooks.
  */
 export function createWebVolumeAdapter(videoRef) {
   return {

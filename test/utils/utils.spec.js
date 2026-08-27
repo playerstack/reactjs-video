@@ -1,5 +1,5 @@
-import { omit } from '@playerstack/core';
-import { isMediaStream, isBlobUrl, formatTime, indexBy } from '@playerstack/core';
+import { omit } from '@playerstack/web-core';
+import { isMediaStream, isBlobUrl, formatTime, indexBy } from '@playerstack/web-core';
 
 describe('utils/index', () => {
   describe('omit', () => {

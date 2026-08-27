@@ -1,4 +1,4 @@
-import { getCookie, setCookie, deleteCookie } from '@playerstack/core';
+import { getCookie, setCookie, deleteCookie } from '@playerstack/web-core';
 
 describe('cookie utils', () => {
   beforeEach(() => {

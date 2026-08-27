@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-import { LiveDVRController } from '@playerstack/core';
+import { LiveDVRController } from '@playerstack/web-core';
 
 /**
  * Thin React wrapper over core's `LiveDVRController` (framework-agnostic DVR state machine).

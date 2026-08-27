@@ -21,7 +21,7 @@ import React from 'react';
  * the buffered position, and the rest map 1:1 from the reactjs playback state.
  *
  * @param {object} params
- * @param {React.RefObject<HTMLElement & { store?: import('@playerstack/core/ui').MediaStore }>} params.controllerRef
+ * @param {React.RefObject<HTMLElement & { store?: import('@playerstack/web-core/ui').MediaStore }>} params.controllerRef
  *   Ref to the mounted `playerstack-media-controller` host element (it owns the store).
  * @param {object} params.state - The flattened reactjs playback state to mirror.
  */

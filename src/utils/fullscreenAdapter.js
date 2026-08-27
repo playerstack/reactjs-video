@@ -8,7 +8,7 @@
  *
  * @param {React.RefObject<HTMLElement>} playerRef - The player container to make fullscreen.
  * @param {React.RefObject<HTMLVideoElement>} videoRef - The video element (iOS fallback).
- * @returns {import('@playerstack/core').FullscreenAdapter}
+ * @returns {import('@playerstack/web-core').FullscreenAdapter}
  */
 export function createWebFullscreenAdapter(playerRef, videoRef) {
   const currentFullscreenElement = () =>

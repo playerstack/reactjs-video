@@ -1,4 +1,4 @@
-import { en, es } from '@playerstack/core';
+import { en, es } from '@playerstack/web-core';
 
 const i18n = { en, es };
 

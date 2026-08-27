@@ -49,8 +49,8 @@ import { defaultProps } from '@MediaPlayer/props.types';
 // Keep the skin in DESKTOP mode by default so the desktop control-bar branch (which renders
 // the prev/next nav cluster, settings, fullscreen, etc.) is exercised deterministically
 // regardless of the test env's UA. Matches the CorePlayerSkinNav spec convention.
-jest.mock('@playerstack/core', () => {
-  const actual = jest.requireActual('@playerstack/core');
+jest.mock('@playerstack/web-core', () => {
+  const actual = jest.requireActual('@playerstack/web-core');
   return {
     ...actual,
     isMobile: false,

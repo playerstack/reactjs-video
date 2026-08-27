@@ -4,7 +4,7 @@ import usePlayerProxy from '@MediaPlayer/hooks/usePlayerProxy';
 import { Provider } from '@context/index';
 
 // Mock the network speed measurement to avoid real network calls
-jest.mock('@playerstack/core', () => ({ ...jest.requireActual('@playerstack/core'),
+jest.mock('@playerstack/web-core', () => ({ ...jest.requireActual('@playerstack/web-core'),
   measureNetworkSpeed: jest.fn().mockResolvedValue(5.0),
   getRecommendedVideoQuality: jest.fn().mockReturnValue(1080),
 }));

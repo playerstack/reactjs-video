@@ -1,4 +1,4 @@
-import { playerStateInitial } from '@playerstack/core';
+import { playerStateInitial } from '@playerstack/web-core';
 
 describe('playerStateInitial', () => {
   test('has expected default shape', () => {

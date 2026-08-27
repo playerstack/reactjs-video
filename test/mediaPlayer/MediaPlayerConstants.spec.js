@@ -1,4 +1,4 @@
-import { getRecommendedVideoQuality, measureNetworkSpeed as measureNetworkSpeedGeneratedFile } from '@playerstack/core';
+import { getRecommendedVideoQuality, measureNetworkSpeed as measureNetworkSpeedGeneratedFile } from '@playerstack/web-core';
 
 describe('getRecommendedVideoQuality', () => {
   const allResolutions = [144, 270, 360, 480, 720, 1080, 2160];

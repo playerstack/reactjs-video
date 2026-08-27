@@ -4,8 +4,8 @@ import PlayerSkin from '@PlayerSkin/PlayerSkin';
 import { Provider } from '@context/index';
 
 // Mock isMobile from core
-jest.mock('@playerstack/core', () => {
-  const actual = jest.requireActual('@playerstack/core');
+jest.mock('@playerstack/web-core', () => {
+  const actual = jest.requireActual('@playerstack/web-core');
   return {
     ...actual,
     isMobile: false, // default to desktop in tests

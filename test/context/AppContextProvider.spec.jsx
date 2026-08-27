@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Provider, Context } from '@context/index';
-import { en, es } from '@playerstack/core';
+import { en, es } from '@playerstack/web-core';
 
 const TestConsumer = () => {
   const { state } = React.useContext(Context);

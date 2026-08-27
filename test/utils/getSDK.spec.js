@@ -1,4 +1,4 @@
-import { getSDK } from '@playerstack/core';
+import { getSDK } from '@playerstack/web-core';
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 

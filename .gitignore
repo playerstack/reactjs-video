@@ -8,7 +8,7 @@ yarn-error.log
 /demo
 /coverage
 /es6
-# CI-only local checkout of @playerstack/core (see .github/workflows/ci.yml)
+# CI-only local checkout of @playerstack/web-core (see .github/workflows/ci.yml)
 /.core-dep
 .idea/
 .kiro

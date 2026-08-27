@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { createTypedReducer, getTranslations } from '@playerstack/core';
+import { createTypedReducer, getTranslations } from '@playerstack/web-core';
 
 // ─── createPlayerContext (self-contained, previously from core/hooks) ───
 

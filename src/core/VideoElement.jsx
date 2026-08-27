@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useImperativeHandle } from 'react';
 
-import { MediaEngine, PlayerOrchestrator } from '@playerstack/core';
+import { MediaEngine, PlayerOrchestrator } from '@playerstack/web-core';
 
 /**
  * Thin video element component that wires a <video> element to

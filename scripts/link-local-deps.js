@@ -1,7 +1,7 @@
 /**
  * Postinstall script: link local sibling packages for development.
  *
- * If @playerstack/core exists as a built sibling directory (../core/dist),
+ * If @playerstack/web-core exists as a built sibling directory (../web-core/dist),
  * replaces the registry-installed version with a symlink to the local source.
  * This allows real-time development without publishing after every change.
  *
@@ -14,16 +14,16 @@ const fs = require('fs');
 const path = require('path');
 
 // PLAYERSTACK_CORE_PATH lets CI point at a core checkout built from an arbitrary branch
-// (see .github/workflows/ci.yml). When set, we link against it instead of the `../core`
+// (see .github/workflows/ci.yml). When set, we link against it instead of the `../web-core`
 // sibling — so the skin can build/test against unreleased core changes without publishing
 // a new npm version. Unset (local dev / fresh clone / npm publish), the default applies.
 const coreOverride = process.env.PLAYERSTACK_CORE_PATH ? path.resolve(process.env.PLAYERSTACK_CORE_PATH) : null;
 
 const LOCAL_DEPS = [
   {
-    name: '@playerstack/core',
-    localPath: coreOverride || '../core',
-    checkPath: coreOverride ? path.join(coreOverride, 'dist') : '../core/dist',
+    name: '@playerstack/web-core',
+    localPath: coreOverride || '../web-core',
+    checkPath: coreOverride ? path.join(coreOverride, 'dist') : '../web-core/dist',
   },
 ];
 
@@ -33,7 +33,7 @@ for (const dep of LOCAL_DEPS) {
   const targetDir = path.resolve(__dirname, '..', 'node_modules', dep.name);
 
   if (!fs.existsSync(checkAbsolute)) {
-    // Sibling not available (CI, fresh clone without core) — use registry version
+    // Sibling not available (CI, fresh clone without web-core) — use registry version
     continue;
   }
 

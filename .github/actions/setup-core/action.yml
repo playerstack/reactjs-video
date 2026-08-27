@@ -1,18 +1,18 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-action.json
-name: Setup @playerstack/core
+name: Setup @playerstack/web-core
 description: >-
-  Check out @playerstack/core at a given ref and build it into ./.core-dep so the skin can be
+  Check out @playerstack/web-core at a given ref and build it into ./.core-dep so the skin can be
   linted/tested/built against unreleased core changes WITHOUT a published npm version. Set
   PLAYERSTACK_CORE_PATH to $GITHUB_WORKSPACE/.core-dep in the job env to consume it.
 
 inputs:
   ref:
-    description: The @playerstack/core git ref (branch/tag/SHA) to build.
+    description: The @playerstack/web-core git ref (branch/tag/SHA) to build.
     required: true
   repository:
     description: The core repository (org/name).
     required: false
-    default: playerstack/core
+    default: playerstack/web-core
 
 runs:
   using: composite

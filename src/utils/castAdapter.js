@@ -7,7 +7,7 @@
  * `CastController`.
  *
  * @param {React.RefObject<HTMLVideoElement>} videoRef - Ref to the video element.
- * @returns {import('@playerstack/core').CastAdapter}
+ * @returns {import('@playerstack/web-core').CastAdapter}
  */
 export function createWebCastAdapter(videoRef) {
   const hasRemotePlayback = typeof document !== 'undefined' && 'remote' in document.createElement('video');

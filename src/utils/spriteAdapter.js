@@ -8,7 +8,7 @@
  *
  * @param {() => HTMLElement | null} getContainer - Returns the preview container element (the
  *   `playerstack-sprite-preview` host), whose pixel size the frame is scaled to cover.
- * @returns {import('@playerstack/core').SpriteAdapter}
+ * @returns {import('@playerstack/web-core').SpriteAdapter}
  */
 export function createWebSpriteAdapter(getContainer) {
   // In-memory cache so re-fetches (e.g., after a layout key-switch remount) resolve instantly

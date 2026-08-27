@@ -15,7 +15,7 @@ Thanks for contributing to Player Stack! ❤️
 ### Fork & Clone
 
 ```bash
-git clone https://github.com/{your-username}/reactjs.git
+git clone https://github.com/{your-username}/reactjs-video.git
 cd reactjs
 npm install
 npm start
@@ -25,7 +25,7 @@ npm start
 To keep your fork up to date:
 
 ```bash
-git remote add upstream git@github.com:playerstack/reactjs.git
+git remote add upstream git@github.com:playerstack/reactjs-video.git
 git fetch upstream
 git branch --set-upstream-to=upstream/main main
 git pull upstream --rebase
@@ -125,7 +125,7 @@ We use templates:
 - **Bug Report** — for confirmed bugs (include reproduction steps)
 - **Feature Request** — to suggest new features
 
-Generic questions and discussions go to [Discussions](https://github.com/playerstack/reactjs/discussions).
+Generic questions and discussions go to [Discussions](https://github.com/playerstack/reactjs-video/discussions).
 
 ---
 

@@ -3,7 +3,7 @@ import {
   keyMappings,
   sliderWidth,
   buildIconProps,
-} from '@playerstack/core';
+} from '@playerstack/web-core';
 
 describe('PlayerSkin.constants', () => {
   describe('eventsKeyCodes', () => {

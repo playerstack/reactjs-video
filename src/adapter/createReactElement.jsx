@@ -1,6 +1,6 @@
 import { forwardRef, createElement, useRef, useMemo, useEffect } from 'react';
 
-import { domFrameworkAdapter } from '@playerstack/core/adapters/framework';
+import { domFrameworkAdapter } from '@playerstack/web-core/adapters/framework';
 
 import { useDeepCompareMemoize } from '@hooks/useDeepCompareMemoize';
 import { buildEventPropMap } from '@adapter/eventPropName';
@@ -32,7 +32,7 @@ import { buildEventPropMap } from '@adapter/eventPropName';
  * React components (tasks 14.3/14.7) can be produced by mapping over
  * `UI_ELEMENT_BINDINGS` without bespoke logic.
  *
- * @param {import('@playerstack/core/adapters/framework').UiElementBinding} binding
+ * @param {import('@playerstack/web-core/adapters/framework').UiElementBinding} binding
  * @returns {React.ForwardRefExoticComponent} A React component for the element.
  */
 export function createReactElement(binding) {

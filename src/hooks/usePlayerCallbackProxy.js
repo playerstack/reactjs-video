@@ -1,6 +1,6 @@
 import { useMemo, useRef } from 'react';
 
-import { createPlayerCallbackProxy } from '@playerstack/core';
+import { createPlayerCallbackProxy } from '@playerstack/web-core';
 
 /**
  * Thin React wrapper over core's `createPlayerCallbackProxy` (framework-agnostic player-event →

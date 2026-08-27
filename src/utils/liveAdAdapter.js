@@ -9,7 +9,7 @@
  * the core `LiveAdController` — so this adapter only covers the sibling stream element + URL.
  *
  * @param {React.RefObject<HTMLVideoElement>} videoRef - Ref to the live stream video element.
- * @returns {import('@playerstack/core').LiveAdAdapter}
+ * @returns {import('@playerstack/web-core').LiveAdAdapter}
  */
 export function createWebLiveAdAdapter(videoRef) {
   return {
