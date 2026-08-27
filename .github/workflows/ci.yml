@@ -34,7 +34,7 @@ jobs:
           PR_BODY: ${{ github.event.pull_request.body }}
         run: |
           set -euo pipefail
-          CORE_REPO="https://github.com/playerstack/web-web-core.git"
+          CORE_REPO="https://github.com/playerstack/web-core.git"
           pick=""
 
           # 1) Explicit manual override.
@@ -80,6 +80,10 @@ jobs:
         uses: ./.github/actions/setup-core
         with:
           ref: ${{ needs.resolve-core.outputs.ref }}
+      - name: Link core into node_modules before install
+        run: |
+          mkdir -p node_modules/@playerstack
+          ln -sfn "${{ github.workspace }}/.core-dep" node_modules/@playerstack/web-core
       - run: npm ci
       - run: npm run lint
 
@@ -102,6 +106,10 @@ jobs:
         uses: ./.github/actions/setup-core
         with:
           ref: ${{ needs.resolve-core.outputs.ref }}
+      - name: Link core into node_modules before install
+        run: |
+          mkdir -p node_modules/@playerstack
+          ln -sfn "${{ github.workspace }}/.core-dep" node_modules/@playerstack/web-core
       - run: npm ci
       - run: npm run test:cov
       - name: Upload coverage to Codecov
@@ -133,6 +141,10 @@ jobs:
         uses: ./.github/actions/setup-core
         with:
           ref: ${{ needs.resolve-core.outputs.ref }}
+      - name: Link core into node_modules before install
+        run: |
+          mkdir -p node_modules/@playerstack
+          ln -sfn "${{ github.workspace }}/.core-dep" node_modules/@playerstack/web-core
       - run: npm ci
       - run: npm run build:lib
       - run: npm run build:dist
