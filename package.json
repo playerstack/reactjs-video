@@ -1,6 +1,6 @@
 {
   "name": "@playerstack/reactjs-video",
-  "version": "1.0.0-alpha.0",
+  "version": "0.1.0",
   "description": "A React component for playing video and audio with HLS, DASH, FLV and native formats",
   "main": "lib/index.js",
   "typings": "types/lib/index.d.ts",
