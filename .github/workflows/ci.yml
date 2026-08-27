@@ -84,7 +84,7 @@ jobs:
         run: |
           mkdir -p node_modules/@playerstack
           ln -sfn "${{ github.workspace }}/.core-dep" node_modules/@playerstack/web-core
-      - run: npm ci
+      - run: npm install --no-audit --no-fund
       - run: npm run lint
 
   test:
@@ -110,7 +110,7 @@ jobs:
         run: |
           mkdir -p node_modules/@playerstack
           ln -sfn "${{ github.workspace }}/.core-dep" node_modules/@playerstack/web-core
-      - run: npm ci
+      - run: npm install --no-audit --no-fund
       - run: npm run test:cov
       - name: Upload coverage to Codecov
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -145,6 +145,6 @@ jobs:
         run: |
           mkdir -p node_modules/@playerstack
           ln -sfn "${{ github.workspace }}/.core-dep" node_modules/@playerstack/web-core
-      - run: npm ci
+      - run: npm install --no-audit --no-fund
       - run: npm run build:lib
       - run: npm run build:dist
