@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-action.json
+name: Setup @playerstack/core
+description: >-
+  Check out @playerstack/core at a given ref and build it into ./.core-dep so the skin can be
+  linted/tested/built against unreleased core changes WITHOUT a published npm version. Set
+  PLAYERSTACK_CORE_PATH to $GITHUB_WORKSPACE/.core-dep in the job env to consume it.
+
+inputs:
+  ref:
+    description: The @playerstack/core git ref (branch/tag/SHA) to build.
+    required: true
+  repository:
+    description: The core repository (org/name).
+    required: false
+    default: playerstack/core
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout core (${{ inputs.ref }})
+      uses: actions/checkout@v4
+      with:
+        repository: ${{ inputs.repository }}
+        ref: ${{ inputs.ref }}
+        path: .core-dep
+
+    - name: Build core
+      shell: bash
+      working-directory: .core-dep
+      run: |
+        npm ci
+        npm run build

@@ -1,0 +1,22 @@
+node_modules
+npm-debug.log
+yarn-error.log
+.DS_Store
+/lib
+/lazy
+/dist
+/demo
+/coverage
+/es6
+# CI-only local checkout of @playerstack/core (see .github/workflows/ci.yml)
+/.core-dep
+.idea/
+.kiro
+.vscode/
+/examples/local
+TubeakPlayer
+/examples/react/public/uploads
+*.flv
+*.mp4
+*.mpd
+*.m3u8

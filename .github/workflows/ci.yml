@@ -1,0 +1,138 @@
+name: Node.js CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      core_ref:
+        description: '@playerstack/core branch/tag/SHA to build the skin against (blank = auto-resolve)'
+        required: false
+        type: string
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Resolve which @playerstack/core ref the skin is verified against. This lets a PR run its
+  # checks against unreleased core changes without publishing a new npm version. Priority:
+  #   1. Manual workflow_dispatch input `core_ref`.
+  #   2. A "Core-Branch: <ref>" line in the pull request body.
+  #   3. A core branch with the SAME name as this skin's head branch (coordinated changes).
+  #   4. Fallback to `main`.
+  resolve-core:
+    runs-on: ubuntu-latest
+    outputs:
+      ref: ${{ steps.pick.outputs.ref }}
+    steps:
+      - name: Resolve core ref
+        id: pick
+        env:
+          DISPATCH_REF: ${{ github.event.inputs.core_ref }}
+          HEAD_REF: ${{ github.head_ref || github.ref_name }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          set -euo pipefail
+          CORE_REPO="https://github.com/playerstack/core.git"
+          pick=""
+
+          # 1) Explicit manual override.
+          if [ -n "${DISPATCH_REF:-}" ]; then
+            pick="$DISPATCH_REF"
+          fi
+
+          # 2) Directive in the PR body: "Core-Branch: <ref>".
+          if [ -z "$pick" ] && [ -n "${PR_BODY:-}" ]; then
+            token=$(printf '%s\n' "$PR_BODY" | grep -ioE 'Core-Branch:[[:space:]]*[^[:space:]]+' | head -1 | sed -E 's/.*Core-Branch:[[:space:]]*//I') || true
+            if [ -n "$token" ]; then pick="$token"; fi
+          fi
+
+          # 3) Same-named branch in core (coordinated cross-repo changes).
+          if [ -z "$pick" ] && [ -n "${HEAD_REF:-}" ]; then
+            if git ls-remote --exit-code --heads "$CORE_REPO" "$HEAD_REF" >/dev/null 2>&1; then
+              pick="$HEAD_REF"
+            fi
+          fi
+
+          # 4) Fallback.
+          if [ -z "$pick" ]; then pick="main"; fi
+
+          echo "ref=$pick" >> "$GITHUB_OUTPUT"
+          echo "Resolved @playerstack/core ref: $pick"
+
+  lint:
+    needs: resolve-core
+    runs-on: ubuntu-latest
+    env:
+      PLAYERSTACK_CORE_PATH: ${{ github.workspace }}/.core-dep
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+      - name: Build & link @playerstack/core
+        uses: ./.github/actions/setup-core
+        with:
+          ref: ${{ needs.resolve-core.outputs.ref }}
+      - run: npm ci
+      - run: npm run lint
+
+  test:
+    needs: resolve-core
+    runs-on: ubuntu-latest
+    env:
+      PLAYERSTACK_CORE_PATH: ${{ github.workspace }}/.core-dep
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+      - name: Build & link @playerstack/core
+        uses: ./.github/actions/setup-core
+        with:
+          ref: ${{ needs.resolve-core.outputs.ref }}
+      - run: npm ci
+      - run: npm run test:cov
+      - name: Upload coverage to Codecov
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ./coverage
+          files: ./coverage/lcov.info
+          flags: unittests
+          fail_ci_if_error: false
+
+  build:
+    needs: resolve-core
+    runs-on: ubuntu-latest
+    env:
+      PLAYERSTACK_CORE_PATH: ${{ github.workspace }}/.core-dep
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+      - name: Build & link @playerstack/core
+        uses: ./.github/actions/setup-core
+        with:
+          ref: ${{ needs.resolve-core.outputs.ref }}
+      - run: npm ci
+      - run: npm run build:lib
+      - run: npm run build:dist

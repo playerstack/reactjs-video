@@ -1,0 +1,67 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "react-app",
+        "react-app/jest",
+        "plugin:react/recommended",
+        "plugin:prettier/recommended"
+    ],
+    "overrides": [
+        {
+            "files": [
+                "types/**/*.d.ts"
+            ],
+            "rules": {
+                "@typescript-eslint/explicit-module-boundary-types": "off",
+                "@typescript-eslint/no-unused-vars": "off"
+            }
+        },
+        {
+            "files": [
+                "src/**/*.{js,jsx}"
+            ],
+            "rules": {
+                "no-console": [
+                    "warn",
+                    {
+                        "allow": [
+                            "warn",
+                            "error",
+                            "info",
+                            "debug"
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "import"
+    ],
+    "rules": {
+        "react/prop-types": "off",
+        "react/react-in-jsx-scope": "off",
+        "import/no-anonymous-default-export": "off",
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ],
+        "no-unused-vars": "warn",
+        "jest/no-mocks-import": "off"
+    }
+}

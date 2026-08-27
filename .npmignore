@@ -1,0 +1,12 @@
+.github
+codecov.yml
+coverage
+src
+test
+webpack/*
+yarn-error.log
+/demo/
+/examples/
+/scripts/
+.kiro
+TubeakPlayer/

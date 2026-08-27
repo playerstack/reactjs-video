@@ -1,0 +1,3321 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CorePlayerSkin — Visual_Parity DOM snapshots (Req 20.7, 21.2–21.5) ads active state 1`] = `
+<playerstack-media-controller
+  data-ad-active="true"
+  data-skin-mode="desktop"
+>
+  <playerstack-prevented-tip
+    data-active="false"
+    data-mode="none"
+    language="en"
+  >
+    <div
+      part="prevented-tip-clicked"
+      style="display: none;"
+    />
+    <div
+      part="prevented-tip"
+    >
+      <span
+        class="icon"
+        part="prevented-tip-icon"
+      />
+      <div
+        part="prevented-tip-message"
+      />
+    </div>
+  </playerstack-prevented-tip>
+  <playerstack-spinner
+    data-active="false"
+    data-buffering="false"
+    data-loading="false"
+  >
+    <div
+      part="spinner"
+      style="display: none;"
+    >
+      <span
+        class="icon icon-spinner"
+        part="spinner-indicator"
+      />
+    </div>
+  </playerstack-spinner>
+  <playerstack-play-state
+    data-ended="false"
+    data-playing="false"
+    data-showing="true"
+  >
+    <div
+      part="play-state"
+    >
+      <button
+        aria-label="Play"
+        part="play-state-button"
+        type="button"
+      >
+        <span
+          class="icon icon-play"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 23.804 18.319 L 12.478 25.924 C 12.347 26.014 12.235 26.024 12.141 25.955 C 12.047 25.886 12 25.763 12 25.584 L 12 10.416 C 12 10.237 12.047 10.113 12.141 10.045 C 12.235 9.976 12.347 9.986 12.478 10.076 L 23.804 17.68 C 23.935 17.77 24 17.876 24 18 C 24 18.124 23.935 18.23 23.804 18.319 Z"
+            />
+          </svg>
+        </span>
+        <span
+          class="icon icon-pause"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              height="16"
+              width="3"
+              x="12"
+              y="10"
+            />
+            <rect
+              height="16"
+              width="3"
+              x="21"
+              y="10"
+            />
+          </svg>
+        </span>
+        <span
+          class="icon icon-replay"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 18 12.3 L 18 8.5 L 13 13.25 L 18 18 L 18 14.2 C 21.3 14.2 24 16.765 24 19.9 C 24 23.035 21.3 25.6 18 25.6 C 14.7 25.6 12 23.035 12 19.9 L 10 19.9 C 10 24.08 13.6 27.5 18 27.5 C 22.4 27.5 26 24.08 26 19.9 C 26 15.72 22.4 12.3 18 12.3 Z"
+            />
+          </svg>
+        </span>
+        <span
+          class="icon icon-play-mobile"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 56 56"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 41.543 28.638 L 15.115 43.848 C 14.81 44.028 14.548 44.048 14.329 43.91 C 14.11 43.772 14 43.526 14 43.168 L 14 12.832 C 14 12.474 14.11 12.226 14.329 12.09 C 14.548 11.952 14.81 11.972 15.115 12.152 L 41.543 27.36 C 41.848 27.54 42 27.752 42 28 C 42 28.248 41.848 28.46 41.543 28.638 Z"
+            />
+          </svg>
+        </span>
+        <span
+          class="icon icon-pause-mobile"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 56 56"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              height="32"
+              width="8"
+              x="12"
+              y="12"
+            />
+            <rect
+              height="32"
+              width="8"
+              x="36"
+              y="12"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </playerstack-play-state>
+  <playerstack-top-state
+    data-active="false"
+    language="en"
+  >
+    <div
+      part="top-state"
+    >
+      <div
+        part="top-state-message"
+      />
+    </div>
+  </playerstack-top-state>
+  <playerstack-ad-overlay
+    language="en"
+  >
+    <div
+      part="ad-overlay"
+      style="display: none;"
+    >
+      <div
+        part="ad-banner-wrapper"
+        style=""
+      >
+        <div
+          part="ad-banner"
+          role="link"
+        >
+          <img
+            alt=""
+            part="ad-icon"
+            style="display: none;"
+          />
+          <div
+            part="ad-info"
+          >
+            <span
+              part="ad-title"
+            >
+              Ad
+            </span>
+            <span
+              part="ad-url"
+            >
+              example.com
+            </span>
+          </div>
+          <button
+            part="ad-button"
+            type="button"
+          >
+            Learn more
+          </button>
+        </div>
+        <span
+          part="ad-sponsored"
+        >
+          Sponsored • example.com
+        </span>
+      </div>
+      <div
+        part="ad-click"
+      />
+      <button
+        aria-label="Skip ad"
+        disabled=""
+        part="ad-skip-button"
+        type="button"
+      >
+        <span
+          part="ad-skip-countdown"
+        />
+        <img
+          alt=""
+          draggable="false"
+          part="ad-skip-preview"
+          style="display: none;"
+        />
+      </button>
+    </div>
+  </playerstack-ad-overlay>
+  <playerstack-context-menu
+    data-loop="false"
+    data-pip="false"
+  >
+    <div
+      part="context-menu"
+      role="menu"
+    >
+      <button
+        data-action="pip"
+        part="context-menu-item"
+        role="menuitem"
+        type="button"
+      >
+        <span
+          class="icon"
+          part="context-menu-icon"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M25 17H17v6H25zM29 25V10.981a1.989 1.989 0 0 0 -2 -1.981H9a1.989 1.989 0 0 0 -2 1.981V25c0 1.1 0.9 2 2 2h18c1.1 0 2 -0.9 2 -2m-2 0.019H9V10.969h18z"
+            />
+          </svg>
+        </span>
+        <span
+          part="context-menu-label"
+        >
+          Picture in Picture
+        </span>
+      </button>
+    </div>
+  </playerstack-context-menu>
+  <playerstack-time-slider
+    buffer-mode="fragmented"
+  >
+    <div
+      part="time-slider"
+    >
+      <div
+        aria-label="Seek"
+        part="slider"
+        style="cursor: default;"
+      >
+        <div
+          part="track"
+        >
+          <div
+            part="track-buffered"
+            style="width: 0%;"
+          />
+          <div
+            part="track-hover"
+          />
+          <div
+            part="track-fill"
+            style="width: 0%;"
+          />
+        </div>
+        <div
+          part="chapters"
+          style="display: none;"
+        />
+        <div
+          part="thumb"
+          style="left: 0%; display: none;"
+        />
+      </div>
+      <div
+        part="heatmap"
+      >
+        <svg
+          part="heatmap-svg"
+          preserveAspectRatio="none"
+          viewBox="0 0 100 100"
+        >
+          <defs>
+            <clippath
+              id="playerstack-timeslider-heatmap-5"
+            >
+              <rect
+                height="100"
+                width="0"
+                x="0"
+                y="0"
+              />
+            </clippath>
+          </defs>
+          <path
+            d=""
+            part="heatmap-path"
+          />
+          <path
+            clip-path="url(#playerstack-timeslider-heatmap-5)"
+            d=""
+            part="heatmap-path-played"
+          />
+        </svg>
+      </div>
+      <div
+        part="tooltip"
+      >
+        <div
+          part="tooltip-chapter"
+          style="display: none;"
+        />
+        <div
+          part="tooltip-time"
+        />
+      </div>
+      <div
+        part="timelens"
+        style="display: none;"
+      />
+    </div>
+  </playerstack-time-slider>
+  <div
+    class="playerstack-controls"
+  >
+    <div
+      class="playerstack-controls-left"
+    >
+      <playerstack-play-button
+        data-playing="false"
+      >
+        <button
+          aria-label="Play"
+          part="play-button"
+          type="button"
+        >
+          <span
+            class="icon icon-play"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 23.804 18.319 L 12.478 25.924 C 12.347 26.014 12.235 26.024 12.141 25.955 C 12.047 25.886 12 25.763 12 25.584 L 12 10.416 C 12 10.237 12.047 10.113 12.141 10.045 C 12.235 9.976 12.347 9.986 12.478 10.076 L 23.804 17.68 C 23.935 17.77 24 17.876 24 18 C 24 18.124 23.935 18.23 23.804 18.319 Z"
+              />
+            </svg>
+          </span>
+          <span
+            class="icon icon-pause"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                height="16"
+                width="3"
+                x="12"
+                y="10"
+              />
+              <rect
+                height="16"
+                width="3"
+                x="21"
+                y="10"
+              />
+            </svg>
+          </span>
+        </button>
+      </playerstack-play-button>
+      <playerstack-volume
+        data-muted="false"
+      >
+        <button
+          aria-label="Mute"
+          part="mute-button"
+          type="button"
+        >
+          <span
+            class="icon icon-volume"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 22.5 18 C 22.5 16.189 21.48 14.624 20 13.87 L 20 22.136 C 21.48 21.377 22.5 19.812 22.5 18 Z"
+              />
+              <polygon
+                points="9 14.922 9 21.078 13 21.078 18 26.21 18 9.79 13 14.922"
+              />
+              <path
+                d="M 20 9 L 20 11.119 C 22.89 12.002 25 14.747 25 18 C 25 21.253 22.89 23.999 20 24.881 L 20 27 C 24.005 26.066 27 22.398 27 18 C 27 13.603 24.005 9.934 20 9 Z"
+              />
+            </svg>
+          </span>
+          <span
+            class="icon icon-muted"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 22.5 18 C 22.5 16.235 21.48 14.71 20 13.975 L 20 16.185 L 22.455 18.64 C 22.485 18.43 22.5 18.215 22.5 18 Z"
+              />
+              <path
+                d="M 25 18 C 25 18.94 24.795 19.825 24.46 20.64 L 25.975 22.155 C 26.625 20.91 27 19.5 27 18 C 27 13.72 24.005 10.14 20 9.23 L 20 11.295 C 22.89 12.155 25 14.83 25 18 Z"
+              />
+              <polygon
+                points="18 10 15.91 12.09 18 14.18"
+              />
+              <path
+                d="M 10.275 9 L 9 10.275 L 13.725 15 L 9 15 L 9 21 L 13 21 L 18 26 L 18 19.275 L 22.255 23.53 C 21.585 24.045 20.83 24.46 20 24.71 L 20 26.775 C 21.375 26.46 22.63 25.83 23.685 24.965 L 25.725 27 L 27 25.725 L 18 16.725 L 10.275 9 Z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          part="volume"
+        >
+          <div
+            part="slider"
+          >
+            <div
+              part="track"
+            >
+              <div
+                part="track-fill"
+                style="width: 100%;"
+              />
+            </div>
+            <div
+              part="thumb"
+              style="left: 100%;"
+            />
+            <div
+              data-visible="false"
+              part="volume-tooltip"
+            />
+          </div>
+        </div>
+      </playerstack-volume>
+      <playerstack-play-time>
+        <div
+          part="time"
+        >
+          <span
+            part="current-time"
+          >
+            00:00
+          </span>
+          <span
+            aria-hidden="true"
+            style=""
+          >
+             / 
+          </span>
+          <span
+            part="duration"
+            style=""
+          >
+            01:40
+          </span>
+        </div>
+      </playerstack-play-time>
+    </div>
+    <div
+      class="playerstack-controls-right"
+    >
+      <playerstack-settings
+        data-empty="true"
+        data-quality="0"
+      >
+        <button
+          aria-label="Settings"
+          part="settings-button"
+          type="button"
+        >
+          <span
+            class="icon icon-settings"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 25.089 17.774 C 25.056 17.032 24.908 16.3 24.649 15.604 L 25.796 14.535 C 26.013 14.326 26.065 13.997 25.921 13.732 C 25.463 12.886 24.874 12.117 24.177 11.453 C 23.965 11.247 23.641 11.211 23.39 11.366 L 22.034 12.21 C 21.424 11.786 20.75 11.461 20.039 11.247 L 19.9 9.677 C 19.877 9.375 19.646 9.13 19.345 9.09 C 18.927 9.029 18.505 8.999 18.082 9 C 17.543 8.998 17.006 9.045 16.476 9.141 C 16.19 9.187 15.97 9.419 15.939 9.706 L 15.772 11.311 C 15.117 11.533 14.498 11.849 13.934 12.249 L 12.614 11.398 C 12.362 11.236 12.032 11.269 11.817 11.478 C 11.108 12.158 10.512 12.947 10.053 13.816 C 9.913 14.076 9.961 14.398 10.172 14.606 L 11.329 15.72 C 11.115 16.314 10.981 16.933 10.93 17.563 L 9.44 18.086 C 9.155 18.18 8.974 18.459 9.003 18.757 C 9.068 19.751 9.296 20.727 9.677 21.646 C 9.786 21.924 10.073 22.091 10.368 22.048 L 11.93 21.823 C 12.234 22.337 12.602 22.811 13.025 23.232 L 12.473 24.754 C 12.372 25.032 12.468 25.342 12.707 25.515 C 13.505 26.099 14.394 26.548 15.338 26.844 C 15.625 26.937 15.938 26.818 16.09 26.559 L 16.897 25.207 C 17.245 25.265 17.597 25.297 17.95 25.303 C 18.215 25.305 18.48 25.292 18.744 25.261 L 19.55 26.658 C 19.69 26.921 19.991 27.054 20.28 26.979 C 21.228 26.728 22.128 26.321 22.943 25.775 C 23.195 25.609 23.302 25.293 23.203 25.008 L 22.686 23.512 C 23.198 23.057 23.643 22.532 24.006 21.951 L 25.568 22.202 C 25.862 22.25 26.151 22.089 26.265 21.813 C 26.657 20.921 26.903 19.971 26.994 19.001 C 27.034 18.698 26.855 18.41 26.567 18.311 Z M 25.266 20.834 L 23.37 20.532 L 22.917 21.258 C 22.62 21.735 22.257 22.167 21.838 22.542 L 21.195 23.123 L 21.838 24.947 C 21.392 25.208 20.92 25.423 20.431 25.589 L 19.467 23.9 L 18.641 23.984 C 18.428 24.009 18.213 24.02 17.999 24.019 C 17.708 24.013 17.418 23.986 17.131 23.939 L 16.238 23.769 L 15.255 25.438 C 14.764 25.253 14.294 25.017 13.854 24.732 L 14.526 22.898 L 13.931 22.311 C 13.587 21.962 13.286 21.573 13.035 21.152 L 12.595 20.413 L 10.696 20.686 C 10.526 20.188 10.406 19.674 10.336 19.152 L 12.158 18.51 L 12.216 17.668 C 12.255 17.154 12.364 16.648 12.537 16.163 L 12.816 15.366 L 11.422 14.021 C 11.69 13.582 12.001 13.17 12.35 12.792 L 13.957 13.832 L 14.66 13.328 C 15.122 13.002 15.629 12.743 16.164 12.56 L 16.951 12.297 L 17.154 10.352 C 17.458 10.311 17.765 10.289 18.072 10.284 C 18.268 10.284 18.464 10.284 18.664 10.313 L 18.834 12.239 L 19.672 12.493 C 20.254 12.668 20.805 12.933 21.304 13.28 L 21.995 13.761 L 23.634 12.74 C 23.973 13.107 24.276 13.504 24.54 13.928 L 23.139 15.244 L 23.46 16.063 C 23.67 16.632 23.792 17.23 23.82 17.835 L 23.859 18.705 L 25.664 19.364 C 25.581 19.866 25.447 20.358 25.266 20.834 Z M 17.979 21.2 C 15.506 21.2 13.96 18.524 15.197 16.384 C 16.434 14.244 19.525 14.244 20.762 16.384 C 21.048 16.88 21.197 17.443 21.192 18.015 C 21.189 19.783 19.748 21.211 17.979 21.2 Z M 18.021 16.063 C 16.537 16.046 15.591 17.64 16.318 18.933 C 17.045 20.226 18.9 20.248 19.657 18.972 C 19.833 18.675 19.926 18.335 19.926 17.99 C 19.926 16.934 19.077 16.075 18.021 16.063 Z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          part="menu"
+        />
+        <div
+          part="submenu"
+        />
+        <div
+          part="caption-options"
+        />
+      </playerstack-settings>
+      <playerstack-fullscreen-button
+        data-fullscreen="false"
+      >
+        <button
+          aria-label="Fullscreen"
+          part="fullscreen-button"
+          type="button"
+        >
+          <span
+            class="icon icon-enter-fullscreen"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 12 20.667 L 10 20.667 L 10 26 L 15.333 26 L 15.333 24 L 12 24 L 12 20.667 Z M 10 15.333 L 12 15.333 L 12 12 L 15.333 12 L 15.333 10 L 10 10 L 10 15.333 Z M 24 24 L 20.667 24 L 20.667 26 L 26 26 L 26 20.667 L 24 20.667 L 24 24 Z M 20.667 10 L 20.667 12 L 24 12 L 24 15.333 L 26 15.333 L 26 10 L 20.667 10 Z"
+              />
+            </svg>
+          </span>
+          <span
+            class="icon icon-exit-fullscreen"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 10 22.667 L 13.333 22.667 L 13.333 26 L 15.333 26 L 15.333 20.667 L 10 20.667 L 10 22.667 Z M 13.333 13.333 L 10 13.333 L 10 15.333 L 15.333 15.333 L 15.333 10 L 13.333 10 L 13.333 13.333 Z M 20.667 26 L 22.667 26 L 22.667 22.667 L 26 22.667 L 26 20.667 L 20.667 20.667 L 20.667 26 Z M 22.667 13.333 L 22.667 10 L 20.667 10 L 20.667 15.333 L 26 15.333 L 26 13.333 L 22.667 13.333 Z"
+              />
+            </svg>
+          </span>
+        </button>
+      </playerstack-fullscreen-button>
+    </div>
+  </div>
+</playerstack-media-controller>
+`;
+
+exports[`CorePlayerSkin — Visual_Parity DOM snapshots (Req 20.7, 21.2–21.5) default desktop state 1`] = `
+<playerstack-media-controller
+  data-skin-mode="desktop"
+>
+  <playerstack-prevented-tip
+    data-active="false"
+    data-mode="none"
+    language="en"
+  >
+    <div
+      part="prevented-tip-clicked"
+      style="display: none;"
+    />
+    <div
+      part="prevented-tip"
+    >
+      <span
+        class="icon"
+        part="prevented-tip-icon"
+      />
+      <div
+        part="prevented-tip-message"
+      />
+    </div>
+  </playerstack-prevented-tip>
+  <playerstack-spinner
+    data-active="false"
+    data-buffering="false"
+    data-loading="false"
+  >
+    <div
+      part="spinner"
+      style="display: none;"
+    >
+      <span
+        class="icon icon-spinner"
+        part="spinner-indicator"
+      />
+    </div>
+  </playerstack-spinner>
+  <playerstack-play-state
+    data-ended="false"
+    data-playing="false"
+    data-showing="true"
+  >
+    <div
+      part="play-state"
+    >
+      <button
+        aria-label="Play"
+        part="play-state-button"
+        type="button"
+      >
+        <span
+          class="icon icon-play"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 23.804 18.319 L 12.478 25.924 C 12.347 26.014 12.235 26.024 12.141 25.955 C 12.047 25.886 12 25.763 12 25.584 L 12 10.416 C 12 10.237 12.047 10.113 12.141 10.045 C 12.235 9.976 12.347 9.986 12.478 10.076 L 23.804 17.68 C 23.935 17.77 24 17.876 24 18 C 24 18.124 23.935 18.23 23.804 18.319 Z"
+            />
+          </svg>
+        </span>
+        <span
+          class="icon icon-pause"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              height="16"
+              width="3"
+              x="12"
+              y="10"
+            />
+            <rect
+              height="16"
+              width="3"
+              x="21"
+              y="10"
+            />
+          </svg>
+        </span>
+        <span
+          class="icon icon-replay"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 18 12.3 L 18 8.5 L 13 13.25 L 18 18 L 18 14.2 C 21.3 14.2 24 16.765 24 19.9 C 24 23.035 21.3 25.6 18 25.6 C 14.7 25.6 12 23.035 12 19.9 L 10 19.9 C 10 24.08 13.6 27.5 18 27.5 C 22.4 27.5 26 24.08 26 19.9 C 26 15.72 22.4 12.3 18 12.3 Z"
+            />
+          </svg>
+        </span>
+        <span
+          class="icon icon-play-mobile"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 56 56"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 41.543 28.638 L 15.115 43.848 C 14.81 44.028 14.548 44.048 14.329 43.91 C 14.11 43.772 14 43.526 14 43.168 L 14 12.832 C 14 12.474 14.11 12.226 14.329 12.09 C 14.548 11.952 14.81 11.972 15.115 12.152 L 41.543 27.36 C 41.848 27.54 42 27.752 42 28 C 42 28.248 41.848 28.46 41.543 28.638 Z"
+            />
+          </svg>
+        </span>
+        <span
+          class="icon icon-pause-mobile"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 56 56"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              height="32"
+              width="8"
+              x="12"
+              y="12"
+            />
+            <rect
+              height="32"
+              width="8"
+              x="36"
+              y="12"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </playerstack-play-state>
+  <playerstack-top-state
+    data-active="false"
+    language="en"
+  >
+    <div
+      part="top-state"
+    >
+      <div
+        part="top-state-message"
+      />
+    </div>
+  </playerstack-top-state>
+  <playerstack-context-menu
+    data-loop="false"
+    data-pip="false"
+  >
+    <div
+      part="context-menu"
+      role="menu"
+    >
+      <button
+        data-action="loop"
+        part="context-menu-item"
+        role="menuitem"
+        type="button"
+      >
+        <span
+          class="icon"
+          part="context-menu-icon"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 21.333 23.666 C 21.333 23.758 21.3 23.835 21.235 23.902 C 21.168 23.967 21.091 24 21 24 L 11 24 C 10.944 24 10.898 23.995 10.859 23.979 C 10.821 23.966 10.789 23.942 10.765 23.906 C 10.741 23.871 10.723 23.844 10.708 23.822 C 10.695 23.803 10.684 23.762 10.678 23.703 C 10.671 23.644 10.667 23.604 10.667 23.583 L 10.667 17.335 L 8.667 17.335 C 8.487 17.335 8.329 17.266 8.198 17.134 C 8.067 17.004 8 16.846 8 16.666 C 8 16.5 8.052 16.358 8.156 16.239 L 11.489 12.24 C 11.621 12.087 11.792 12.01 12 12.01 C 12.208 12.01 12.379 12.087 12.511 12.24 L 15.844 16.239 C 15.948 16.358 16 16.5 16 16.666 C 16 16.846 15.933 17.004 15.803 17.134 C 15.671 17.266 15.513 17.335 15.333 17.335 L 13.333 17.335 L 13.333 21.334 L 19.333 21.334 C 19.444 21.334 19.532 21.372 19.593 21.448 L 21.26 23.448 C 21.309 23.518 21.333 23.59 21.333 23.666 Z M 28 19.334 C 28 19.5 27.948 19.642 27.844 19.761 L 24.511 23.76 C 24.372 23.92 24.201 24 24 24 C 23.799 24 23.628 23.92 23.489 23.76 L 20.156 19.761 C 20.052 19.642 20 19.5 20 19.334 C 20 19.154 20.067 18.996 20.198 18.866 C 20.329 18.734 20.487 18.667 20.667 18.667 L 22.667 18.667 L 22.667 14.666 L 16.667 14.666 C 16.556 14.666 16.468 14.626 16.407 14.542 L 14.74 12.542 C 14.691 12.478 14.667 12.41 14.667 12.334 C 14.667 12.243 14.7 12.166 14.765 12.098 C 14.832 12.034 14.909 12 15 12 L 25 12 C 25.056 12 25.103 12.007 25.141 12.022 C 25.179 12.034 25.211 12.058 25.235 12.094 C 25.259 12.13 25.278 12.156 25.292 12.178 C 25.305 12.199 25.316 12.238 25.323 12.298 C 25.329 12.356 25.333 12.396 25.333 12.418 L 25.333 18.667 L 27.333 18.667 C 27.513 18.667 27.671 18.734 27.803 18.866 C 27.933 18.996 28 19.154 28 19.334 Z"
+            />
+          </svg>
+        </span>
+        <span
+          part="context-menu-label"
+        >
+          Loop
+        </span>
+        <span
+          part="context-menu-checked"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4.8 19.582 13.237 28.05 31.2 9.877 29.295 7.95 13.237 24.197 6.705 17.586Z"
+            />
+          </svg>
+        </span>
+      </button>
+      <button
+        data-action="pip"
+        part="context-menu-item"
+        role="menuitem"
+        type="button"
+      >
+        <span
+          class="icon"
+          part="context-menu-icon"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M25 17H17v6H25zM29 25V10.981a1.989 1.989 0 0 0 -2 -1.981H9a1.989 1.989 0 0 0 -2 1.981V25c0 1.1 0.9 2 2 2h18c1.1 0 2 -0.9 2 -2m-2 0.019H9V10.969h18z"
+            />
+          </svg>
+        </span>
+        <span
+          part="context-menu-label"
+        >
+          Picture in Picture
+        </span>
+      </button>
+    </div>
+  </playerstack-context-menu>
+  <playerstack-time-slider
+    buffer-mode="fragmented"
+  >
+    <div
+      part="time-slider"
+    >
+      <div
+        aria-label="Seek"
+        part="slider"
+      >
+        <div
+          part="track"
+        >
+          <div
+            part="track-buffered"
+            style="width: 0%;"
+          />
+          <div
+            part="track-hover"
+          />
+          <div
+            part="track-fill"
+            style="width: 0%;"
+          />
+        </div>
+        <div
+          part="chapters"
+          style="display: none;"
+        />
+        <div
+          part="thumb"
+          style="left: 0%;"
+        />
+      </div>
+      <div
+        part="heatmap"
+      >
+        <svg
+          part="heatmap-svg"
+          preserveAspectRatio="none"
+          viewBox="0 0 100 100"
+        >
+          <defs>
+            <clippath
+              id="playerstack-timeslider-heatmap-1"
+            >
+              <rect
+                height="100"
+                width="0"
+                x="0"
+                y="0"
+              />
+            </clippath>
+          </defs>
+          <path
+            d=""
+            part="heatmap-path"
+          />
+          <path
+            clip-path="url(#playerstack-timeslider-heatmap-1)"
+            d=""
+            part="heatmap-path-played"
+          />
+        </svg>
+      </div>
+      <div
+        part="tooltip"
+      >
+        <div
+          part="tooltip-chapter"
+          style="display: none;"
+        />
+        <div
+          part="tooltip-time"
+        />
+      </div>
+      <div
+        part="timelens"
+        style="display: none;"
+      />
+    </div>
+  </playerstack-time-slider>
+  <div
+    class="playerstack-controls"
+  >
+    <div
+      class="playerstack-controls-left"
+    >
+      <playerstack-play-button
+        data-playing="false"
+      >
+        <button
+          aria-label="Play"
+          part="play-button"
+          type="button"
+        >
+          <span
+            class="icon icon-play"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 23.804 18.319 L 12.478 25.924 C 12.347 26.014 12.235 26.024 12.141 25.955 C 12.047 25.886 12 25.763 12 25.584 L 12 10.416 C 12 10.237 12.047 10.113 12.141 10.045 C 12.235 9.976 12.347 9.986 12.478 10.076 L 23.804 17.68 C 23.935 17.77 24 17.876 24 18 C 24 18.124 23.935 18.23 23.804 18.319 Z"
+              />
+            </svg>
+          </span>
+          <span
+            class="icon icon-pause"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                height="16"
+                width="3"
+                x="12"
+                y="10"
+              />
+              <rect
+                height="16"
+                width="3"
+                x="21"
+                y="10"
+              />
+            </svg>
+          </span>
+        </button>
+      </playerstack-play-button>
+      <playerstack-volume
+        data-muted="false"
+      >
+        <button
+          aria-label="Mute"
+          part="mute-button"
+          type="button"
+        >
+          <span
+            class="icon icon-volume"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 22.5 18 C 22.5 16.189 21.48 14.624 20 13.87 L 20 22.136 C 21.48 21.377 22.5 19.812 22.5 18 Z"
+              />
+              <polygon
+                points="9 14.922 9 21.078 13 21.078 18 26.21 18 9.79 13 14.922"
+              />
+              <path
+                d="M 20 9 L 20 11.119 C 22.89 12.002 25 14.747 25 18 C 25 21.253 22.89 23.999 20 24.881 L 20 27 C 24.005 26.066 27 22.398 27 18 C 27 13.603 24.005 9.934 20 9 Z"
+              />
+            </svg>
+          </span>
+          <span
+            class="icon icon-muted"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 22.5 18 C 22.5 16.235 21.48 14.71 20 13.975 L 20 16.185 L 22.455 18.64 C 22.485 18.43 22.5 18.215 22.5 18 Z"
+              />
+              <path
+                d="M 25 18 C 25 18.94 24.795 19.825 24.46 20.64 L 25.975 22.155 C 26.625 20.91 27 19.5 27 18 C 27 13.72 24.005 10.14 20 9.23 L 20 11.295 C 22.89 12.155 25 14.83 25 18 Z"
+              />
+              <polygon
+                points="18 10 15.91 12.09 18 14.18"
+              />
+              <path
+                d="M 10.275 9 L 9 10.275 L 13.725 15 L 9 15 L 9 21 L 13 21 L 18 26 L 18 19.275 L 22.255 23.53 C 21.585 24.045 20.83 24.46 20 24.71 L 20 26.775 C 21.375 26.46 22.63 25.83 23.685 24.965 L 25.725 27 L 27 25.725 L 18 16.725 L 10.275 9 Z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          part="volume"
+        >
+          <div
+            part="slider"
+          >
+            <div
+              part="track"
+            >
+              <div
+                part="track-fill"
+                style="width: 100%;"
+              />
+            </div>
+            <div
+              part="thumb"
+              style="left: 100%;"
+            />
+            <div
+              data-visible="false"
+              part="volume-tooltip"
+            />
+          </div>
+        </div>
+      </playerstack-volume>
+      <playerstack-play-time>
+        <div
+          part="time"
+        >
+          <span
+            part="current-time"
+          >
+            00:00
+          </span>
+          <span
+            aria-hidden="true"
+            style=""
+          >
+             / 
+          </span>
+          <span
+            part="duration"
+            style=""
+          >
+            01:40
+          </span>
+        </div>
+      </playerstack-play-time>
+    </div>
+    <div
+      class="playerstack-controls-right"
+    >
+      <playerstack-settings
+        data-quality="0"
+      >
+        <button
+          aria-label="Settings"
+          part="settings-button"
+          type="button"
+        >
+          <span
+            class="icon icon-settings"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 25.089 17.774 C 25.056 17.032 24.908 16.3 24.649 15.604 L 25.796 14.535 C 26.013 14.326 26.065 13.997 25.921 13.732 C 25.463 12.886 24.874 12.117 24.177 11.453 C 23.965 11.247 23.641 11.211 23.39 11.366 L 22.034 12.21 C 21.424 11.786 20.75 11.461 20.039 11.247 L 19.9 9.677 C 19.877 9.375 19.646 9.13 19.345 9.09 C 18.927 9.029 18.505 8.999 18.082 9 C 17.543 8.998 17.006 9.045 16.476 9.141 C 16.19 9.187 15.97 9.419 15.939 9.706 L 15.772 11.311 C 15.117 11.533 14.498 11.849 13.934 12.249 L 12.614 11.398 C 12.362 11.236 12.032 11.269 11.817 11.478 C 11.108 12.158 10.512 12.947 10.053 13.816 C 9.913 14.076 9.961 14.398 10.172 14.606 L 11.329 15.72 C 11.115 16.314 10.981 16.933 10.93 17.563 L 9.44 18.086 C 9.155 18.18 8.974 18.459 9.003 18.757 C 9.068 19.751 9.296 20.727 9.677 21.646 C 9.786 21.924 10.073 22.091 10.368 22.048 L 11.93 21.823 C 12.234 22.337 12.602 22.811 13.025 23.232 L 12.473 24.754 C 12.372 25.032 12.468 25.342 12.707 25.515 C 13.505 26.099 14.394 26.548 15.338 26.844 C 15.625 26.937 15.938 26.818 16.09 26.559 L 16.897 25.207 C 17.245 25.265 17.597 25.297 17.95 25.303 C 18.215 25.305 18.48 25.292 18.744 25.261 L 19.55 26.658 C 19.69 26.921 19.991 27.054 20.28 26.979 C 21.228 26.728 22.128 26.321 22.943 25.775 C 23.195 25.609 23.302 25.293 23.203 25.008 L 22.686 23.512 C 23.198 23.057 23.643 22.532 24.006 21.951 L 25.568 22.202 C 25.862 22.25 26.151 22.089 26.265 21.813 C 26.657 20.921 26.903 19.971 26.994 19.001 C 27.034 18.698 26.855 18.41 26.567 18.311 Z M 25.266 20.834 L 23.37 20.532 L 22.917 21.258 C 22.62 21.735 22.257 22.167 21.838 22.542 L 21.195 23.123 L 21.838 24.947 C 21.392 25.208 20.92 25.423 20.431 25.589 L 19.467 23.9 L 18.641 23.984 C 18.428 24.009 18.213 24.02 17.999 24.019 C 17.708 24.013 17.418 23.986 17.131 23.939 L 16.238 23.769 L 15.255 25.438 C 14.764 25.253 14.294 25.017 13.854 24.732 L 14.526 22.898 L 13.931 22.311 C 13.587 21.962 13.286 21.573 13.035 21.152 L 12.595 20.413 L 10.696 20.686 C 10.526 20.188 10.406 19.674 10.336 19.152 L 12.158 18.51 L 12.216 17.668 C 12.255 17.154 12.364 16.648 12.537 16.163 L 12.816 15.366 L 11.422 14.021 C 11.69 13.582 12.001 13.17 12.35 12.792 L 13.957 13.832 L 14.66 13.328 C 15.122 13.002 15.629 12.743 16.164 12.56 L 16.951 12.297 L 17.154 10.352 C 17.458 10.311 17.765 10.289 18.072 10.284 C 18.268 10.284 18.464 10.284 18.664 10.313 L 18.834 12.239 L 19.672 12.493 C 20.254 12.668 20.805 12.933 21.304 13.28 L 21.995 13.761 L 23.634 12.74 C 23.973 13.107 24.276 13.504 24.54 13.928 L 23.139 15.244 L 23.46 16.063 C 23.67 16.632 23.792 17.23 23.82 17.835 L 23.859 18.705 L 25.664 19.364 C 25.581 19.866 25.447 20.358 25.266 20.834 Z M 17.979 21.2 C 15.506 21.2 13.96 18.524 15.197 16.384 C 16.434 14.244 19.525 14.244 20.762 16.384 C 21.048 16.88 21.197 17.443 21.192 18.015 C 21.189 19.783 19.748 21.211 17.979 21.2 Z M 18.021 16.063 C 16.537 16.046 15.591 17.64 16.318 18.933 C 17.045 20.226 18.9 20.248 19.657 18.972 C 19.833 18.675 19.926 18.335 19.926 17.99 C 19.926 16.934 19.077 16.075 18.021 16.063 Z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          part="menu"
+        >
+          <button
+            data-category="speed"
+            part="menu-item"
+            type="button"
+          >
+            <span
+              part="menu-item-title"
+            >
+              Speed
+            </span>
+            <span
+              part="menu-item-value"
+            >
+              Normal
+            </span>
+            <span
+              class="icon"
+              part="menu-item-arrow"
+            >
+              <svg
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M 15.7 12 C 15.7 12.105 15.658 12.196 15.573 12.277 L 9.648 17.88 C 9.563 17.96 9.466 18 9.355 18 C 9.245 18 9.148 17.96 9.063 17.88 L 8.427 17.278 C 8.342 17.199 8.3 17.106 8.3 17.002 C 8.3 16.898 8.342 16.806 8.427 16.725 L 13.424 12 L 8.427 7.275 C 8.342 7.194 8.3 7.102 8.3 6.998 C 8.3 6.894 8.342 6.801 8.427 6.722 L 9.063 6.12 C 9.148 6.04 9.245 6 9.355 6 C 9.466 6 9.563 6.04 9.648 6.12 L 15.573 11.723 C 15.658 11.804 15.7 11.895 15.7 12 Z"
+                />
+              </svg>
+            </span>
+          </button>
+        </div>
+        <div
+          part="submenu"
+        />
+        <div
+          part="caption-options"
+        />
+      </playerstack-settings>
+      <playerstack-fullscreen-button
+        data-fullscreen="false"
+      >
+        <button
+          aria-label="Fullscreen"
+          part="fullscreen-button"
+          type="button"
+        >
+          <span
+            class="icon icon-enter-fullscreen"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 12 20.667 L 10 20.667 L 10 26 L 15.333 26 L 15.333 24 L 12 24 L 12 20.667 Z M 10 15.333 L 12 15.333 L 12 12 L 15.333 12 L 15.333 10 L 10 10 L 10 15.333 Z M 24 24 L 20.667 24 L 20.667 26 L 26 26 L 26 20.667 L 24 20.667 L 24 24 Z M 20.667 10 L 20.667 12 L 24 12 L 24 15.333 L 26 15.333 L 26 10 L 20.667 10 Z"
+              />
+            </svg>
+          </span>
+          <span
+            class="icon icon-exit-fullscreen"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 10 22.667 L 13.333 22.667 L 13.333 26 L 15.333 26 L 15.333 20.667 L 10 20.667 L 10 22.667 Z M 13.333 13.333 L 10 13.333 L 10 15.333 L 15.333 15.333 L 15.333 10 L 13.333 10 L 13.333 13.333 Z M 20.667 26 L 22.667 26 L 22.667 22.667 L 26 22.667 L 26 20.667 L 20.667 20.667 L 20.667 26 Z M 22.667 13.333 L 22.667 10 L 20.667 10 L 20.667 15.333 L 26 15.333 L 26 13.333 L 22.667 13.333 Z"
+              />
+            </svg>
+          </span>
+        </button>
+      </playerstack-fullscreen-button>
+    </div>
+  </div>
+</playerstack-media-controller>
+`;
+
+exports[`CorePlayerSkin — Visual_Parity DOM snapshots (Req 20.7, 21.2–21.5) fullscreen state 1`] = `
+<playerstack-media-controller
+  data-fullscreen="true"
+  data-skin-mode="desktop"
+>
+  <playerstack-prevented-tip
+    data-active="false"
+    data-mode="none"
+    language="en"
+  >
+    <div
+      part="prevented-tip-clicked"
+      style="display: none;"
+    />
+    <div
+      part="prevented-tip"
+    >
+      <span
+        class="icon"
+        part="prevented-tip-icon"
+      />
+      <div
+        part="prevented-tip-message"
+      />
+    </div>
+  </playerstack-prevented-tip>
+  <playerstack-spinner
+    data-active="false"
+    data-buffering="false"
+    data-loading="false"
+  >
+    <div
+      part="spinner"
+      style="display: none;"
+    >
+      <span
+        class="icon icon-spinner"
+        part="spinner-indicator"
+      />
+    </div>
+  </playerstack-spinner>
+  <playerstack-play-state
+    data-ended="false"
+    data-playing="false"
+    data-showing="true"
+  >
+    <div
+      part="play-state"
+    >
+      <button
+        aria-label="Play"
+        part="play-state-button"
+        type="button"
+      >
+        <span
+          class="icon icon-play"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 23.804 18.319 L 12.478 25.924 C 12.347 26.014 12.235 26.024 12.141 25.955 C 12.047 25.886 12 25.763 12 25.584 L 12 10.416 C 12 10.237 12.047 10.113 12.141 10.045 C 12.235 9.976 12.347 9.986 12.478 10.076 L 23.804 17.68 C 23.935 17.77 24 17.876 24 18 C 24 18.124 23.935 18.23 23.804 18.319 Z"
+            />
+          </svg>
+        </span>
+        <span
+          class="icon icon-pause"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              height="16"
+              width="3"
+              x="12"
+              y="10"
+            />
+            <rect
+              height="16"
+              width="3"
+              x="21"
+              y="10"
+            />
+          </svg>
+        </span>
+        <span
+          class="icon icon-replay"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 18 12.3 L 18 8.5 L 13 13.25 L 18 18 L 18 14.2 C 21.3 14.2 24 16.765 24 19.9 C 24 23.035 21.3 25.6 18 25.6 C 14.7 25.6 12 23.035 12 19.9 L 10 19.9 C 10 24.08 13.6 27.5 18 27.5 C 22.4 27.5 26 24.08 26 19.9 C 26 15.72 22.4 12.3 18 12.3 Z"
+            />
+          </svg>
+        </span>
+        <span
+          class="icon icon-play-mobile"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 56 56"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 41.543 28.638 L 15.115 43.848 C 14.81 44.028 14.548 44.048 14.329 43.91 C 14.11 43.772 14 43.526 14 43.168 L 14 12.832 C 14 12.474 14.11 12.226 14.329 12.09 C 14.548 11.952 14.81 11.972 15.115 12.152 L 41.543 27.36 C 41.848 27.54 42 27.752 42 28 C 42 28.248 41.848 28.46 41.543 28.638 Z"
+            />
+          </svg>
+        </span>
+        <span
+          class="icon icon-pause-mobile"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 56 56"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              height="32"
+              width="8"
+              x="12"
+              y="12"
+            />
+            <rect
+              height="32"
+              width="8"
+              x="36"
+              y="12"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </playerstack-play-state>
+  <playerstack-top-state
+    data-active="false"
+    language="en"
+  >
+    <div
+      part="top-state"
+    >
+      <div
+        part="top-state-message"
+      />
+    </div>
+  </playerstack-top-state>
+  <playerstack-context-menu
+    data-loop="false"
+    data-pip="false"
+  >
+    <div
+      part="context-menu"
+      role="menu"
+    >
+      <button
+        data-action="loop"
+        part="context-menu-item"
+        role="menuitem"
+        type="button"
+      >
+        <span
+          class="icon"
+          part="context-menu-icon"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 21.333 23.666 C 21.333 23.758 21.3 23.835 21.235 23.902 C 21.168 23.967 21.091 24 21 24 L 11 24 C 10.944 24 10.898 23.995 10.859 23.979 C 10.821 23.966 10.789 23.942 10.765 23.906 C 10.741 23.871 10.723 23.844 10.708 23.822 C 10.695 23.803 10.684 23.762 10.678 23.703 C 10.671 23.644 10.667 23.604 10.667 23.583 L 10.667 17.335 L 8.667 17.335 C 8.487 17.335 8.329 17.266 8.198 17.134 C 8.067 17.004 8 16.846 8 16.666 C 8 16.5 8.052 16.358 8.156 16.239 L 11.489 12.24 C 11.621 12.087 11.792 12.01 12 12.01 C 12.208 12.01 12.379 12.087 12.511 12.24 L 15.844 16.239 C 15.948 16.358 16 16.5 16 16.666 C 16 16.846 15.933 17.004 15.803 17.134 C 15.671 17.266 15.513 17.335 15.333 17.335 L 13.333 17.335 L 13.333 21.334 L 19.333 21.334 C 19.444 21.334 19.532 21.372 19.593 21.448 L 21.26 23.448 C 21.309 23.518 21.333 23.59 21.333 23.666 Z M 28 19.334 C 28 19.5 27.948 19.642 27.844 19.761 L 24.511 23.76 C 24.372 23.92 24.201 24 24 24 C 23.799 24 23.628 23.92 23.489 23.76 L 20.156 19.761 C 20.052 19.642 20 19.5 20 19.334 C 20 19.154 20.067 18.996 20.198 18.866 C 20.329 18.734 20.487 18.667 20.667 18.667 L 22.667 18.667 L 22.667 14.666 L 16.667 14.666 C 16.556 14.666 16.468 14.626 16.407 14.542 L 14.74 12.542 C 14.691 12.478 14.667 12.41 14.667 12.334 C 14.667 12.243 14.7 12.166 14.765 12.098 C 14.832 12.034 14.909 12 15 12 L 25 12 C 25.056 12 25.103 12.007 25.141 12.022 C 25.179 12.034 25.211 12.058 25.235 12.094 C 25.259 12.13 25.278 12.156 25.292 12.178 C 25.305 12.199 25.316 12.238 25.323 12.298 C 25.329 12.356 25.333 12.396 25.333 12.418 L 25.333 18.667 L 27.333 18.667 C 27.513 18.667 27.671 18.734 27.803 18.866 C 27.933 18.996 28 19.154 28 19.334 Z"
+            />
+          </svg>
+        </span>
+        <span
+          part="context-menu-label"
+        >
+          Loop
+        </span>
+        <span
+          part="context-menu-checked"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4.8 19.582 13.237 28.05 31.2 9.877 29.295 7.95 13.237 24.197 6.705 17.586Z"
+            />
+          </svg>
+        </span>
+      </button>
+      <button
+        data-action="pip"
+        part="context-menu-item"
+        role="menuitem"
+        type="button"
+      >
+        <span
+          class="icon"
+          part="context-menu-icon"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M25 17H17v6H25zM29 25V10.981a1.989 1.989 0 0 0 -2 -1.981H9a1.989 1.989 0 0 0 -2 1.981V25c0 1.1 0.9 2 2 2h18c1.1 0 2 -0.9 2 -2m-2 0.019H9V10.969h18z"
+            />
+          </svg>
+        </span>
+        <span
+          part="context-menu-label"
+        >
+          Picture in Picture
+        </span>
+      </button>
+    </div>
+  </playerstack-context-menu>
+  <playerstack-time-slider
+    buffer-mode="fragmented"
+  >
+    <div
+      part="time-slider"
+    >
+      <div
+        aria-label="Seek"
+        part="slider"
+      >
+        <div
+          part="track"
+        >
+          <div
+            part="track-buffered"
+            style="width: 0%;"
+          />
+          <div
+            part="track-hover"
+          />
+          <div
+            part="track-fill"
+            style="width: 0%;"
+          />
+        </div>
+        <div
+          part="chapters"
+          style="display: none;"
+        />
+        <div
+          part="thumb"
+          style="left: 0%;"
+        />
+      </div>
+      <div
+        part="heatmap"
+      >
+        <svg
+          part="heatmap-svg"
+          preserveAspectRatio="none"
+          viewBox="0 0 100 100"
+        >
+          <defs>
+            <clippath
+              id="playerstack-timeslider-heatmap-3"
+            >
+              <rect
+                height="100"
+                width="0"
+                x="0"
+                y="0"
+              />
+            </clippath>
+          </defs>
+          <path
+            d=""
+            part="heatmap-path"
+          />
+          <path
+            clip-path="url(#playerstack-timeslider-heatmap-3)"
+            d=""
+            part="heatmap-path-played"
+          />
+        </svg>
+      </div>
+      <div
+        part="tooltip"
+      >
+        <div
+          part="tooltip-chapter"
+          style="display: none;"
+        />
+        <div
+          part="tooltip-time"
+        />
+      </div>
+      <div
+        part="timelens"
+        style="display: none;"
+      />
+    </div>
+  </playerstack-time-slider>
+  <div
+    class="playerstack-controls"
+  >
+    <div
+      class="playerstack-controls-left"
+    >
+      <playerstack-play-button
+        data-playing="false"
+      >
+        <button
+          aria-label="Play"
+          part="play-button"
+          type="button"
+        >
+          <span
+            class="icon icon-play"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 23.804 18.319 L 12.478 25.924 C 12.347 26.014 12.235 26.024 12.141 25.955 C 12.047 25.886 12 25.763 12 25.584 L 12 10.416 C 12 10.237 12.047 10.113 12.141 10.045 C 12.235 9.976 12.347 9.986 12.478 10.076 L 23.804 17.68 C 23.935 17.77 24 17.876 24 18 C 24 18.124 23.935 18.23 23.804 18.319 Z"
+              />
+            </svg>
+          </span>
+          <span
+            class="icon icon-pause"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                height="16"
+                width="3"
+                x="12"
+                y="10"
+              />
+              <rect
+                height="16"
+                width="3"
+                x="21"
+                y="10"
+              />
+            </svg>
+          </span>
+        </button>
+      </playerstack-play-button>
+      <playerstack-volume
+        data-muted="false"
+      >
+        <button
+          aria-label="Mute"
+          part="mute-button"
+          type="button"
+        >
+          <span
+            class="icon icon-volume"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 22.5 18 C 22.5 16.189 21.48 14.624 20 13.87 L 20 22.136 C 21.48 21.377 22.5 19.812 22.5 18 Z"
+              />
+              <polygon
+                points="9 14.922 9 21.078 13 21.078 18 26.21 18 9.79 13 14.922"
+              />
+              <path
+                d="M 20 9 L 20 11.119 C 22.89 12.002 25 14.747 25 18 C 25 21.253 22.89 23.999 20 24.881 L 20 27 C 24.005 26.066 27 22.398 27 18 C 27 13.603 24.005 9.934 20 9 Z"
+              />
+            </svg>
+          </span>
+          <span
+            class="icon icon-muted"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 22.5 18 C 22.5 16.235 21.48 14.71 20 13.975 L 20 16.185 L 22.455 18.64 C 22.485 18.43 22.5 18.215 22.5 18 Z"
+              />
+              <path
+                d="M 25 18 C 25 18.94 24.795 19.825 24.46 20.64 L 25.975 22.155 C 26.625 20.91 27 19.5 27 18 C 27 13.72 24.005 10.14 20 9.23 L 20 11.295 C 22.89 12.155 25 14.83 25 18 Z"
+              />
+              <polygon
+                points="18 10 15.91 12.09 18 14.18"
+              />
+              <path
+                d="M 10.275 9 L 9 10.275 L 13.725 15 L 9 15 L 9 21 L 13 21 L 18 26 L 18 19.275 L 22.255 23.53 C 21.585 24.045 20.83 24.46 20 24.71 L 20 26.775 C 21.375 26.46 22.63 25.83 23.685 24.965 L 25.725 27 L 27 25.725 L 18 16.725 L 10.275 9 Z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          part="volume"
+        >
+          <div
+            part="slider"
+          >
+            <div
+              part="track"
+            >
+              <div
+                part="track-fill"
+                style="width: 100%;"
+              />
+            </div>
+            <div
+              part="thumb"
+              style="left: 100%;"
+            />
+            <div
+              data-visible="false"
+              part="volume-tooltip"
+            />
+          </div>
+        </div>
+      </playerstack-volume>
+      <playerstack-play-time>
+        <div
+          part="time"
+        >
+          <span
+            part="current-time"
+          >
+            00:00
+          </span>
+          <span
+            aria-hidden="true"
+            style=""
+          >
+             / 
+          </span>
+          <span
+            part="duration"
+            style=""
+          >
+            01:40
+          </span>
+        </div>
+      </playerstack-play-time>
+    </div>
+    <div
+      class="playerstack-controls-right"
+    >
+      <playerstack-settings
+        data-quality="0"
+      >
+        <button
+          aria-label="Settings"
+          part="settings-button"
+          type="button"
+        >
+          <span
+            class="icon icon-settings"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 25.089 17.774 C 25.056 17.032 24.908 16.3 24.649 15.604 L 25.796 14.535 C 26.013 14.326 26.065 13.997 25.921 13.732 C 25.463 12.886 24.874 12.117 24.177 11.453 C 23.965 11.247 23.641 11.211 23.39 11.366 L 22.034 12.21 C 21.424 11.786 20.75 11.461 20.039 11.247 L 19.9 9.677 C 19.877 9.375 19.646 9.13 19.345 9.09 C 18.927 9.029 18.505 8.999 18.082 9 C 17.543 8.998 17.006 9.045 16.476 9.141 C 16.19 9.187 15.97 9.419 15.939 9.706 L 15.772 11.311 C 15.117 11.533 14.498 11.849 13.934 12.249 L 12.614 11.398 C 12.362 11.236 12.032 11.269 11.817 11.478 C 11.108 12.158 10.512 12.947 10.053 13.816 C 9.913 14.076 9.961 14.398 10.172 14.606 L 11.329 15.72 C 11.115 16.314 10.981 16.933 10.93 17.563 L 9.44 18.086 C 9.155 18.18 8.974 18.459 9.003 18.757 C 9.068 19.751 9.296 20.727 9.677 21.646 C 9.786 21.924 10.073 22.091 10.368 22.048 L 11.93 21.823 C 12.234 22.337 12.602 22.811 13.025 23.232 L 12.473 24.754 C 12.372 25.032 12.468 25.342 12.707 25.515 C 13.505 26.099 14.394 26.548 15.338 26.844 C 15.625 26.937 15.938 26.818 16.09 26.559 L 16.897 25.207 C 17.245 25.265 17.597 25.297 17.95 25.303 C 18.215 25.305 18.48 25.292 18.744 25.261 L 19.55 26.658 C 19.69 26.921 19.991 27.054 20.28 26.979 C 21.228 26.728 22.128 26.321 22.943 25.775 C 23.195 25.609 23.302 25.293 23.203 25.008 L 22.686 23.512 C 23.198 23.057 23.643 22.532 24.006 21.951 L 25.568 22.202 C 25.862 22.25 26.151 22.089 26.265 21.813 C 26.657 20.921 26.903 19.971 26.994 19.001 C 27.034 18.698 26.855 18.41 26.567 18.311 Z M 25.266 20.834 L 23.37 20.532 L 22.917 21.258 C 22.62 21.735 22.257 22.167 21.838 22.542 L 21.195 23.123 L 21.838 24.947 C 21.392 25.208 20.92 25.423 20.431 25.589 L 19.467 23.9 L 18.641 23.984 C 18.428 24.009 18.213 24.02 17.999 24.019 C 17.708 24.013 17.418 23.986 17.131 23.939 L 16.238 23.769 L 15.255 25.438 C 14.764 25.253 14.294 25.017 13.854 24.732 L 14.526 22.898 L 13.931 22.311 C 13.587 21.962 13.286 21.573 13.035 21.152 L 12.595 20.413 L 10.696 20.686 C 10.526 20.188 10.406 19.674 10.336 19.152 L 12.158 18.51 L 12.216 17.668 C 12.255 17.154 12.364 16.648 12.537 16.163 L 12.816 15.366 L 11.422 14.021 C 11.69 13.582 12.001 13.17 12.35 12.792 L 13.957 13.832 L 14.66 13.328 C 15.122 13.002 15.629 12.743 16.164 12.56 L 16.951 12.297 L 17.154 10.352 C 17.458 10.311 17.765 10.289 18.072 10.284 C 18.268 10.284 18.464 10.284 18.664 10.313 L 18.834 12.239 L 19.672 12.493 C 20.254 12.668 20.805 12.933 21.304 13.28 L 21.995 13.761 L 23.634 12.74 C 23.973 13.107 24.276 13.504 24.54 13.928 L 23.139 15.244 L 23.46 16.063 C 23.67 16.632 23.792 17.23 23.82 17.835 L 23.859 18.705 L 25.664 19.364 C 25.581 19.866 25.447 20.358 25.266 20.834 Z M 17.979 21.2 C 15.506 21.2 13.96 18.524 15.197 16.384 C 16.434 14.244 19.525 14.244 20.762 16.384 C 21.048 16.88 21.197 17.443 21.192 18.015 C 21.189 19.783 19.748 21.211 17.979 21.2 Z M 18.021 16.063 C 16.537 16.046 15.591 17.64 16.318 18.933 C 17.045 20.226 18.9 20.248 19.657 18.972 C 19.833 18.675 19.926 18.335 19.926 17.99 C 19.926 16.934 19.077 16.075 18.021 16.063 Z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          part="menu"
+        >
+          <button
+            data-category="speed"
+            part="menu-item"
+            type="button"
+          >
+            <span
+              part="menu-item-title"
+            >
+              Speed
+            </span>
+            <span
+              part="menu-item-value"
+            >
+              Normal
+            </span>
+            <span
+              class="icon"
+              part="menu-item-arrow"
+            >
+              <svg
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M 15.7 12 C 15.7 12.105 15.658 12.196 15.573 12.277 L 9.648 17.88 C 9.563 17.96 9.466 18 9.355 18 C 9.245 18 9.148 17.96 9.063 17.88 L 8.427 17.278 C 8.342 17.199 8.3 17.106 8.3 17.002 C 8.3 16.898 8.342 16.806 8.427 16.725 L 13.424 12 L 8.427 7.275 C 8.342 7.194 8.3 7.102 8.3 6.998 C 8.3 6.894 8.342 6.801 8.427 6.722 L 9.063 6.12 C 9.148 6.04 9.245 6 9.355 6 C 9.466 6 9.563 6.04 9.648 6.12 L 15.573 11.723 C 15.658 11.804 15.7 11.895 15.7 12 Z"
+                />
+              </svg>
+            </span>
+          </button>
+        </div>
+        <div
+          part="submenu"
+        />
+        <div
+          part="caption-options"
+        />
+      </playerstack-settings>
+      <playerstack-fullscreen-button
+        data-fullscreen="true"
+      >
+        <button
+          aria-label="Fullscreen"
+          part="fullscreen-button"
+          type="button"
+        >
+          <span
+            class="icon icon-enter-fullscreen"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 12 20.667 L 10 20.667 L 10 26 L 15.333 26 L 15.333 24 L 12 24 L 12 20.667 Z M 10 15.333 L 12 15.333 L 12 12 L 15.333 12 L 15.333 10 L 10 10 L 10 15.333 Z M 24 24 L 20.667 24 L 20.667 26 L 26 26 L 26 20.667 L 24 20.667 L 24 24 Z M 20.667 10 L 20.667 12 L 24 12 L 24 15.333 L 26 15.333 L 26 10 L 20.667 10 Z"
+              />
+            </svg>
+          </span>
+          <span
+            class="icon icon-exit-fullscreen"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 10 22.667 L 13.333 22.667 L 13.333 26 L 15.333 26 L 15.333 20.667 L 10 20.667 L 10 22.667 Z M 13.333 13.333 L 10 13.333 L 10 15.333 L 15.333 15.333 L 15.333 10 L 13.333 10 L 13.333 13.333 Z M 20.667 26 L 22.667 26 L 22.667 22.667 L 26 22.667 L 26 20.667 L 20.667 20.667 L 20.667 26 Z M 22.667 13.333 L 22.667 10 L 20.667 10 L 20.667 15.333 L 26 15.333 L 26 13.333 L 22.667 13.333 Z"
+              />
+            </svg>
+          </span>
+        </button>
+      </playerstack-fullscreen-button>
+    </div>
+  </div>
+</playerstack-media-controller>
+`;
+
+exports[`CorePlayerSkin — Visual_Parity DOM snapshots (Req 20.7, 21.2–21.5) live state 1`] = `
+<playerstack-media-controller
+  data-skin-mode="desktop"
+>
+  <playerstack-prevented-tip
+    data-active="false"
+    data-mode="none"
+    language="en"
+  >
+    <div
+      part="prevented-tip-clicked"
+      style="display: none;"
+    />
+    <div
+      part="prevented-tip"
+    >
+      <span
+        class="icon"
+        part="prevented-tip-icon"
+      />
+      <div
+        part="prevented-tip-message"
+      />
+    </div>
+  </playerstack-prevented-tip>
+  <playerstack-spinner
+    data-active="false"
+    data-buffering="false"
+    data-loading="false"
+  >
+    <div
+      part="spinner"
+      style="display: none;"
+    >
+      <span
+        class="icon icon-spinner"
+        part="spinner-indicator"
+      />
+    </div>
+  </playerstack-spinner>
+  <playerstack-play-state
+    data-ended="false"
+    data-playing="false"
+    data-showing="true"
+  >
+    <div
+      part="play-state"
+    >
+      <button
+        aria-label="Play"
+        part="play-state-button"
+        type="button"
+      >
+        <span
+          class="icon icon-play"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 23.804 18.319 L 12.478 25.924 C 12.347 26.014 12.235 26.024 12.141 25.955 C 12.047 25.886 12 25.763 12 25.584 L 12 10.416 C 12 10.237 12.047 10.113 12.141 10.045 C 12.235 9.976 12.347 9.986 12.478 10.076 L 23.804 17.68 C 23.935 17.77 24 17.876 24 18 C 24 18.124 23.935 18.23 23.804 18.319 Z"
+            />
+          </svg>
+        </span>
+        <span
+          class="icon icon-pause"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              height="16"
+              width="3"
+              x="12"
+              y="10"
+            />
+            <rect
+              height="16"
+              width="3"
+              x="21"
+              y="10"
+            />
+          </svg>
+        </span>
+        <span
+          class="icon icon-replay"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 18 12.3 L 18 8.5 L 13 13.25 L 18 18 L 18 14.2 C 21.3 14.2 24 16.765 24 19.9 C 24 23.035 21.3 25.6 18 25.6 C 14.7 25.6 12 23.035 12 19.9 L 10 19.9 C 10 24.08 13.6 27.5 18 27.5 C 22.4 27.5 26 24.08 26 19.9 C 26 15.72 22.4 12.3 18 12.3 Z"
+            />
+          </svg>
+        </span>
+        <span
+          class="icon icon-play-mobile"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 56 56"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 41.543 28.638 L 15.115 43.848 C 14.81 44.028 14.548 44.048 14.329 43.91 C 14.11 43.772 14 43.526 14 43.168 L 14 12.832 C 14 12.474 14.11 12.226 14.329 12.09 C 14.548 11.952 14.81 11.972 15.115 12.152 L 41.543 27.36 C 41.848 27.54 42 27.752 42 28 C 42 28.248 41.848 28.46 41.543 28.638 Z"
+            />
+          </svg>
+        </span>
+        <span
+          class="icon icon-pause-mobile"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 56 56"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              height="32"
+              width="8"
+              x="12"
+              y="12"
+            />
+            <rect
+              height="32"
+              width="8"
+              x="36"
+              y="12"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </playerstack-play-state>
+  <playerstack-top-state
+    data-active="false"
+    language="en"
+  >
+    <div
+      part="top-state"
+    >
+      <div
+        part="top-state-message"
+      />
+    </div>
+  </playerstack-top-state>
+  <playerstack-live-ad
+    language="en"
+  >
+    <div
+      part="live-ad"
+      style="display: none;"
+    >
+      <video
+        autoplay=""
+        part="live-ad-video"
+        playsinline=""
+      />
+      <div
+        part="live-ad-top-bar"
+      >
+        <span
+          part="live-ad-badge"
+        />
+        <span
+          part="live-ad-info"
+        />
+      </div>
+      <div
+        part="live-ad-bottom-bar"
+      >
+        <div
+          part="live-ad-actions"
+        >
+          <span
+            part="live-ad-stream-badge"
+          />
+          <button
+            part="live-ad-cta"
+            type="button"
+          />
+          <button
+            part="live-ad-skip"
+            type="button"
+          />
+        </div>
+        <div
+          part="live-ad-progress"
+        >
+          <div
+            part="live-ad-progress-bar"
+          />
+        </div>
+      </div>
+    </div>
+  </playerstack-live-ad>
+  <playerstack-context-menu
+    data-loop="false"
+    data-pip="false"
+  >
+    <div
+      part="context-menu"
+      role="menu"
+    >
+      <button
+        data-action="pip"
+        part="context-menu-item"
+        role="menuitem"
+        type="button"
+      >
+        <span
+          class="icon"
+          part="context-menu-icon"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M25 17H17v6H25zM29 25V10.981a1.989 1.989 0 0 0 -2 -1.981H9a1.989 1.989 0 0 0 -2 1.981V25c0 1.1 0.9 2 2 2h18c1.1 0 2 -0.9 2 -2m-2 0.019H9V10.969h18z"
+            />
+          </svg>
+        </span>
+        <span
+          part="context-menu-label"
+        >
+          Picture in Picture
+        </span>
+      </button>
+    </div>
+  </playerstack-context-menu>
+  <div
+    class="playerstack-controls"
+  >
+    <div
+      class="playerstack-controls-left"
+    >
+      <playerstack-play-button
+        data-playing="false"
+      >
+        <button
+          aria-label="Play"
+          part="play-button"
+          type="button"
+        >
+          <span
+            class="icon icon-play"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 23.804 18.319 L 12.478 25.924 C 12.347 26.014 12.235 26.024 12.141 25.955 C 12.047 25.886 12 25.763 12 25.584 L 12 10.416 C 12 10.237 12.047 10.113 12.141 10.045 C 12.235 9.976 12.347 9.986 12.478 10.076 L 23.804 17.68 C 23.935 17.77 24 17.876 24 18 C 24 18.124 23.935 18.23 23.804 18.319 Z"
+              />
+            </svg>
+          </span>
+          <span
+            class="icon icon-pause"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                height="16"
+                width="3"
+                x="12"
+                y="10"
+              />
+              <rect
+                height="16"
+                width="3"
+                x="21"
+                y="10"
+              />
+            </svg>
+          </span>
+        </button>
+      </playerstack-play-button>
+      <playerstack-volume
+        data-muted="false"
+      >
+        <button
+          aria-label="Mute"
+          part="mute-button"
+          type="button"
+        >
+          <span
+            class="icon icon-volume"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 22.5 18 C 22.5 16.189 21.48 14.624 20 13.87 L 20 22.136 C 21.48 21.377 22.5 19.812 22.5 18 Z"
+              />
+              <polygon
+                points="9 14.922 9 21.078 13 21.078 18 26.21 18 9.79 13 14.922"
+              />
+              <path
+                d="M 20 9 L 20 11.119 C 22.89 12.002 25 14.747 25 18 C 25 21.253 22.89 23.999 20 24.881 L 20 27 C 24.005 26.066 27 22.398 27 18 C 27 13.603 24.005 9.934 20 9 Z"
+              />
+            </svg>
+          </span>
+          <span
+            class="icon icon-muted"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 22.5 18 C 22.5 16.235 21.48 14.71 20 13.975 L 20 16.185 L 22.455 18.64 C 22.485 18.43 22.5 18.215 22.5 18 Z"
+              />
+              <path
+                d="M 25 18 C 25 18.94 24.795 19.825 24.46 20.64 L 25.975 22.155 C 26.625 20.91 27 19.5 27 18 C 27 13.72 24.005 10.14 20 9.23 L 20 11.295 C 22.89 12.155 25 14.83 25 18 Z"
+              />
+              <polygon
+                points="18 10 15.91 12.09 18 14.18"
+              />
+              <path
+                d="M 10.275 9 L 9 10.275 L 13.725 15 L 9 15 L 9 21 L 13 21 L 18 26 L 18 19.275 L 22.255 23.53 C 21.585 24.045 20.83 24.46 20 24.71 L 20 26.775 C 21.375 26.46 22.63 25.83 23.685 24.965 L 25.725 27 L 27 25.725 L 18 16.725 L 10.275 9 Z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          part="volume"
+        >
+          <div
+            part="slider"
+          >
+            <div
+              part="track"
+            >
+              <div
+                part="track-fill"
+                style="width: 100%;"
+              />
+            </div>
+            <div
+              part="thumb"
+              style="left: 100%;"
+            />
+            <div
+              data-visible="false"
+              part="volume-tooltip"
+            />
+          </div>
+        </div>
+      </playerstack-volume>
+      <playerstack-play-time>
+        <div
+          part="time"
+        >
+          <span
+            part="current-time"
+            style="display: none;"
+          />
+          <span
+            aria-hidden="true"
+            style="display: none;"
+          >
+             / 
+          </span>
+          <span
+            part="duration"
+            style="display: none;"
+          >
+            01:40
+          </span>
+        </div>
+      </playerstack-play-time>
+      <playerstack-live-indicator
+        data-at-edge="true"
+        data-live="true"
+        language="en"
+      >
+        <div
+          part="live-indicator"
+        >
+          <span
+            part="live-dot"
+          />
+          <span
+            part="live-label"
+          >
+            Live
+          </span>
+        </div>
+      </playerstack-live-indicator>
+    </div>
+    <div
+      class="playerstack-controls-right"
+    >
+      <playerstack-settings
+        data-empty="true"
+        data-quality="0"
+      >
+        <button
+          aria-label="Settings"
+          part="settings-button"
+          type="button"
+        >
+          <span
+            class="icon icon-settings"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 25.089 17.774 C 25.056 17.032 24.908 16.3 24.649 15.604 L 25.796 14.535 C 26.013 14.326 26.065 13.997 25.921 13.732 C 25.463 12.886 24.874 12.117 24.177 11.453 C 23.965 11.247 23.641 11.211 23.39 11.366 L 22.034 12.21 C 21.424 11.786 20.75 11.461 20.039 11.247 L 19.9 9.677 C 19.877 9.375 19.646 9.13 19.345 9.09 C 18.927 9.029 18.505 8.999 18.082 9 C 17.543 8.998 17.006 9.045 16.476 9.141 C 16.19 9.187 15.97 9.419 15.939 9.706 L 15.772 11.311 C 15.117 11.533 14.498 11.849 13.934 12.249 L 12.614 11.398 C 12.362 11.236 12.032 11.269 11.817 11.478 C 11.108 12.158 10.512 12.947 10.053 13.816 C 9.913 14.076 9.961 14.398 10.172 14.606 L 11.329 15.72 C 11.115 16.314 10.981 16.933 10.93 17.563 L 9.44 18.086 C 9.155 18.18 8.974 18.459 9.003 18.757 C 9.068 19.751 9.296 20.727 9.677 21.646 C 9.786 21.924 10.073 22.091 10.368 22.048 L 11.93 21.823 C 12.234 22.337 12.602 22.811 13.025 23.232 L 12.473 24.754 C 12.372 25.032 12.468 25.342 12.707 25.515 C 13.505 26.099 14.394 26.548 15.338 26.844 C 15.625 26.937 15.938 26.818 16.09 26.559 L 16.897 25.207 C 17.245 25.265 17.597 25.297 17.95 25.303 C 18.215 25.305 18.48 25.292 18.744 25.261 L 19.55 26.658 C 19.69 26.921 19.991 27.054 20.28 26.979 C 21.228 26.728 22.128 26.321 22.943 25.775 C 23.195 25.609 23.302 25.293 23.203 25.008 L 22.686 23.512 C 23.198 23.057 23.643 22.532 24.006 21.951 L 25.568 22.202 C 25.862 22.25 26.151 22.089 26.265 21.813 C 26.657 20.921 26.903 19.971 26.994 19.001 C 27.034 18.698 26.855 18.41 26.567 18.311 Z M 25.266 20.834 L 23.37 20.532 L 22.917 21.258 C 22.62 21.735 22.257 22.167 21.838 22.542 L 21.195 23.123 L 21.838 24.947 C 21.392 25.208 20.92 25.423 20.431 25.589 L 19.467 23.9 L 18.641 23.984 C 18.428 24.009 18.213 24.02 17.999 24.019 C 17.708 24.013 17.418 23.986 17.131 23.939 L 16.238 23.769 L 15.255 25.438 C 14.764 25.253 14.294 25.017 13.854 24.732 L 14.526 22.898 L 13.931 22.311 C 13.587 21.962 13.286 21.573 13.035 21.152 L 12.595 20.413 L 10.696 20.686 C 10.526 20.188 10.406 19.674 10.336 19.152 L 12.158 18.51 L 12.216 17.668 C 12.255 17.154 12.364 16.648 12.537 16.163 L 12.816 15.366 L 11.422 14.021 C 11.69 13.582 12.001 13.17 12.35 12.792 L 13.957 13.832 L 14.66 13.328 C 15.122 13.002 15.629 12.743 16.164 12.56 L 16.951 12.297 L 17.154 10.352 C 17.458 10.311 17.765 10.289 18.072 10.284 C 18.268 10.284 18.464 10.284 18.664 10.313 L 18.834 12.239 L 19.672 12.493 C 20.254 12.668 20.805 12.933 21.304 13.28 L 21.995 13.761 L 23.634 12.74 C 23.973 13.107 24.276 13.504 24.54 13.928 L 23.139 15.244 L 23.46 16.063 C 23.67 16.632 23.792 17.23 23.82 17.835 L 23.859 18.705 L 25.664 19.364 C 25.581 19.866 25.447 20.358 25.266 20.834 Z M 17.979 21.2 C 15.506 21.2 13.96 18.524 15.197 16.384 C 16.434 14.244 19.525 14.244 20.762 16.384 C 21.048 16.88 21.197 17.443 21.192 18.015 C 21.189 19.783 19.748 21.211 17.979 21.2 Z M 18.021 16.063 C 16.537 16.046 15.591 17.64 16.318 18.933 C 17.045 20.226 18.9 20.248 19.657 18.972 C 19.833 18.675 19.926 18.335 19.926 17.99 C 19.926 16.934 19.077 16.075 18.021 16.063 Z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          part="menu"
+        />
+        <div
+          part="submenu"
+        />
+        <div
+          part="caption-options"
+        />
+      </playerstack-settings>
+      <playerstack-fullscreen-button
+        data-fullscreen="false"
+      >
+        <button
+          aria-label="Fullscreen"
+          part="fullscreen-button"
+          type="button"
+        >
+          <span
+            class="icon icon-enter-fullscreen"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 12 20.667 L 10 20.667 L 10 26 L 15.333 26 L 15.333 24 L 12 24 L 12 20.667 Z M 10 15.333 L 12 15.333 L 12 12 L 15.333 12 L 15.333 10 L 10 10 L 10 15.333 Z M 24 24 L 20.667 24 L 20.667 26 L 26 26 L 26 20.667 L 24 20.667 L 24 24 Z M 20.667 10 L 20.667 12 L 24 12 L 24 15.333 L 26 15.333 L 26 10 L 20.667 10 Z"
+              />
+            </svg>
+          </span>
+          <span
+            class="icon icon-exit-fullscreen"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 10 22.667 L 13.333 22.667 L 13.333 26 L 15.333 26 L 15.333 20.667 L 10 20.667 L 10 22.667 Z M 13.333 13.333 L 10 13.333 L 10 15.333 L 15.333 15.333 L 15.333 10 L 13.333 10 L 13.333 13.333 Z M 20.667 26 L 22.667 26 L 22.667 22.667 L 26 22.667 L 26 20.667 L 20.667 20.667 L 20.667 26 Z M 22.667 13.333 L 22.667 10 L 20.667 10 L 20.667 15.333 L 26 15.333 L 26 13.333 L 22.667 13.333 Z"
+              />
+            </svg>
+          </span>
+        </button>
+      </playerstack-fullscreen-button>
+    </div>
+  </div>
+</playerstack-media-controller>
+`;
+
+exports[`CorePlayerSkin — Visual_Parity DOM snapshots (Req 20.7, 21.2–21.5) mobile skinMode state 1`] = `
+<playerstack-media-controller
+  data-skin-mode="mobile"
+>
+  <playerstack-prevented-tip
+    data-active="false"
+    data-mode="none"
+    language="en"
+  >
+    <div
+      part="prevented-tip-clicked"
+      style="display: none;"
+    />
+    <div
+      part="prevented-tip"
+    >
+      <span
+        class="icon"
+        part="prevented-tip-icon"
+      />
+      <div
+        part="prevented-tip-message"
+      />
+    </div>
+  </playerstack-prevented-tip>
+  <playerstack-spinner
+    data-active="false"
+    data-buffering="false"
+    data-loading="false"
+  >
+    <div
+      part="spinner"
+      style="display: none;"
+    >
+      <span
+        class="icon icon-spinner"
+        part="spinner-indicator"
+      />
+    </div>
+  </playerstack-spinner>
+  <playerstack-top-state
+    data-active="false"
+    language="en"
+  >
+    <div
+      part="top-state"
+    >
+      <div
+        part="top-state-message"
+      />
+    </div>
+  </playerstack-top-state>
+  <playerstack-context-menu
+    data-loop="false"
+    data-pip="false"
+  >
+    <div
+      part="context-menu"
+      role="menu"
+    >
+      <button
+        data-action="loop"
+        part="context-menu-item"
+        role="menuitem"
+        type="button"
+      >
+        <span
+          class="icon"
+          part="context-menu-icon"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 21.333 23.666 C 21.333 23.758 21.3 23.835 21.235 23.902 C 21.168 23.967 21.091 24 21 24 L 11 24 C 10.944 24 10.898 23.995 10.859 23.979 C 10.821 23.966 10.789 23.942 10.765 23.906 C 10.741 23.871 10.723 23.844 10.708 23.822 C 10.695 23.803 10.684 23.762 10.678 23.703 C 10.671 23.644 10.667 23.604 10.667 23.583 L 10.667 17.335 L 8.667 17.335 C 8.487 17.335 8.329 17.266 8.198 17.134 C 8.067 17.004 8 16.846 8 16.666 C 8 16.5 8.052 16.358 8.156 16.239 L 11.489 12.24 C 11.621 12.087 11.792 12.01 12 12.01 C 12.208 12.01 12.379 12.087 12.511 12.24 L 15.844 16.239 C 15.948 16.358 16 16.5 16 16.666 C 16 16.846 15.933 17.004 15.803 17.134 C 15.671 17.266 15.513 17.335 15.333 17.335 L 13.333 17.335 L 13.333 21.334 L 19.333 21.334 C 19.444 21.334 19.532 21.372 19.593 21.448 L 21.26 23.448 C 21.309 23.518 21.333 23.59 21.333 23.666 Z M 28 19.334 C 28 19.5 27.948 19.642 27.844 19.761 L 24.511 23.76 C 24.372 23.92 24.201 24 24 24 C 23.799 24 23.628 23.92 23.489 23.76 L 20.156 19.761 C 20.052 19.642 20 19.5 20 19.334 C 20 19.154 20.067 18.996 20.198 18.866 C 20.329 18.734 20.487 18.667 20.667 18.667 L 22.667 18.667 L 22.667 14.666 L 16.667 14.666 C 16.556 14.666 16.468 14.626 16.407 14.542 L 14.74 12.542 C 14.691 12.478 14.667 12.41 14.667 12.334 C 14.667 12.243 14.7 12.166 14.765 12.098 C 14.832 12.034 14.909 12 15 12 L 25 12 C 25.056 12 25.103 12.007 25.141 12.022 C 25.179 12.034 25.211 12.058 25.235 12.094 C 25.259 12.13 25.278 12.156 25.292 12.178 C 25.305 12.199 25.316 12.238 25.323 12.298 C 25.329 12.356 25.333 12.396 25.333 12.418 L 25.333 18.667 L 27.333 18.667 C 27.513 18.667 27.671 18.734 27.803 18.866 C 27.933 18.996 28 19.154 28 19.334 Z"
+            />
+          </svg>
+        </span>
+        <span
+          part="context-menu-label"
+        >
+          Loop
+        </span>
+        <span
+          part="context-menu-checked"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4.8 19.582 13.237 28.05 31.2 9.877 29.295 7.95 13.237 24.197 6.705 17.586Z"
+            />
+          </svg>
+        </span>
+      </button>
+      <button
+        data-action="pip"
+        part="context-menu-item"
+        role="menuitem"
+        type="button"
+      >
+        <span
+          class="icon"
+          part="context-menu-icon"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M25 17H17v6H25zM29 25V10.981a1.989 1.989 0 0 0 -2 -1.981H9a1.989 1.989 0 0 0 -2 1.981V25c0 1.1 0.9 2 2 2h18c1.1 0 2 -0.9 2 -2m-2 0.019H9V10.969h18z"
+            />
+          </svg>
+        </span>
+        <span
+          part="context-menu-label"
+        >
+          Picture in Picture
+        </span>
+      </button>
+    </div>
+  </playerstack-context-menu>
+  <playerstack-double-tap
+    language="en"
+  >
+    <div
+      part="double-tap"
+    >
+      <div
+        part="double-tap-left"
+      />
+      <div
+        part="double-tap-right"
+      />
+      <div
+        part="skip-indicator"
+      >
+        <div
+          part="skip-indicator-icons"
+        >
+          <span
+            class="icon icon-skip-chevron"
+          >
+            <svg
+              fill="#ccc"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8 5v14l11-7z"
+              />
+            </svg>
+          </span>
+          <span
+            class="icon icon-skip-chevron"
+          >
+            <svg
+              fill="#ccc"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8 5v14l11-7z"
+              />
+            </svg>
+          </span>
+          <span
+            class="icon icon-skip-chevron"
+          >
+            <svg
+              fill="#ccc"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8 5v14l11-7z"
+              />
+            </svg>
+          </span>
+        </div>
+        <span
+          part="skip-indicator-text"
+        />
+      </div>
+    </div>
+  </playerstack-double-tap>
+  <div
+    class="playerstack-mobile-overlay"
+    part="mobile-overlay"
+  />
+  <div
+    class="playerstack-mobile-top-bar"
+    part="mobile-top-bar"
+  >
+    <button
+      aria-label="Settings"
+      type="button"
+    >
+      <playerstack-icon
+        height="24"
+        width="24"
+      >
+        <span
+          part="icon"
+        >
+          <svg
+            fill="currentColor"
+            height="24"
+            viewBox="0 0 36 36"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 27.452 17.699 C 27.408 16.709 27.211 15.734 26.866 14.806 L 28.396 13.381 C 28.685 13.102 28.753 12.663 28.561 12.31 C 27.951 11.182 27.166 10.156 26.237 9.27 C 25.954 8.996 25.522 8.948 25.187 9.154 L 23.379 10.28 C 22.566 9.715 21.667 9.282 20.72 8.996 L 20.534 6.903 C 20.504 6.5 20.195 6.173 19.794 6.12 C 19.237 6.039 18.673 5.999 18.11 6 C 17.391 5.997 16.675 6.061 15.969 6.188 C 15.587 6.249 15.293 6.558 15.253 6.941 L 15.029 9.081 C 14.156 9.378 13.331 9.798 12.579 10.333 L 10.819 9.197 C 10.483 8.981 10.043 9.025 9.757 9.304 C 8.811 10.21 8.016 11.262 7.405 12.422 C 7.218 12.768 7.281 13.198 7.563 13.475 L 9.105 14.96 C 8.821 15.752 8.641 16.578 8.573 17.418 L 6.586 18.115 C 6.207 18.24 5.966 18.613 6.004 19.009 C 6.091 20.334 6.394 21.637 6.903 22.862 C 7.048 23.232 7.431 23.454 7.824 23.398 L 9.907 23.098 C 10.312 23.783 10.803 24.414 11.367 24.977 L 10.631 27.005 C 10.496 27.377 10.624 27.79 10.943 28.021 C 12.006 28.799 13.192 29.398 14.451 29.793 C 14.833 29.917 15.251 29.758 15.454 29.413 L 16.53 27.61 C 16.993 27.687 17.463 27.73 17.933 27.738 C 18.287 27.74 18.641 27.723 18.993 27.682 L 20.067 29.544 C 20.254 29.895 20.655 30.072 21.041 29.972 C 22.305 29.638 23.505 29.094 24.591 28.367 C 24.927 28.146 25.07 27.724 24.937 27.344 L 24.249 25.349 C 24.931 24.743 25.525 24.043 26.009 23.269 L 28.091 23.603 C 28.483 23.667 28.868 23.452 29.021 23.084 C 29.543 21.894 29.871 20.629 29.993 19.335 C 30.046 18.931 29.807 18.547 29.423 18.414 Z M 27.689 21.779 L 25.161 21.376 L 24.556 22.344 C 24.161 22.981 23.677 23.557 23.118 24.056 L 22.261 24.831 L 23.118 27.263 C 22.523 27.611 21.894 27.898 21.241 28.119 L 19.957 25.867 L 18.855 25.979 C 18.571 26.012 18.284 26.027 17.999 26.026 C 17.611 26.017 17.224 25.982 16.842 25.919 L 15.651 25.693 L 14.341 27.917 C 13.685 27.671 13.059 27.356 12.472 26.976 L 13.368 24.531 L 12.575 23.749 C 12.116 23.283 11.715 22.765 11.38 22.203 L 10.794 21.217 L 8.261 21.581 C 8.035 20.918 7.875 20.232 7.781 19.536 L 10.211 18.68 L 10.288 17.558 C 10.34 16.872 10.486 16.198 10.717 15.551 L 11.088 14.488 L 9.23 12.695 C 9.587 12.11 10.002 11.56 10.467 11.056 L 12.61 12.442 L 13.547 11.77 C 14.163 11.336 14.838 10.991 15.552 10.747 L 16.602 10.396 L 16.872 7.803 C 17.278 7.748 17.687 7.719 18.096 7.712 C 18.358 7.712 18.619 7.712 18.886 7.751 L 19.113 10.319 L 20.23 10.657 C 21.005 10.891 21.74 11.245 22.406 11.707 L 23.327 12.349 L 25.512 10.987 C 25.964 11.476 26.369 12.005 26.721 12.571 L 24.853 14.326 L 25.281 15.417 C 25.56 16.176 25.723 16.973 25.761 17.78 L 25.813 18.94 L 28.219 19.819 C 28.109 20.488 27.93 21.144 27.689 21.779 Z M 17.972 22.267 C 14.675 22.267 12.614 18.699 14.262 15.845 C 15.912 12.992 20.034 12.992 21.683 15.845 C 22.065 16.507 22.263 17.257 22.257 18.02 C 22.252 20.377 20.331 22.282 17.972 22.267 Z M 18.028 15.417 C 16.05 15.395 14.788 17.52 15.758 19.244 C 16.727 20.968 19.2 20.998 20.209 19.296 C 20.444 18.901 20.568 18.447 20.568 17.987 C 20.568 16.579 19.436 15.433 18.028 15.417 Z"
+            />
+          </svg>
+        </span>
+      </playerstack-icon>
+    </button>
+  </div>
+  <div
+    class="playerstack-mobile-center-controls"
+    part="mobile-center-controls"
+  >
+    <playerstack-play-state
+      data-ended="false"
+      data-playing="false"
+      data-showing="true"
+    >
+      <div
+        part="play-state"
+      >
+        <button
+          aria-label="Play"
+          part="play-state-button"
+          type="button"
+        >
+          <span
+            class="icon icon-play"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 23.804 18.319 L 12.478 25.924 C 12.347 26.014 12.235 26.024 12.141 25.955 C 12.047 25.886 12 25.763 12 25.584 L 12 10.416 C 12 10.237 12.047 10.113 12.141 10.045 C 12.235 9.976 12.347 9.986 12.478 10.076 L 23.804 17.68 C 23.935 17.77 24 17.876 24 18 C 24 18.124 23.935 18.23 23.804 18.319 Z"
+              />
+            </svg>
+          </span>
+          <span
+            class="icon icon-pause"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                height="16"
+                width="3"
+                x="12"
+                y="10"
+              />
+              <rect
+                height="16"
+                width="3"
+                x="21"
+                y="10"
+              />
+            </svg>
+          </span>
+          <span
+            class="icon icon-replay"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 18 12.3 L 18 8.5 L 13 13.25 L 18 18 L 18 14.2 C 21.3 14.2 24 16.765 24 19.9 C 24 23.035 21.3 25.6 18 25.6 C 14.7 25.6 12 23.035 12 19.9 L 10 19.9 C 10 24.08 13.6 27.5 18 27.5 C 22.4 27.5 26 24.08 26 19.9 C 26 15.72 22.4 12.3 18 12.3 Z"
+              />
+            </svg>
+          </span>
+          <span
+            class="icon icon-play-mobile"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 56 56"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 41.543 28.638 L 15.115 43.848 C 14.81 44.028 14.548 44.048 14.329 43.91 C 14.11 43.772 14 43.526 14 43.168 L 14 12.832 C 14 12.474 14.11 12.226 14.329 12.09 C 14.548 11.952 14.81 11.972 15.115 12.152 L 41.543 27.36 C 41.848 27.54 42 27.752 42 28 C 42 28.248 41.848 28.46 41.543 28.638 Z"
+              />
+            </svg>
+          </span>
+          <span
+            class="icon icon-pause-mobile"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 56 56"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                height="32"
+                width="8"
+                x="12"
+                y="12"
+              />
+              <rect
+                height="32"
+                width="8"
+                x="36"
+                y="12"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </playerstack-play-state>
+  </div>
+  <div
+    class="playerstack-mobile-bottom-bar"
+    part="mobile-bottom-bar"
+  >
+    <playerstack-play-time>
+      <div
+        part="time"
+      >
+        <span
+          part="current-time"
+        >
+          00:00
+        </span>
+        <span
+          aria-hidden="true"
+          style=""
+        >
+           / 
+        </span>
+        <span
+          part="duration"
+          style=""
+        >
+          01:40
+        </span>
+      </div>
+    </playerstack-play-time>
+    <playerstack-time-slider
+      buffer-mode="fragmented"
+    >
+      <div
+        part="time-slider"
+      >
+        <div
+          aria-label="Seek"
+          part="slider"
+        >
+          <div
+            part="track"
+          >
+            <div
+              part="track-buffered"
+              style="width: 0%;"
+            />
+            <div
+              part="track-hover"
+            />
+            <div
+              part="track-fill"
+              style="width: 0%;"
+            />
+          </div>
+          <div
+            part="chapters"
+            style="display: none;"
+          />
+          <div
+            part="thumb"
+            style="left: 0%;"
+          />
+        </div>
+        <div
+          part="heatmap"
+        >
+          <svg
+            part="heatmap-svg"
+            preserveAspectRatio="none"
+            viewBox="0 0 100 100"
+          >
+            <defs>
+              <clippath
+                id="playerstack-timeslider-heatmap-4"
+              >
+                <rect
+                  height="100"
+                  width="0"
+                  x="0"
+                  y="0"
+                />
+              </clippath>
+            </defs>
+            <path
+              d=""
+              part="heatmap-path"
+            />
+            <path
+              clip-path="url(#playerstack-timeslider-heatmap-4)"
+              d=""
+              part="heatmap-path-played"
+            />
+          </svg>
+        </div>
+        <div
+          part="tooltip"
+        >
+          <div
+            part="tooltip-chapter"
+            style="display: none;"
+          />
+          <div
+            part="tooltip-time"
+          />
+        </div>
+        <div
+          part="timelens"
+          style="display: none;"
+        />
+      </div>
+    </playerstack-time-slider>
+    <playerstack-fullscreen-button
+      data-fullscreen="false"
+    >
+      <button
+        aria-label="Fullscreen"
+        part="fullscreen-button"
+        type="button"
+      >
+        <span
+          class="icon icon-enter-fullscreen"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 12 20.667 L 10 20.667 L 10 26 L 15.333 26 L 15.333 24 L 12 24 L 12 20.667 Z M 10 15.333 L 12 15.333 L 12 12 L 15.333 12 L 15.333 10 L 10 10 L 10 15.333 Z M 24 24 L 20.667 24 L 20.667 26 L 26 26 L 26 20.667 L 24 20.667 L 24 24 Z M 20.667 10 L 20.667 12 L 24 12 L 24 15.333 L 26 15.333 L 26 10 L 20.667 10 Z"
+            />
+          </svg>
+        </span>
+        <span
+          class="icon icon-exit-fullscreen"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 10 22.667 L 13.333 22.667 L 13.333 26 L 15.333 26 L 15.333 20.667 L 10 20.667 L 10 22.667 Z M 13.333 13.333 L 10 13.333 L 10 15.333 L 15.333 15.333 L 15.333 10 L 13.333 10 L 13.333 13.333 Z M 20.667 26 L 22.667 26 L 22.667 22.667 L 26 22.667 L 26 20.667 L 20.667 20.667 L 20.667 26 Z M 22.667 13.333 L 22.667 10 L 20.667 10 L 20.667 15.333 L 26 15.333 L 26 13.333 L 22.667 13.333 Z"
+            />
+          </svg>
+        </span>
+      </button>
+    </playerstack-fullscreen-button>
+  </div>
+  <playerstack-mobile-settings>
+    <div
+      part="mobile-settings-panel"
+    >
+      <div
+        part="mobile-settings-header"
+      >
+        <button
+          data-mode="gear"
+          part="mobile-settings-back"
+          type="button"
+        >
+          <span
+            class="icon"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 27.452 17.699 C 27.408 16.709 27.211 15.734 26.866 14.806 L 28.396 13.381 C 28.685 13.102 28.753 12.663 28.561 12.31 C 27.951 11.182 27.166 10.156 26.237 9.27 C 25.954 8.996 25.522 8.948 25.187 9.154 L 23.379 10.28 C 22.566 9.715 21.667 9.282 20.72 8.996 L 20.534 6.903 C 20.504 6.5 20.195 6.173 19.794 6.12 C 19.237 6.039 18.673 5.999 18.11 6 C 17.391 5.997 16.675 6.061 15.969 6.188 C 15.587 6.249 15.293 6.558 15.253 6.941 L 15.029 9.081 C 14.156 9.378 13.331 9.798 12.579 10.333 L 10.819 9.197 C 10.483 8.981 10.043 9.025 9.757 9.304 C 8.811 10.21 8.016 11.262 7.405 12.422 C 7.218 12.768 7.281 13.198 7.563 13.475 L 9.105 14.96 C 8.821 15.752 8.641 16.578 8.573 17.418 L 6.586 18.115 C 6.207 18.24 5.966 18.613 6.004 19.009 C 6.091 20.334 6.394 21.637 6.903 22.862 C 7.048 23.232 7.431 23.454 7.824 23.398 L 9.907 23.098 C 10.312 23.783 10.803 24.414 11.367 24.977 L 10.631 27.005 C 10.496 27.377 10.624 27.79 10.943 28.021 C 12.006 28.799 13.192 29.398 14.451 29.793 C 14.833 29.917 15.251 29.758 15.454 29.413 L 16.53 27.61 C 16.993 27.687 17.463 27.73 17.933 27.738 C 18.287 27.74 18.641 27.723 18.993 27.682 L 20.067 29.544 C 20.254 29.895 20.655 30.072 21.041 29.972 C 22.305 29.638 23.505 29.094 24.591 28.367 C 24.927 28.146 25.07 27.724 24.937 27.344 L 24.249 25.349 C 24.931 24.743 25.525 24.043 26.009 23.269 L 28.091 23.603 C 28.483 23.667 28.868 23.452 29.021 23.084 C 29.543 21.894 29.871 20.629 29.993 19.335 C 30.046 18.931 29.807 18.547 29.423 18.414 Z M 27.689 21.779 L 25.161 21.376 L 24.556 22.344 C 24.161 22.981 23.677 23.557 23.118 24.056 L 22.261 24.831 L 23.118 27.263 C 22.523 27.611 21.894 27.898 21.241 28.119 L 19.957 25.867 L 18.855 25.979 C 18.571 26.012 18.284 26.027 17.999 26.026 C 17.611 26.017 17.224 25.982 16.842 25.919 L 15.651 25.693 L 14.341 27.917 C 13.685 27.671 13.059 27.356 12.472 26.976 L 13.368 24.531 L 12.575 23.749 C 12.116 23.283 11.715 22.765 11.38 22.203 L 10.794 21.217 L 8.261 21.581 C 8.035 20.918 7.875 20.232 7.781 19.536 L 10.211 18.68 L 10.288 17.558 C 10.34 16.872 10.486 16.198 10.717 15.551 L 11.088 14.488 L 9.23 12.695 C 9.587 12.11 10.002 11.56 10.467 11.056 L 12.61 12.442 L 13.547 11.77 C 14.163 11.336 14.838 10.991 15.552 10.747 L 16.602 10.396 L 16.872 7.803 C 17.278 7.748 17.687 7.719 18.096 7.712 C 18.358 7.712 18.619 7.712 18.886 7.751 L 19.113 10.319 L 20.23 10.657 C 21.005 10.891 21.74 11.245 22.406 11.707 L 23.327 12.349 L 25.512 10.987 C 25.964 11.476 26.369 12.005 26.721 12.571 L 24.853 14.326 L 25.281 15.417 C 25.56 16.176 25.723 16.973 25.761 17.78 L 25.813 18.94 L 28.219 19.819 C 28.109 20.488 27.93 21.144 27.689 21.779 Z M 17.972 22.267 C 14.675 22.267 12.614 18.699 14.262 15.845 C 15.912 12.992 20.034 12.992 21.683 15.845 C 22.065 16.507 22.263 17.257 22.257 18.02 C 22.252 20.377 20.331 22.282 17.972 22.267 Z M 18.028 15.417 C 16.05 15.395 14.788 17.52 15.758 19.244 C 16.727 20.968 19.2 20.998 20.209 19.296 C 20.444 18.901 20.568 18.447 20.568 17.987 C 20.568 16.579 19.436 15.433 18.028 15.417 Z"
+              />
+            </svg>
+          </span>
+          <span
+            class="icon"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 15.7 6.998 C 15.7 7.102 15.658 7.194 15.573 7.275 L 10.576 12 L 15.573 16.725 C 15.658 16.806 15.7 16.898 15.7 17.002 C 15.7 17.106 15.658 17.198 15.573 17.279 L 14.937 17.88 C 14.852 17.96 14.755 18 14.645 18 C 14.534 18 14.437 17.96 14.352 17.88 L 8.427 12.277 C 8.342 12.196 8.3 12.104 8.3 12 C 8.3 11.896 8.342 11.804 8.427 11.723 L 14.352 6.12 C 14.437 6.04 14.534 6 14.645 6 C 14.755 6 14.852 6.04 14.937 6.12 L 15.573 6.721 C 15.658 6.802 15.7 6.894 15.7 6.998 Z"
+              />
+            </svg>
+          </span>
+        </button>
+        <span
+          part="mobile-settings-title"
+        >
+          Settings
+        </span>
+        <button
+          aria-label="Close"
+          part="mobile-settings-close"
+          type="button"
+        >
+          ✕
+        </button>
+      </div>
+      <div
+        part="mobile-settings-mainpage"
+      >
+        <div
+          part="mobile-settings-grid"
+        >
+          <button
+            data-category="speed"
+            part="mobile-settings-switch"
+            type="button"
+          >
+            <span
+              class="icon"
+              part="mobile-settings-switch-icon"
+            >
+              <svg
+                fill="currentColor"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M 24.344 15.999 L 19.6 20.544 L 19.169 20.956 L 18.613 20.807 C 18.389 20.746 18.228 20.723 17.998 20.724 C 17.263 20.682 16.798 20.925 16.316 21.387 C 15.84 21.844 15.601 22.235 15.653 22.903 C 15.65 23.104 15.671 23.237 15.732 23.441 L 15.921 24.07 L 15.436 24.536 L 14.105 25.811 C 13.991 25.972 13.943 26.063 13.937 26.177 C 13.932 26.29 13.954 26.362 14.1 26.539 C 14.267 26.702 14.454 26.723 14.587 26.73 C 14.72 26.736 14.824 26.733 15.067 26.545 L 16.4 25.266 L 16.831 24.854 L 17.387 25.003 C 17.611 25.064 17.777 25.087 18.001 25.085 C 18.737 25.128 19.202 24.884 19.684 24.422 C 20.16 23.966 20.399 23.576 20.346 22.906 C 20.345 22.701 20.328 22.567 20.268 22.37 L 20.076 21.743 L 20.564 21.275 L 25.308 16.73 C 25.454 16.554 25.497 16.41 25.455 16.238 C 25.414 16.065 25.322 15.903 25.01 15.835 C 24.703 15.762 24.571 15.802 24.345 15.997 M 18.101 6 C 18.101 6 16.905 6.031 16.356 6.084 C 15.807 6.137 15.292 6.213 14.761 6.317 C 13.701 6.526 12.725 6.818 11.75 7.213 C 9.801 8.002 8.134 9.089 6.662 10.499 C 3.715 13.324 1.949 16.988 2.001 21.269 C 1.967 24.34 2.871 27.191 4.685 29.726 C 4.82 29.961 4.985 30.022 5.284 29.994 C 5.583 29.965 5.703 29.913 5.825 29.665 C 5.895 29.443 5.902 29.37 5.784 29.167 C 2.764 24.665 2.661 19.146 4.809 14.968 C 6.952 10.799 11.515 7.546 17.036 7.115 C 22.565 6.846 27.525 9.492 30.218 13.351 C 32.916 17.219 33.57 22.701 31.19 27.546 C 30.907 28.096 30.57 28.655 30.217 29.164 C 30.164 29.383 30.097 29.407 30.175 29.662 C 30.25 29.906 30.341 29.989 30.708 29.989 C 30.683 29.99 30.723 29.992 30.765 29.992 C 31.033 29.992 31.173 29.907 31.315 29.726 C 33.128 27.19 34.033 24.344 33.999 21.273 C 34.051 16.991 32.284 13.324 29.337 10.499 C 26.384 7.67 22.505 5.962 18 6.004"
+                />
+              </svg>
+            </span>
+            <span
+              part="mobile-settings-switch-label"
+            >
+              Speed
+            </span>
+            <span
+              part="mobile-settings-switch-value"
+            >
+              Normal
+            </span>
+          </button>
+        </div>
+      </div>
+      <div
+        part="mobile-settings-subpage"
+      >
+        <div
+          part="mobile-settings-subcontent"
+        />
+      </div>
+    </div>
+  </playerstack-mobile-settings>
+</playerstack-media-controller>
+`;
+
+exports[`CorePlayerSkin — Visual_Parity DOM snapshots (Req 20.7, 21.2–21.5) playing state (paused=false) 1`] = `
+<playerstack-media-controller
+  data-playing="true"
+  data-skin-mode="desktop"
+>
+  <playerstack-prevented-tip
+    data-active="false"
+    data-mode="none"
+    language="en"
+  >
+    <div
+      part="prevented-tip-clicked"
+      style="display: none;"
+    />
+    <div
+      part="prevented-tip"
+    >
+      <span
+        class="icon"
+        part="prevented-tip-icon"
+      />
+      <div
+        part="prevented-tip-message"
+      />
+    </div>
+  </playerstack-prevented-tip>
+  <playerstack-spinner
+    data-active="false"
+    data-buffering="false"
+    data-loading="false"
+  >
+    <div
+      part="spinner"
+      style="display: none;"
+    >
+      <span
+        class="icon icon-spinner"
+        part="spinner-indicator"
+      />
+    </div>
+  </playerstack-spinner>
+  <playerstack-play-state
+    data-ended="false"
+    data-playing="true"
+  >
+    <div
+      part="play-state"
+    >
+      <button
+        aria-label="Play"
+        part="play-state-button"
+        type="button"
+      >
+        <span
+          class="icon icon-play"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 23.804 18.319 L 12.478 25.924 C 12.347 26.014 12.235 26.024 12.141 25.955 C 12.047 25.886 12 25.763 12 25.584 L 12 10.416 C 12 10.237 12.047 10.113 12.141 10.045 C 12.235 9.976 12.347 9.986 12.478 10.076 L 23.804 17.68 C 23.935 17.77 24 17.876 24 18 C 24 18.124 23.935 18.23 23.804 18.319 Z"
+            />
+          </svg>
+        </span>
+        <span
+          class="icon icon-pause"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              height="16"
+              width="3"
+              x="12"
+              y="10"
+            />
+            <rect
+              height="16"
+              width="3"
+              x="21"
+              y="10"
+            />
+          </svg>
+        </span>
+        <span
+          class="icon icon-replay"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 18 12.3 L 18 8.5 L 13 13.25 L 18 18 L 18 14.2 C 21.3 14.2 24 16.765 24 19.9 C 24 23.035 21.3 25.6 18 25.6 C 14.7 25.6 12 23.035 12 19.9 L 10 19.9 C 10 24.08 13.6 27.5 18 27.5 C 22.4 27.5 26 24.08 26 19.9 C 26 15.72 22.4 12.3 18 12.3 Z"
+            />
+          </svg>
+        </span>
+        <span
+          class="icon icon-play-mobile"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 56 56"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 41.543 28.638 L 15.115 43.848 C 14.81 44.028 14.548 44.048 14.329 43.91 C 14.11 43.772 14 43.526 14 43.168 L 14 12.832 C 14 12.474 14.11 12.226 14.329 12.09 C 14.548 11.952 14.81 11.972 15.115 12.152 L 41.543 27.36 C 41.848 27.54 42 27.752 42 28 C 42 28.248 41.848 28.46 41.543 28.638 Z"
+            />
+          </svg>
+        </span>
+        <span
+          class="icon icon-pause-mobile"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 56 56"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              height="32"
+              width="8"
+              x="12"
+              y="12"
+            />
+            <rect
+              height="32"
+              width="8"
+              x="36"
+              y="12"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </playerstack-play-state>
+  <playerstack-top-state
+    data-active="false"
+    language="en"
+  >
+    <div
+      part="top-state"
+    >
+      <div
+        part="top-state-message"
+      />
+    </div>
+  </playerstack-top-state>
+  <playerstack-context-menu
+    data-loop="false"
+    data-pip="false"
+  >
+    <div
+      part="context-menu"
+      role="menu"
+    >
+      <button
+        data-action="loop"
+        part="context-menu-item"
+        role="menuitem"
+        type="button"
+      >
+        <span
+          class="icon"
+          part="context-menu-icon"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 21.333 23.666 C 21.333 23.758 21.3 23.835 21.235 23.902 C 21.168 23.967 21.091 24 21 24 L 11 24 C 10.944 24 10.898 23.995 10.859 23.979 C 10.821 23.966 10.789 23.942 10.765 23.906 C 10.741 23.871 10.723 23.844 10.708 23.822 C 10.695 23.803 10.684 23.762 10.678 23.703 C 10.671 23.644 10.667 23.604 10.667 23.583 L 10.667 17.335 L 8.667 17.335 C 8.487 17.335 8.329 17.266 8.198 17.134 C 8.067 17.004 8 16.846 8 16.666 C 8 16.5 8.052 16.358 8.156 16.239 L 11.489 12.24 C 11.621 12.087 11.792 12.01 12 12.01 C 12.208 12.01 12.379 12.087 12.511 12.24 L 15.844 16.239 C 15.948 16.358 16 16.5 16 16.666 C 16 16.846 15.933 17.004 15.803 17.134 C 15.671 17.266 15.513 17.335 15.333 17.335 L 13.333 17.335 L 13.333 21.334 L 19.333 21.334 C 19.444 21.334 19.532 21.372 19.593 21.448 L 21.26 23.448 C 21.309 23.518 21.333 23.59 21.333 23.666 Z M 28 19.334 C 28 19.5 27.948 19.642 27.844 19.761 L 24.511 23.76 C 24.372 23.92 24.201 24 24 24 C 23.799 24 23.628 23.92 23.489 23.76 L 20.156 19.761 C 20.052 19.642 20 19.5 20 19.334 C 20 19.154 20.067 18.996 20.198 18.866 C 20.329 18.734 20.487 18.667 20.667 18.667 L 22.667 18.667 L 22.667 14.666 L 16.667 14.666 C 16.556 14.666 16.468 14.626 16.407 14.542 L 14.74 12.542 C 14.691 12.478 14.667 12.41 14.667 12.334 C 14.667 12.243 14.7 12.166 14.765 12.098 C 14.832 12.034 14.909 12 15 12 L 25 12 C 25.056 12 25.103 12.007 25.141 12.022 C 25.179 12.034 25.211 12.058 25.235 12.094 C 25.259 12.13 25.278 12.156 25.292 12.178 C 25.305 12.199 25.316 12.238 25.323 12.298 C 25.329 12.356 25.333 12.396 25.333 12.418 L 25.333 18.667 L 27.333 18.667 C 27.513 18.667 27.671 18.734 27.803 18.866 C 27.933 18.996 28 19.154 28 19.334 Z"
+            />
+          </svg>
+        </span>
+        <span
+          part="context-menu-label"
+        >
+          Loop
+        </span>
+        <span
+          part="context-menu-checked"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4.8 19.582 13.237 28.05 31.2 9.877 29.295 7.95 13.237 24.197 6.705 17.586Z"
+            />
+          </svg>
+        </span>
+      </button>
+      <button
+        data-action="pip"
+        part="context-menu-item"
+        role="menuitem"
+        type="button"
+      >
+        <span
+          class="icon"
+          part="context-menu-icon"
+        >
+          <svg
+            fill="currentColor"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M25 17H17v6H25zM29 25V10.981a1.989 1.989 0 0 0 -2 -1.981H9a1.989 1.989 0 0 0 -2 1.981V25c0 1.1 0.9 2 2 2h18c1.1 0 2 -0.9 2 -2m-2 0.019H9V10.969h18z"
+            />
+          </svg>
+        </span>
+        <span
+          part="context-menu-label"
+        >
+          Picture in Picture
+        </span>
+      </button>
+    </div>
+  </playerstack-context-menu>
+  <playerstack-time-slider
+    buffer-mode="fragmented"
+  >
+    <div
+      part="time-slider"
+    >
+      <div
+        aria-label="Seek"
+        part="slider"
+      >
+        <div
+          part="track"
+        >
+          <div
+            part="track-buffered"
+            style="width: 0%;"
+          />
+          <div
+            part="track-hover"
+          />
+          <div
+            part="track-fill"
+            style="width: 42%;"
+          />
+        </div>
+        <div
+          part="chapters"
+          style="display: none;"
+        />
+        <div
+          part="thumb"
+          style="left: 42%;"
+        />
+      </div>
+      <div
+        part="heatmap"
+      >
+        <svg
+          part="heatmap-svg"
+          preserveAspectRatio="none"
+          viewBox="0 0 100 100"
+        >
+          <defs>
+            <clippath
+              id="playerstack-timeslider-heatmap-2"
+            >
+              <rect
+                height="100"
+                width="42"
+                x="0"
+                y="0"
+              />
+            </clippath>
+          </defs>
+          <path
+            d=""
+            part="heatmap-path"
+          />
+          <path
+            clip-path="url(#playerstack-timeslider-heatmap-2)"
+            d=""
+            part="heatmap-path-played"
+          />
+        </svg>
+      </div>
+      <div
+        part="tooltip"
+      >
+        <div
+          part="tooltip-chapter"
+          style="display: none;"
+        />
+        <div
+          part="tooltip-time"
+        />
+      </div>
+      <div
+        part="timelens"
+        style="display: none;"
+      />
+    </div>
+  </playerstack-time-slider>
+  <div
+    class="playerstack-controls"
+  >
+    <div
+      class="playerstack-controls-left"
+    >
+      <playerstack-play-button
+        data-playing="true"
+      >
+        <button
+          aria-label="Play"
+          part="play-button"
+          type="button"
+        >
+          <span
+            class="icon icon-play"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 23.804 18.319 L 12.478 25.924 C 12.347 26.014 12.235 26.024 12.141 25.955 C 12.047 25.886 12 25.763 12 25.584 L 12 10.416 C 12 10.237 12.047 10.113 12.141 10.045 C 12.235 9.976 12.347 9.986 12.478 10.076 L 23.804 17.68 C 23.935 17.77 24 17.876 24 18 C 24 18.124 23.935 18.23 23.804 18.319 Z"
+              />
+            </svg>
+          </span>
+          <span
+            class="icon icon-pause"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                height="16"
+                width="3"
+                x="12"
+                y="10"
+              />
+              <rect
+                height="16"
+                width="3"
+                x="21"
+                y="10"
+              />
+            </svg>
+          </span>
+        </button>
+      </playerstack-play-button>
+      <playerstack-volume
+        data-muted="false"
+      >
+        <button
+          aria-label="Mute"
+          part="mute-button"
+          type="button"
+        >
+          <span
+            class="icon icon-volume"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 22.5 18 C 22.5 16.189 21.48 14.624 20 13.87 L 20 22.136 C 21.48 21.377 22.5 19.812 22.5 18 Z"
+              />
+              <polygon
+                points="9 14.922 9 21.078 13 21.078 18 26.21 18 9.79 13 14.922"
+              />
+              <path
+                d="M 20 9 L 20 11.119 C 22.89 12.002 25 14.747 25 18 C 25 21.253 22.89 23.999 20 24.881 L 20 27 C 24.005 26.066 27 22.398 27 18 C 27 13.603 24.005 9.934 20 9 Z"
+              />
+            </svg>
+          </span>
+          <span
+            class="icon icon-muted"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 22.5 18 C 22.5 16.235 21.48 14.71 20 13.975 L 20 16.185 L 22.455 18.64 C 22.485 18.43 22.5 18.215 22.5 18 Z"
+              />
+              <path
+                d="M 25 18 C 25 18.94 24.795 19.825 24.46 20.64 L 25.975 22.155 C 26.625 20.91 27 19.5 27 18 C 27 13.72 24.005 10.14 20 9.23 L 20 11.295 C 22.89 12.155 25 14.83 25 18 Z"
+              />
+              <polygon
+                points="18 10 15.91 12.09 18 14.18"
+              />
+              <path
+                d="M 10.275 9 L 9 10.275 L 13.725 15 L 9 15 L 9 21 L 13 21 L 18 26 L 18 19.275 L 22.255 23.53 C 21.585 24.045 20.83 24.46 20 24.71 L 20 26.775 C 21.375 26.46 22.63 25.83 23.685 24.965 L 25.725 27 L 27 25.725 L 18 16.725 L 10.275 9 Z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          part="volume"
+        >
+          <div
+            part="slider"
+          >
+            <div
+              part="track"
+            >
+              <div
+                part="track-fill"
+                style="width: 100%;"
+              />
+            </div>
+            <div
+              part="thumb"
+              style="left: 100%;"
+            />
+            <div
+              data-visible="false"
+              part="volume-tooltip"
+            />
+          </div>
+        </div>
+      </playerstack-volume>
+      <playerstack-play-time>
+        <div
+          part="time"
+        >
+          <span
+            part="current-time"
+          >
+            00:42
+          </span>
+          <span
+            aria-hidden="true"
+            style=""
+          >
+             / 
+          </span>
+          <span
+            part="duration"
+            style=""
+          >
+            01:40
+          </span>
+        </div>
+      </playerstack-play-time>
+    </div>
+    <div
+      class="playerstack-controls-right"
+    >
+      <playerstack-settings
+        data-quality="0"
+      >
+        <button
+          aria-label="Settings"
+          part="settings-button"
+          type="button"
+        >
+          <span
+            class="icon icon-settings"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 25.089 17.774 C 25.056 17.032 24.908 16.3 24.649 15.604 L 25.796 14.535 C 26.013 14.326 26.065 13.997 25.921 13.732 C 25.463 12.886 24.874 12.117 24.177 11.453 C 23.965 11.247 23.641 11.211 23.39 11.366 L 22.034 12.21 C 21.424 11.786 20.75 11.461 20.039 11.247 L 19.9 9.677 C 19.877 9.375 19.646 9.13 19.345 9.09 C 18.927 9.029 18.505 8.999 18.082 9 C 17.543 8.998 17.006 9.045 16.476 9.141 C 16.19 9.187 15.97 9.419 15.939 9.706 L 15.772 11.311 C 15.117 11.533 14.498 11.849 13.934 12.249 L 12.614 11.398 C 12.362 11.236 12.032 11.269 11.817 11.478 C 11.108 12.158 10.512 12.947 10.053 13.816 C 9.913 14.076 9.961 14.398 10.172 14.606 L 11.329 15.72 C 11.115 16.314 10.981 16.933 10.93 17.563 L 9.44 18.086 C 9.155 18.18 8.974 18.459 9.003 18.757 C 9.068 19.751 9.296 20.727 9.677 21.646 C 9.786 21.924 10.073 22.091 10.368 22.048 L 11.93 21.823 C 12.234 22.337 12.602 22.811 13.025 23.232 L 12.473 24.754 C 12.372 25.032 12.468 25.342 12.707 25.515 C 13.505 26.099 14.394 26.548 15.338 26.844 C 15.625 26.937 15.938 26.818 16.09 26.559 L 16.897 25.207 C 17.245 25.265 17.597 25.297 17.95 25.303 C 18.215 25.305 18.48 25.292 18.744 25.261 L 19.55 26.658 C 19.69 26.921 19.991 27.054 20.28 26.979 C 21.228 26.728 22.128 26.321 22.943 25.775 C 23.195 25.609 23.302 25.293 23.203 25.008 L 22.686 23.512 C 23.198 23.057 23.643 22.532 24.006 21.951 L 25.568 22.202 C 25.862 22.25 26.151 22.089 26.265 21.813 C 26.657 20.921 26.903 19.971 26.994 19.001 C 27.034 18.698 26.855 18.41 26.567 18.311 Z M 25.266 20.834 L 23.37 20.532 L 22.917 21.258 C 22.62 21.735 22.257 22.167 21.838 22.542 L 21.195 23.123 L 21.838 24.947 C 21.392 25.208 20.92 25.423 20.431 25.589 L 19.467 23.9 L 18.641 23.984 C 18.428 24.009 18.213 24.02 17.999 24.019 C 17.708 24.013 17.418 23.986 17.131 23.939 L 16.238 23.769 L 15.255 25.438 C 14.764 25.253 14.294 25.017 13.854 24.732 L 14.526 22.898 L 13.931 22.311 C 13.587 21.962 13.286 21.573 13.035 21.152 L 12.595 20.413 L 10.696 20.686 C 10.526 20.188 10.406 19.674 10.336 19.152 L 12.158 18.51 L 12.216 17.668 C 12.255 17.154 12.364 16.648 12.537 16.163 L 12.816 15.366 L 11.422 14.021 C 11.69 13.582 12.001 13.17 12.35 12.792 L 13.957 13.832 L 14.66 13.328 C 15.122 13.002 15.629 12.743 16.164 12.56 L 16.951 12.297 L 17.154 10.352 C 17.458 10.311 17.765 10.289 18.072 10.284 C 18.268 10.284 18.464 10.284 18.664 10.313 L 18.834 12.239 L 19.672 12.493 C 20.254 12.668 20.805 12.933 21.304 13.28 L 21.995 13.761 L 23.634 12.74 C 23.973 13.107 24.276 13.504 24.54 13.928 L 23.139 15.244 L 23.46 16.063 C 23.67 16.632 23.792 17.23 23.82 17.835 L 23.859 18.705 L 25.664 19.364 C 25.581 19.866 25.447 20.358 25.266 20.834 Z M 17.979 21.2 C 15.506 21.2 13.96 18.524 15.197 16.384 C 16.434 14.244 19.525 14.244 20.762 16.384 C 21.048 16.88 21.197 17.443 21.192 18.015 C 21.189 19.783 19.748 21.211 17.979 21.2 Z M 18.021 16.063 C 16.537 16.046 15.591 17.64 16.318 18.933 C 17.045 20.226 18.9 20.248 19.657 18.972 C 19.833 18.675 19.926 18.335 19.926 17.99 C 19.926 16.934 19.077 16.075 18.021 16.063 Z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          part="menu"
+        >
+          <button
+            data-category="speed"
+            part="menu-item"
+            type="button"
+          >
+            <span
+              part="menu-item-title"
+            >
+              Speed
+            </span>
+            <span
+              part="menu-item-value"
+            >
+              Normal
+            </span>
+            <span
+              class="icon"
+              part="menu-item-arrow"
+            >
+              <svg
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M 15.7 12 C 15.7 12.105 15.658 12.196 15.573 12.277 L 9.648 17.88 C 9.563 17.96 9.466 18 9.355 18 C 9.245 18 9.148 17.96 9.063 17.88 L 8.427 17.278 C 8.342 17.199 8.3 17.106 8.3 17.002 C 8.3 16.898 8.342 16.806 8.427 16.725 L 13.424 12 L 8.427 7.275 C 8.342 7.194 8.3 7.102 8.3 6.998 C 8.3 6.894 8.342 6.801 8.427 6.722 L 9.063 6.12 C 9.148 6.04 9.245 6 9.355 6 C 9.466 6 9.563 6.04 9.648 6.12 L 15.573 11.723 C 15.658 11.804 15.7 11.895 15.7 12 Z"
+                />
+              </svg>
+            </span>
+          </button>
+        </div>
+        <div
+          part="submenu"
+        />
+        <div
+          part="caption-options"
+        />
+      </playerstack-settings>
+      <playerstack-fullscreen-button
+        data-fullscreen="false"
+      >
+        <button
+          aria-label="Fullscreen"
+          part="fullscreen-button"
+          type="button"
+        >
+          <span
+            class="icon icon-enter-fullscreen"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 12 20.667 L 10 20.667 L 10 26 L 15.333 26 L 15.333 24 L 12 24 L 12 20.667 Z M 10 15.333 L 12 15.333 L 12 12 L 15.333 12 L 15.333 10 L 10 10 L 10 15.333 Z M 24 24 L 20.667 24 L 20.667 26 L 26 26 L 26 20.667 L 24 20.667 L 24 24 Z M 20.667 10 L 20.667 12 L 24 12 L 24 15.333 L 26 15.333 L 26 10 L 20.667 10 Z"
+              />
+            </svg>
+          </span>
+          <span
+            class="icon icon-exit-fullscreen"
+          >
+            <svg
+              fill="currentColor"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 10 22.667 L 13.333 22.667 L 13.333 26 L 15.333 26 L 15.333 20.667 L 10 20.667 L 10 22.667 Z M 13.333 13.333 L 10 13.333 L 10 15.333 L 15.333 15.333 L 15.333 10 L 13.333 10 L 13.333 13.333 Z M 20.667 26 L 22.667 26 L 22.667 22.667 L 26 22.667 L 26 20.667 L 20.667 20.667 L 20.667 26 Z M 22.667 13.333 L 22.667 10 L 20.667 10 L 20.667 15.333 L 26 15.333 L 26 13.333 L 22.667 13.333 Z"
+              />
+            </svg>
+          </span>
+        </button>
+      </playerstack-fullscreen-button>
+    </div>
+  </div>
+</playerstack-media-controller>
+`;
