@@ -23,7 +23,7 @@
     "build:dist": "builder ./src/index.js --outfile=dist/PlayerStack.js --format=iife --bundle --minify --sourcemap --global-name=PlayerStack --external:react --external:react-dom --plugin:global-externals={\"react\":\"globalThis.React\",\"react-dom\":\"globalThis.ReactDOM\"} --footer:js=PlayerStack=PlayerStack.default;",
     "preversion": "npm run lint && npm run test",
     "version": "auto-changelog -p && npm run build:dist && git add CHANGELOG.md dist",
-    "prepublishOnly": "npm run build && node scripts/pre-publish.js && cp -r types/* .",
+    "prepublishOnly": "npm run build && cp -r types/* .",
     "postpublish": "node scripts/post-publish.js && npm run clean"
   },
   "repository": {
