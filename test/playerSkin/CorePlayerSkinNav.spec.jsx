@@ -1,8 +1,11 @@
 import React from 'react';
 import { render, act } from '@testing-library/react';
 
+import { DEFAULT_COMPOSITION } from '@playerstack/web-core/adapters/framework';
+
 import CorePlayerSkin from '@PlayerSkin/CorePlayerSkin';
 import { Provider } from '@context/index';
+import { CompositionContext } from '@compound/context/CompositionContext';
 
 // Keep the skin in desktop mode by default so the desktop control-bar branch (which renders
 // the prev/next nav cluster) is exercised deterministically regardless of the test env.
@@ -15,6 +18,21 @@ jest.mock('@playerstack/web-core', () => {
 });
 
 const Wrapper = ({ children }) => <Provider language="en">{children}</Provider>;
+
+// Task 8.1 made CorePlayerSkin read the composition manifest via `useComposition()`, which requires
+// a `<Player>`/CompositionContext ancestor. This low-level spec renders the skin directly, so it
+// provides a manifest whose `parts` cover the full default control set — the same set `<Player>`
+// yields by default. `PrevButton`/`NextButton` are opt-in (not in DEFAULT_COMPOSITION), so they are
+// added only when the test drives nav wiring, mirroring `<Player>`'s `deriveEngineProps`
+// (showNavButtons ⇔ PrevButton or NextButton ∈ parts).
+function makeManifest(extraProps) {
+  const parts = new Set(DEFAULT_COMPOSITION);
+  if (extraProps.showNavButtons || extraProps.onPrevious || extraProps.onNext) {
+    parts.add('PrevButton');
+    parts.add('NextButton');
+  }
+  return { mode: 'default', parts, config: {}, order: [] };
+}
 
 // Minimal props required by CorePlayerSkin's bridge + render paths.
 const baseProps = {
@@ -47,9 +65,12 @@ const baseProps = {
 };
 
 function renderSkin(extraProps = {}) {
+  const manifest = makeManifest(extraProps);
   return render(
     <Wrapper>
-      <CorePlayerSkin {...baseProps} {...extraProps} />
+      <CompositionContext.Provider value={{ manifest }}>
+        <CorePlayerSkin {...baseProps} {...extraProps} />
+      </CompositionContext.Provider>
     </Wrapper>,
   );
 }
@@ -57,46 +78,49 @@ function renderSkin(extraProps = {}) {
 describe('CorePlayerSkin — nav buttons (GAP 2/5, Req 21.1)', () => {
   test('does NOT render the nav cluster when showNavButtons is false', () => {
     const { container } = renderSkin({ showNavButtons: false });
-    expect(container.querySelector('playerstack-nav-buttons')).toBeNull();
+    expect(container.querySelector('.playerstack-prev-button')).toBeNull();
+    expect(container.querySelector('.playerstack-next-button')).toBeNull();
   });
 
-  test('renders the nav cluster on desktop when showNavButtons is true', () => {
+  test('renders the nav buttons on desktop when showNavButtons is true', () => {
     const { container } = renderSkin({ showNavButtons: true, onPrevious: jest.fn(), onNext: jest.fn() });
-    expect(container.querySelector('playerstack-nav-buttons')).not.toBeNull();
+    expect(container.querySelector('.playerstack-prev-button')).not.toBeNull();
+    expect(container.querySelector('.playerstack-next-button')).not.toBeNull();
   });
 
-  test('a prev-request event calls the public onPrevious handler', () => {
+  test('clicking the prev button calls the public onPrevious handler', () => {
     const onPrevious = jest.fn();
     const onNext = jest.fn();
     const { container } = renderSkin({ showNavButtons: true, onPrevious, onNext });
 
-    const nav = container.querySelector('playerstack-nav-buttons');
+    const prevBtn = container.querySelector('.playerstack-prev-button');
     act(() => {
-      nav.dispatchEvent(new CustomEvent('playerstack-prev-request', { bubbles: true, composed: true }));
+      prevBtn.click();
     });
 
     expect(onPrevious).toHaveBeenCalledTimes(1);
     expect(onNext).not.toHaveBeenCalled();
   });
 
-  test('a next-request event calls the public onNext handler', () => {
+  test('clicking the next button calls the public onNext handler', () => {
     const onPrevious = jest.fn();
     const onNext = jest.fn();
     const { container } = renderSkin({ showNavButtons: true, onPrevious, onNext });
 
-    const nav = container.querySelector('playerstack-nav-buttons');
+    const nextBtn = container.querySelector('.playerstack-next-button');
     act(() => {
-      nav.dispatchEvent(new CustomEvent('playerstack-next-request', { bubbles: true, composed: true }));
+      nextBtn.click();
     });
 
     expect(onNext).toHaveBeenCalledTimes(1);
     expect(onPrevious).not.toHaveBeenCalled();
   });
 
-  test('renders the nav cluster on mobile center controls when showNavButtons is true', () => {
+  test('renders the nav buttons on mobile center controls when showNavButtons is true', () => {
     const onPrevious = jest.fn();
     const { container } = renderSkin({ skinMode: 'mobile', showNavButtons: true, onPrevious, onNext: jest.fn() });
-    expect(container.querySelector('playerstack-nav-buttons')).not.toBeNull();
+    expect(container.querySelector('[part="nav-prev"]')).not.toBeNull();
+    expect(container.querySelector('[part="nav-next"]')).not.toBeNull();
   });
 });
 

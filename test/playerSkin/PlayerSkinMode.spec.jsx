@@ -1,7 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+
+import { DEFAULT_COMPOSITION } from '@playerstack/web-core/adapters/framework';
+
 import PlayerSkin from '@PlayerSkin/PlayerSkin';
 import { Provider } from '@context/index';
+import { CompositionContext } from '@compound/context/CompositionContext';
 
 // Mock isMobile from core
 jest.mock('@playerstack/web-core', () => {
@@ -12,8 +16,16 @@ jest.mock('@playerstack/web-core', () => {
   };
 });
 
+// Task 8.1 made CorePlayerSkin read the composition manifest via `useComposition()`. These
+// mode-selection specs render `PlayerSkin` directly, so the wrapper also provides a default
+// composition manifest (the full DEFAULT_COMPOSITION control set) — enough for the layout to
+// render regardless of desktop/mobile selection.
+const manifest = { mode: 'default', parts: new Set(DEFAULT_COMPOSITION), config: {}, order: [] };
+
 const Wrapper = ({ children }) => (
-  <Provider language="en">{children}</Provider>
+  <Provider language="en">
+    <CompositionContext.Provider value={{ manifest }}>{children}</CompositionContext.Provider>
+  </Provider>
 );
 
 const baseProps = {

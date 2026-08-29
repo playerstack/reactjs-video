@@ -1,9 +1,12 @@
 import React from 'react';
 import { render, act, fireEvent } from '@testing-library/react';
 
+import { DEFAULT_COMPOSITION } from '@playerstack/web-core/adapters/framework';
+
 import CorePlayerSkin from '@PlayerSkin/CorePlayerSkin';
 import PlayerSkinWrapper from '@PlayerSkin/index';
 import { Provider } from '@context/index';
+import { CompositionContext } from '@compound/context/CompositionContext';
 import { createMediaPlayer } from '@MediaPlayer';
 import { defaultProps } from '@MediaPlayer/props.types';
 
@@ -89,10 +92,28 @@ const baseSkinProps = {
   skinMode: 'desktop',
 };
 
+// Task 8.1 made CorePlayerSkin read the composition manifest via `useComposition()`, which requires
+// a `<Player>`/CompositionContext ancestor. These parity specs render the skin directly, so they
+// provide a manifest whose `parts` cover the full DEFAULT_COMPOSITION control set — the same set a
+// bare `<Player>` yields — so every parity assertion (and the DOM snapshots) sees the same controls
+// as before. `PrevButton`/`NextButton` are opt-in (not in DEFAULT_COMPOSITION), added only when the
+// test drives nav wiring, mirroring `<Player>`'s `deriveEngineProps` (showNavButtons ⇔ either ∈ parts).
+function makeManifest(extraProps) {
+  const parts = new Set(DEFAULT_COMPOSITION);
+  if (extraProps.showNavButtons || extraProps.onPrevious || extraProps.onNext) {
+    parts.add('PrevButton');
+    parts.add('NextButton');
+  }
+  return { mode: 'default', parts, config: {}, order: [] };
+}
+
 function renderSkin(extraProps = {}) {
+  const manifest = makeManifest(extraProps);
   return render(
     <Wrapper>
-      <CorePlayerSkin {...baseSkinProps} {...extraProps} />
+      <CompositionContext.Provider value={{ manifest }}>
+        <CorePlayerSkin {...baseSkinProps} {...extraProps} />
+      </CompositionContext.Provider>
     </Wrapper>,
   );
 }
@@ -181,10 +202,11 @@ describe('Functional_Parity — public props & defaults (Req 21.1, 21.11)', () =
     expect(MediaPlayer.defaultProps.playbackRate).toBe(1);
   });
 
-  test('CorePlayerSkin applies its own opt-in default: showNavButtons=false hides the nav cluster', () => {
+  test('CorePlayerSkin applies its own opt-in default: showNavButtons=false hides the nav buttons', () => {
     const { container } = renderSkin();
-    // With no showNavButtons prop, the default (false) means no nav cluster is rendered.
-    expect(container.querySelector('playerstack-nav-buttons')).toBeNull();
+    // With no showNavButtons prop, the default (false) means no nav buttons are rendered.
+    expect(container.querySelector('.playerstack-prev-button')).toBeNull();
+    expect(container.querySelector('.playerstack-next-button')).toBeNull();
   });
 });
 
@@ -278,13 +300,18 @@ describe('Functional_Parity — request-driven callbacks (Req 21.1, 21.6, 21.9, 
     expect(onLoopClick).toHaveBeenCalledTimes(1);
   });
 
-  test('prev/next requests fire onPrevious/onNext (no args)', () => {
+  test('prev/next clicks fire onPrevious/onNext (no args)', () => {
     const onPrevious = jest.fn();
     const onNext = jest.fn();
     const { container } = renderSkin({ showNavButtons: true, onPrevious, onNext });
-    const nav = container.querySelector('playerstack-nav-buttons');
-    dispatch(nav, 'playerstack-prev-request');
-    dispatch(nav, 'playerstack-next-request');
+    const prevBtn = container.querySelector('.playerstack-prev-button');
+    const nextBtn = container.querySelector('.playerstack-next-button');
+    act(() => {
+      prevBtn.click();
+    });
+    act(() => {
+      nextBtn.click();
+    });
     expect(onPrevious).toHaveBeenCalledTimes(1);
     expect(onNext).toHaveBeenCalledTimes(1);
   });
@@ -389,15 +416,21 @@ describe('Functional_Parity — keyboard shortcuts (Req 21.9)', () => {
     playerRef.current.requestFullscreen = jest.fn(() => Promise.resolve());
     updateState = jest.fn();
     handleRef = React.createRef();
+    // `PlayerSkinWrapper` renders through to `CorePlayerSkin`, which reads `useComposition()`, so it
+    // needs a CompositionContext ancestor. A default-composition manifest suffices for the keyboard
+    // shortcut assertions (they exercise the wrapper's `handleKeyDown`, not composition gating).
+    const manifest = { mode: 'default', parts: new Set(DEFAULT_COMPOSITION), config: {}, order: [] };
     render(
-      <PlayerSkinWrapper
-        {...wrapperBaseProps}
-        ref={handleRef}
-        player={player}
-        playerRef={playerRef}
-        updateState={updateState}
-        {...overrides}
-      />,
+      <CompositionContext.Provider value={{ manifest }}>
+        <PlayerSkinWrapper
+          {...wrapperBaseProps}
+          ref={handleRef}
+          player={player}
+          playerRef={playerRef}
+          updateState={updateState}
+          {...overrides}
+        />
+      </CompositionContext.Provider>,
     );
     // videoRef is populated by an effect from player.getPlayer(); flush effects.
     return handleRef;

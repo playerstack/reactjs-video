@@ -21,9 +21,15 @@ import ProgressSlider from '@PlayerSkin/components/ProgressSlider';
  * only receives `chapters`/`heatmapData`/`adPresent` and the seek/scrubbing requests — the DVR
  * window position/duration reaches it through the shared store, exactly as in the monolith.
  *
+ * Presence gating (Req 8.3/8.4): `PlayTime`, `Timeline` (via the nested `ProgressSlider`) and
+ * `Fullscreen` each render IF AND ONLY IF their composable part ∈ `composition.parts` (O(1)
+ * `Set.has`); all three are in `DEFAULT_COMPOSITION`. The LIVE badge is a feature-driven rider
+ * (not a composable slot), so it keeps its own `live` gating.
+ *
  * Presentational only: no state, no effects, no callbacks of its own.
  */
 export default function MobileBottomBar({
+  parts,
   live,
   liveDVR,
   dvrActive,
@@ -41,13 +47,15 @@ export default function MobileBottomBar({
   onEnterFullscreenRequest,
   onExitFullscreenRequest,
 }) {
+  const has = (name) => parts.has(name);
+
   return (
     <div className="playerstack-mobile-bottom-bar" part="mobile-bottom-bar">
       {/* Read-out + LIVE badge gate on the UNIFIED `live`: on ANY live stream at the edge the
           read-out shows NOTHING (no `00:00`, like YouTube). The negative offset + grey badge gate
           on `dvrActive` (a SYNCED DVR window), NOT the raw `liveDVR` — so no bogus offset flashes
           from the pre-ready transient on first load. The DVR-window slider uses raw `liveDVR`. */}
-      <PlayerstackPlayTime live={!!live} liveDVR={!!dvrActive} />
+      {has('PlayTime') && <PlayerstackPlayTime live={!!live} liveDVR={!!dvrActive} />}
       <LiveIndicatorSlot
         live={live}
         pureLive={live && !dvrActive}
@@ -56,6 +64,7 @@ export default function MobileBottomBar({
         onSeekRequest={onLiveEdgeRequest}
       />
       <ProgressSlider
+        parts={parts}
         variant="mobile"
         showTimeSlider={showTimeSlider}
         chapters={chapters}
@@ -67,15 +76,19 @@ export default function MobileBottomBar({
         onScrubbingRequest={onScrubbingRequest}
         onPlayRequest={onPlayRequest}
       />
-      <PlayerstackFullscreenButton
-        onEnterFullscreenRequest={onEnterFullscreenRequest}
-        onExitFullscreenRequest={onExitFullscreenRequest}
-      />
+      {has('Fullscreen') && (
+        <PlayerstackFullscreenButton
+          onEnterFullscreenRequest={onEnterFullscreenRequest}
+          onExitFullscreenRequest={onExitFullscreenRequest}
+        />
+      )}
     </div>
   );
 }
 
 MobileBottomBar.propTypes = {
+  // Composition presence set from the manifest (`skin.composition.parts`); O(1) `Set.has` gating.
+  parts: PropTypes.instanceOf(Set).isRequired,
   live: PropTypes.bool,
   liveDVR: PropTypes.bool,
   dvrActive: PropTypes.bool,

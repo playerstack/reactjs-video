@@ -14,7 +14,7 @@ import MobileCenterControls from '@PlayerSkin/components/MobileCenterControls';
 import MobileBottomBar from '@PlayerSkin/components/MobileBottomBar';
 import MobileSettingsSlot from '@PlayerSkin/components/MobileSettingsSlot';
 
-import { computeHideSettings } from '@PlayerSkin/helpers/gating';
+import { computeHideSettings, isAdActivePlaying } from '@PlayerSkin/helpers/gating';
 
 /**
  * `MobileLayout` is the presentational mobile arrangement (parity with the monolith's mobile
@@ -40,6 +40,16 @@ import { computeHideSettings } from '@PlayerSkin/helpers/gating';
  */
 const MobileLayout = ({ skin, controllerRef }) => {
   const { state, derived, refs, adapters, handlers } = skin;
+  // Composition presence set (`manifest.parts`) — threaded to the mobile clusters so each renders
+  // its `playerstack-*` element IF AND ONLY IF the part ∈ parts (Req 8.3/8.4). Mobile keeps its
+  // own Style_Layer arrangement (design §10). The stage/system overlays below (poster, spinner,
+  // prevented-tip, top-state, captions, ad, live-ad, context-menu, double-tap, sprite) stay driven
+  // by ephemeral props and are NOT gated by composition (Req 9.6).
+  const { parts } = skin.composition;
+
+  // Hide the nav buttons while an ad is actively playing (parity with the desktop layout and
+  // the chapter read-out gating): only the ad affordances + essential transport stay.
+  const adActive = isAdActivePlaying({ adPresent: derived.adPresent, paused: state.paused });
 
   const hasCaptions = !!(state.captions && state.captions.length > 0);
   const hideSettings = computeHideSettings({
@@ -112,6 +122,7 @@ const MobileLayout = ({ skin, controllerRef }) => {
       <div className="playerstack-mobile-overlay" part="mobile-overlay" />
 
       <MobileTopBar
+        parts={parts}
         hasCaptions={hasCaptions}
         showCast={derived.showCast}
         hideSettings={hideSettings}
@@ -123,7 +134,9 @@ const MobileLayout = ({ skin, controllerRef }) => {
       />
 
       <MobileCenterControls
-        showNav={!!(state.showNavButtons || state.onPrevious || state.onNext)}
+        parts={parts}
+        showPrev={!adActive && !!state.onPrevious}
+        showNext={!adActive && !!state.onNext}
         onPrevRequest={handlers.handlePrevRequest}
         onNextRequest={handlers.handleNextRequest}
         onPlayRequest={handlers.handlePlayRequest}
@@ -131,6 +144,7 @@ const MobileLayout = ({ skin, controllerRef }) => {
       />
 
       <MobileBottomBar
+        parts={parts}
         live={state.live}
         liveDVR={state.liveDVR}
         dvrActive={state.dvrActive}
@@ -150,6 +164,7 @@ const MobileLayout = ({ skin, controllerRef }) => {
       />
 
       <MobileSettingsSlot
+        parts={parts}
         mobileSettingsRef={refs.mobileSettingsRef}
         qualityOptions={derived.qualityOptions}
         captions={state.captions}

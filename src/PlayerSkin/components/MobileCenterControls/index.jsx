@@ -1,32 +1,51 @@
 import PropTypes from 'prop-types';
 
-import { PlayerstackNavButtons, PlayerstackPlayState } from '@adapter/elements';
+import { previousTrackIcon, nextTrackIcon } from '@playerstack/web-core/icons';
+
+import { PlayerstackPlayState, PlayerstackIcon } from '@adapter/elements';
 
 /**
  * `MobileCenterControls` is the mobile centered transport cluster (parity with the monolith's
  * `.playerstack-mobile-center-controls`): Prev · Play/Pause · Next.
  *
- * The nav cluster shows when EITHER a prev/next handler is provided OR `showNavButtons` is set
- * (parity with the original MobileCenterControls `showPrevious = hasPrevious || showNavButtons`);
- * the orchestrator supplies the computed `showNav` (`showNavButtons || onPrevious || onNext`).
- *
- * `PlayerstackPlayState` sits in the mobile-center placement (parity with the monolith, where
- * the play-state overlay is nested inside the center controls on mobile rather than as a shared
- * stage overlay like on desktop).
+ * Each nav button is rendered individually so `PrevButton` and `NextButton` can be composed
+ * independently. The canonical order is: Prev(50) · Play(center) · Next(65).
  *
  * Presentational only: no state, no effects, no callbacks of its own.
  */
-export default function MobileCenterControls({ showNav, onPrevRequest, onNextRequest, onPlayRequest, onPauseRequest }) {
+export default function MobileCenterControls({
+  parts,
+  showPrev,
+  showNext,
+  onPrevRequest,
+  onNextRequest,
+  onPlayRequest,
+  onPauseRequest,
+}) {
   return (
     <div className="playerstack-mobile-center-controls" part="mobile-center-controls">
-      {showNav && <PlayerstackNavButtons onPrevRequest={onPrevRequest} onNextRequest={onNextRequest} />}
+      {parts.has('PrevButton') && showPrev && (
+        <button type="button" part="nav-prev" aria-label="Previous" onClick={onPrevRequest}>
+          <PlayerstackIcon icon={previousTrackIcon} width={48} height={48} />
+        </button>
+      )}
       <PlayerstackPlayState onPlayRequest={onPlayRequest} onPauseRequest={onPauseRequest} />
+      {parts.has('NextButton') && showNext && (
+        <button type="button" part="nav-next" aria-label="Next" onClick={onNextRequest}>
+          <PlayerstackIcon icon={nextTrackIcon} width={48} height={48} />
+        </button>
+      )}
     </div>
   );
 }
 
 MobileCenterControls.propTypes = {
-  showNav: PropTypes.bool,
+  // Composition presence set from the manifest (`skin.composition.parts`); O(1) `Set.has` gating.
+  parts: PropTypes.instanceOf(Set).isRequired,
+  // Per-button nav visibility: true only when the button ∈ composition, has an `onClick`, and no
+  // ad is actively playing.
+  showPrev: PropTypes.bool,
+  showNext: PropTypes.bool,
   onPrevRequest: PropTypes.func,
   onNextRequest: PropTypes.func,
   onPlayRequest: PropTypes.func,

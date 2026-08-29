@@ -1,6 +1,10 @@
 import React from 'react';
-import { render, act, fireEvent } from '@testing-library/react';
+import { render as rtlRender, act, fireEvent } from '@testing-library/react';
+
+import { DEFAULT_COMPOSITION } from '@playerstack/web-core/adapters/framework';
+
 import MediaPlayerSkin from '@MediaPlayer/components/MediaPlayerSkin/index';
+import { CompositionContext } from '@compound/context/CompositionContext';
 
 jest.mock('../../src/core/VideoElement', () => {
   const ReactMock = require('react');
@@ -35,6 +39,19 @@ jest.mock('@playerstack/web-core', () => ({ ...jest.requireActual('@playerstack/
 }));
 
 const noop = () => {};
+
+// Task 8.1 made CorePlayerSkin (rendered deep inside MediaPlayerSkin) read the composition manifest
+// via `useComposition()`, which requires a CompositionContext ancestor. These integration tests
+// only assert the tree renders/behaves, so a default-composition manifest (the full
+// DEFAULT_COMPOSITION control set) is provided through a wrapper applied to every `render` call
+// (React Testing Library re-applies the same wrapper automatically on `rerender`).
+const manifest = { mode: 'default', parts: new Set(DEFAULT_COMPOSITION), config: {}, order: [] };
+
+const CompositionWrapper = ({ children }) => (
+  <CompositionContext.Provider value={{ manifest }}>{children}</CompositionContext.Provider>
+);
+
+const render = (ui, options) => rtlRender(ui, { wrapper: CompositionWrapper, ...options });
 
 const baseProps = {
   activePlayer: () => null,

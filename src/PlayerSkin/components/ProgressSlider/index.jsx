@@ -17,8 +17,15 @@ import { PlayerstackTimeSlider } from '@adapter/elements';
  * The chapter SEGMENT dividers and heatmap are suppressed whenever an ad is present
  * (`!adPresent`), matching the monolith. `adMode`, the seek request and the scrubbing request
  * are forwarded verbatim.
+ *
+ * Presence gating (Req 8.3/8.4): the progress bar is the `Timeline` composable part (the sole
+ * slot of the `timeline` region, order 100). It renders IF AND ONLY IF `Timeline` ∈
+ * `composition.parts` (O(1) `Set.has`) AND the existing `showTimeSlider` rule holds. `Timeline`
+ * is in `DEFAULT_COMPOSITION`, so a default `<Player>` keeps it. Chapters/Heatmap ride on this
+ * slot (they are not separate composable slots).
  */
 export default function ProgressSlider({
+  parts,
   variant,
   showTimeSlider,
   spriteVTTFile,
@@ -32,7 +39,7 @@ export default function ProgressSlider({
   onScrubbingRequest,
   onPlayRequest,
 }) {
-  if (!showTimeSlider) {
+  if (!parts.has('Timeline') || !showTimeSlider) {
     return null;
   }
 
@@ -81,6 +88,8 @@ export default function ProgressSlider({
 }
 
 ProgressSlider.propTypes = {
+  // Composition presence set from the manifest (`skin.composition.parts`); O(1) `Set.has` gating.
+  parts: PropTypes.instanceOf(Set).isRequired,
   variant: PropTypes.oneOf(['desktop', 'mobile']).isRequired,
   showTimeSlider: PropTypes.bool,
   spriteVTTFile: PropTypes.string,

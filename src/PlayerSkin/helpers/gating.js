@@ -48,3 +48,9 @@ export const showNavCluster = (showNavButtons, onPrevious, onNext) => !!(showNav
 
 export const showChapterReadout = ({ adPresent, paused, chapters }) =>
   !(adPresent && !paused) && !!(chapters && chapters.length > 0);
+
+// Whether an ad is actively PLAYING (present AND not paused). Non-ad controls that convey
+// original-video context — nav buttons (prev/next), the video title — are hidden while the ad
+// plays, matching the chapter read-out gating (`showChapterReadout`). During an ad the only
+// controls that stay are the transport/volume/settings essentials plus the ad affordances.
+export const isAdActivePlaying = ({ adPresent, paused }) => !!(adPresent && !paused);

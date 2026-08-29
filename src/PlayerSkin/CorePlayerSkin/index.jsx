@@ -2,6 +2,10 @@ import React from 'react';
 
 import { isMobile, IS_LIVE_DVR_SUPPORTED } from '@playerstack/web-core';
 
+// Composition manifest reader. `<Player>` is the only public entry and always provides the
+// Context, so this resolves in production; it only throws for a part rendered outside `<Player>`.
+import { useComposition } from '@compound/context/useComposition';
+
 import { useCoreMediaBridge } from '@hooks/useCoreMediaBridge';
 import { useCoreAutoHide } from '@hooks/useCoreAutoHide';
 import useCast from '@hooks/useCast';
@@ -61,6 +65,10 @@ import { mapQualityOptions } from '@PlayerSkin/helpers/qualityOptions';
  * through the adapter's property setters. Styling arrives from Core's Style_Auto_Injection.
  */
 const CorePlayerSkin = React.forwardRef((props, ref) => {
+  // Read the composition manifest from Context so the layouts can gate presence per part. `<Player>`
+  // always provides the Provider, so this never throws here. Exposed below on `skin.composition`.
+  const { manifest } = useComposition();
+
   const {
     live = false,
     liveDVR = false,
@@ -351,6 +359,8 @@ const CorePlayerSkin = React.forwardRef((props, ref) => {
       liveAdAdapter,
     },
     handlers,
+    // Composition manifest (presence + content config) that drives the layouts' presence gating.
+    composition: manifest,
     captionToggle: captionToggle.handleCaptionToggle,
     openMobileSettings,
     handleScrubbingRequest: scrub.handleScrubbingRequest,

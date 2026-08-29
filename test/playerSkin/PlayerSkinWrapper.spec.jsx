@@ -1,6 +1,22 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render as rtlRender } from '@testing-library/react';
+
+import { DEFAULT_COMPOSITION } from '@playerstack/web-core/adapters/framework';
+
 import PlayerSkinWrapper from '@PlayerSkin/index';
+import { CompositionContext } from '@compound/context/CompositionContext';
+
+// Task 8.1 made CorePlayerSkin (rendered through PlayerSkinWrapper) read the composition manifest
+// via `useComposition()`, which requires a CompositionContext ancestor. These smoke tests only
+// assert the tree renders, so a default-composition manifest (the full DEFAULT_COMPOSITION control
+// set) is provided through a wrapper applied to every `render` call (RTL re-applies it on rerender).
+const manifest = { mode: 'default', parts: new Set(DEFAULT_COMPOSITION), config: {}, order: [] };
+
+const CompositionWrapper = ({ children }) => (
+  <CompositionContext.Provider value={{ manifest }}>{children}</CompositionContext.Provider>
+);
+
+const render = (ui, options) => rtlRender(ui, { wrapper: CompositionWrapper, ...options });
 
 const baseProps = {
   playerRef: { current: document.createElement('div') },

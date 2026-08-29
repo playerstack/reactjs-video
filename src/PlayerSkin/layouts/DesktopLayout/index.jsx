@@ -11,7 +11,8 @@ import SpritePreviewSlot from '@PlayerSkin/components/SpritePreviewSlot';
 import ControlBar from '@PlayerSkin/components/ControlBar';
 import ControlBarLeft from '@PlayerSkin/components/ControlBarLeft';
 import ControlsExtra from '@PlayerSkin/components/ControlsExtra';
-import { showNavCluster, showChapterReadout } from '@PlayerSkin/helpers/gating';
+import FlexibleControls from '@PlayerSkin/components/FlexibleControls';
+import { showChapterReadout, isAdActivePlaying } from '@PlayerSkin/helpers/gating';
 
 /**
  * `DesktopLayout` is the presentational desktop arrangement (parity with the monolith's
@@ -30,6 +31,25 @@ import { showNavCluster, showChapterReadout } from '@PlayerSkin/helpers/gating';
  */
 const DesktopLayout = ({ skin, controllerRef }) => {
   const { state, derived, refs, adapters, handlers } = skin;
+  // Composition presence set (`manifest.parts`) — threaded to the gated clusters so each renders
+  // its `playerstack-*` element IF AND ONLY IF the part ∈ parts (Req 8.3/8.4). DOM order stays the
+  // canonical `COMPOSABLE_SLOTS` order per region (Req 8.5/1.8). The stage/system overlays below
+  // (poster, play-state, spinner, prevented-tip, top-state, ad, live-ad, context-menu, sprite)
+  // stay driven by ephemeral props and are NOT gated by composition (Req 9.6). `config` carries the
+  // content collected from composables (e.g. the `<Title>` text at `config.title`) for the clusters.
+  const { parts, config, containers = {} } = skin.composition;
+
+  // While an ad is actively playing, hide the original-video context controls (nav buttons +
+  // title) exactly like the chapter read-out is hidden. `showNav` is forced false and the title
+  // is blanked so PrevButton/NextButton/Title do not render over the ad (parity with the
+  // pre-composition ad-mode behavior).
+  const adActive = isAdActivePlaying({ adPresent: derived.adPresent, paused: state.paused });
+  // Per-button nav visibility: a nav button shows only when it has its OWN action wired
+  // (`onPrevious`/`onNext` — i.e. the composable was given an `onClick`) and no ad is playing.
+  // A `<PrevButton />` / `<NextButton />` without `onClick` renders nothing.
+  const showPrev = !adActive && !!state.onPrevious;
+  const showNext = !adActive && !!state.onNext;
+  const titleText = adActive ? undefined : config.title;
 
   return (
     <PlayerstackMediaController ref={controllerRef} data-skin-mode="desktop">
@@ -95,8 +115,9 @@ const DesktopLayout = ({ skin, controllerRef }) => {
       />
 
       {/* Progress slider (Timelens + chapter segments + tooltip) — desktop variant feeds the
-          hover timelens the sprite VTT + adapter. */}
+          hover timelens the sprite VTT + adapter. Gated on the `Timeline` part. */}
       <ProgressSlider
+        parts={parts}
         variant="desktop"
         showTimeSlider={derived.showTimeSlider}
         spriteVTTFile={state.spriteVTTFile}
@@ -112,10 +133,14 @@ const DesktopLayout = ({ skin, controllerRef }) => {
       />
 
       {/* Bottom control bar: left cluster (transport + volume + time + chapters) and right
-          cluster (captions + settings + cast + fullscreen). */}
-      <ControlBar>
+          cluster (captions + settings + cast + fullscreen). The bar (the `ControlBar` part) and
+          each inner control are presence-gated via `parts`. */}
+      <ControlBar parts={parts}>
         <ControlBarLeft
-          showNav={showNavCluster(state.showNavButtons, state.onPrevious, state.onNext)}
+          parts={parts}
+          title={titleText}
+          showPrev={showPrev}
+          showNext={showNext}
           onPrevRequest={handlers.handlePrevRequest}
           onNextRequest={handlers.handleNextRequest}
           onPlayRequest={handlers.handlePlayRequest}
@@ -136,6 +161,7 @@ const DesktopLayout = ({ skin, controllerRef }) => {
           onLiveEdgeRequest={handlers.handleLiveEdgeRequest}
         />
         <ControlsExtra
+          parts={parts}
           captions={state.captions}
           activeCaption={state.activeCaption}
           fullscreen={state.fullscreen}
@@ -156,6 +182,119 @@ const DesktopLayout = ({ skin, controllerRef }) => {
           onExitFullscreenRequest={handlers.handleExitFullscreenRequest}
         />
       </ControlBar>
+
+      {/* TopBar — horizontal bar at the top. Only renders if the composition declares a TopBar
+          container with children. Uses FlexibleControls to render whichever controls are placed
+          in this container. */}
+      {containers.TopBar && containers.TopBar.length > 0 && (
+        <div className="playerstack-top-bar">
+          <FlexibleControls
+            containerParts={new Set(containers.TopBar)}
+            title={titleText}
+            showPrev={showPrev}
+            showNext={showNext}
+            onPrevRequest={handlers.handlePrevRequest}
+            onNextRequest={handlers.handleNextRequest}
+            onPlayRequest={handlers.handlePlayRequest}
+            onPauseRequest={handlers.handlePauseRequest}
+            onMuteRequest={handlers.handleMuteRequest}
+            onUnmuteRequest={handlers.handleUnmuteRequest}
+            onVolumeRequest={handlers.handleVolumeRequest}
+            captions={state.captions}
+            activeCaption={state.activeCaption}
+            fullscreen={state.fullscreen}
+            onCaptionToggle={skin.captionToggle}
+            qualityOptions={derived.qualityOptions}
+            captionStyle={derived.captionStyle}
+            language={state.language}
+            adMode={derived.adPresent}
+            live={state.live}
+            showCast={derived.showCast}
+            castState={derived.castState}
+            onCastClick={skin.handleCastClick}
+            onRateRequest={handlers.handleRateRequest}
+            onQualityRequest={handlers.handleQualityRequest}
+            onCaptionRequest={handlers.handleCaptionRequest}
+            onCaptionStyleRequest={handlers.handleCaptionStyleRequest}
+            onEnterFullscreenRequest={handlers.handleEnterFullscreenRequest}
+            onExitFullscreenRequest={handlers.handleExitFullscreenRequest}
+          />
+        </div>
+      )}
+
+      {/* SidebarLeft — vertical bar on the left edge. */}
+      {containers.SidebarLeft && containers.SidebarLeft.length > 0 && (
+        <div className="playerstack-sidebar-left">
+          <FlexibleControls
+            containerParts={new Set(containers.SidebarLeft)}
+            title={titleText}
+            showPrev={showPrev}
+            showNext={showNext}
+            onPrevRequest={handlers.handlePrevRequest}
+            onNextRequest={handlers.handleNextRequest}
+            onPlayRequest={handlers.handlePlayRequest}
+            onPauseRequest={handlers.handlePauseRequest}
+            onMuteRequest={handlers.handleMuteRequest}
+            onUnmuteRequest={handlers.handleUnmuteRequest}
+            onVolumeRequest={handlers.handleVolumeRequest}
+            captions={state.captions}
+            activeCaption={state.activeCaption}
+            fullscreen={state.fullscreen}
+            onCaptionToggle={skin.captionToggle}
+            qualityOptions={derived.qualityOptions}
+            captionStyle={derived.captionStyle}
+            language={state.language}
+            adMode={derived.adPresent}
+            live={state.live}
+            showCast={derived.showCast}
+            castState={derived.castState}
+            onCastClick={skin.handleCastClick}
+            onRateRequest={handlers.handleRateRequest}
+            onQualityRequest={handlers.handleQualityRequest}
+            onCaptionRequest={handlers.handleCaptionRequest}
+            onCaptionStyleRequest={handlers.handleCaptionStyleRequest}
+            onEnterFullscreenRequest={handlers.handleEnterFullscreenRequest}
+            onExitFullscreenRequest={handlers.handleExitFullscreenRequest}
+          />
+        </div>
+      )}
+
+      {/* SidebarRight — vertical bar on the right edge. */}
+      {containers.SidebarRight && containers.SidebarRight.length > 0 && (
+        <div className="playerstack-sidebar-right">
+          <FlexibleControls
+            containerParts={new Set(containers.SidebarRight)}
+            title={titleText}
+            showPrev={showPrev}
+            showNext={showNext}
+            onPrevRequest={handlers.handlePrevRequest}
+            onNextRequest={handlers.handleNextRequest}
+            onPlayRequest={handlers.handlePlayRequest}
+            onPauseRequest={handlers.handlePauseRequest}
+            onMuteRequest={handlers.handleMuteRequest}
+            onUnmuteRequest={handlers.handleUnmuteRequest}
+            onVolumeRequest={handlers.handleVolumeRequest}
+            captions={state.captions}
+            activeCaption={state.activeCaption}
+            fullscreen={state.fullscreen}
+            onCaptionToggle={skin.captionToggle}
+            qualityOptions={derived.qualityOptions}
+            captionStyle={derived.captionStyle}
+            language={state.language}
+            adMode={derived.adPresent}
+            live={state.live}
+            showCast={derived.showCast}
+            castState={derived.castState}
+            onCastClick={skin.handleCastClick}
+            onRateRequest={handlers.handleRateRequest}
+            onQualityRequest={handlers.handleQualityRequest}
+            onCaptionRequest={handlers.handleCaptionRequest}
+            onCaptionStyleRequest={handlers.handleCaptionStyleRequest}
+            onEnterFullscreenRequest={handlers.handleEnterFullscreenRequest}
+            onExitFullscreenRequest={handlers.handleExitFullscreenRequest}
+          />
+        </div>
+      )}
     </PlayerstackMediaController>
   );
 };

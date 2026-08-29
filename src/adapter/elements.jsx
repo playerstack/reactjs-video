@@ -84,3 +84,4 @@ export const PlayerstackNavButtons = PlayerstackElements.PlayerstackNavButtons;
 export const PlayerstackMobileSettings = PlayerstackElements.PlayerstackMobileSettings;
 export const PlayerstackSpritePreview = PlayerstackElements.PlayerstackSpritePreview;
 export const PlayerstackLiveAd = PlayerstackElements.PlayerstackLiveAd;
+export const PlayerstackTitle = PlayerstackElements.PlayerstackTitle;

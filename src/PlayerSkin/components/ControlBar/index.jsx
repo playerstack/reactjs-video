@@ -13,9 +13,18 @@ import PropTypes from 'prop-types';
  * left cluster and the right cluster content as the two `children`, in order:
  * `[<ControlBarLeft />, <ControlsExtra />]`.
  *
+ * Presence gating (Req 8.3/8.4): the whole bar is the `BottomBar` composable part. It renders
+ * IF AND ONLY IF `BottomBar` ∈ `composition.parts` (O(1) `Set.has`). `BottomBar` is part of
+ * `DEFAULT_COMPOSITION`, so a default `<Player>` still shows the bar; a composition that omits
+ * `<BottomBar>` drops the entire row.
+ *
  * Presentational only: no state, no effects, no callbacks.
  */
-const ControlBar = ({ children }) => {
+const ControlBar = ({ parts, children }) => {
+  if (!parts.has('BottomBar')) {
+    return null;
+  }
+
   const [left, right] = Array.isArray(children) ? children : [children, null];
 
   return (
@@ -30,6 +39,8 @@ const ControlBar = ({ children }) => {
 };
 
 ControlBar.propTypes = {
+  // Composition presence set from the manifest (`skin.composition.parts`); O(1) `Set.has` gating.
+  parts: PropTypes.instanceOf(Set).isRequired,
   children: PropTypes.node,
 };
 

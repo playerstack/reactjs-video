@@ -18,8 +18,14 @@ module.exports = (request, options) => {
     const importer = options.basedir || '';
     const resolveRoot = importer.replace(/\\/g, '/').includes('/web-core/src') ? coreSrcDir : srcDir;
 
-    // Map @typings/ to types/ directory
-    const mappedPath = stripped.startsWith('typings/') ? 'types/' + stripped.slice('typings/'.length) : stripped;
+    // Map @typings/ to types/ directory, and @root/ to the src root (e.g. @root/engine ->
+    // src/engine). @compound/ resolves to src/compound via the generic src-relative rule (sugar over @).
+    let mappedPath = stripped;
+    if (stripped.startsWith('typings/')) {
+      mappedPath = 'types/' + stripped.slice('typings/'.length);
+    } else if (stripped === 'root' || stripped.startsWith('root/')) {
+      mappedPath = stripped.slice('root'.length).replace(/^\//, '');
+    }
     const candidate = path.resolve(resolveRoot, mappedPath);
     const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 

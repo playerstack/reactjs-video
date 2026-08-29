@@ -76,7 +76,13 @@ export async function build(positionals, args) {
         // Skip npm scoped packages
         if (resolveArgs.path.startsWith('@playerstack/')) return null;
         const stripped = resolveArgs.path.slice(1);
-        const candidate = path.resolve(srcRoot, stripped);
+        // `@root/` resolves to the src root (e.g. `@root/engine` -> `src/engine`); `@compound/`
+        // resolves to `src/compound` via the generic src-relative rule below (sugar over `@`).
+        const mappedPath =
+          stripped === 'root' || stripped.startsWith('root/')
+            ? stripped.slice('root'.length).replace(/^\//, '')
+            : stripped;
+        const candidate = path.resolve(srcRoot, mappedPath);
         const extensions = ['.js', '.jsx', '.ts', '.tsx', '.json'];
         if (fs.existsSync(candidate) && fs.statSync(candidate).isFile()) {
           return { path: candidate };
