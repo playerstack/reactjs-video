@@ -75,9 +75,15 @@ export function collectConfig(name, props, config) {
     case 'NextButton':
       assignIfPresent(config, 'onNext', props.onClick);
       break;
+    case 'Volume':
+      // `<Volume orientation="vertical">` forces the vertical (open-upward) slider anywhere it is
+      // placed — not just inside a sidebar. Collected so the layout can hand it to the element's
+      // `orientation` attribute; absent → the layout's per-container default applies.
+      assignIfPresent(config, 'volumeOrientation', props.orientation);
+      break;
     default:
-      // Parts without content props (PlayButton, Volume, PlayOverlay, Fullscreen, Settings,
-      // Cast, ControlBar, Captions.Toggle, …) contribute nothing to `config`.
+      // Parts without content props (PlayButton, PlayOverlay, Fullscreen, Settings, Cast,
+      // ControlBar, Captions.Toggle, …) contribute nothing to `config`.
       break;
   }
 

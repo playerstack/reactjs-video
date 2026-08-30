@@ -48,6 +48,7 @@ const EMPTY_SET = new Set();
 const ControlBarLeft = ({
   parts,
   keepVisibleParts = EMPTY_SET,
+  volumeOrientation = 'horizontal',
   title,
   showPrev,
   showNext,
@@ -109,6 +110,7 @@ const ControlBarLeft = ({
       )}
       {has('Volume') && (
         <PlayerstackVolume
+          orientation={volumeOrientation === 'vertical' ? 'vertical' : undefined}
           onMuteRequest={onMuteRequest}
           onUnmuteRequest={onUnmuteRequest}
           onVolumeRequest={onVolumeRequest}
@@ -173,6 +175,8 @@ ControlBarLeft.propTypes = {
   onMuteRequest: PropTypes.func,
   onUnmuteRequest: PropTypes.func,
   onVolumeRequest: PropTypes.func,
+  // Volume slider axis: `vertical` forces the open-upward slider (from `<Volume orientation>`).
+  volumeOrientation: PropTypes.oneOf(['horizontal', 'vertical']),
   showChapters: PropTypes.bool,
   chapters: PropTypes.array,
   liveIndicator: PropTypes.bool,

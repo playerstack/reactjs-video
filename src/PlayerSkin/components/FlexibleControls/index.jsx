@@ -111,7 +111,7 @@ const FlexibleControls = ({
       )}
       {has('Volume') && (
         <PlayerstackVolume
-          orientation={volumeOrientation}
+          orientation={volumeOrientation === 'vertical' ? 'vertical' : undefined}
           onMuteRequest={onMuteRequest}
           onUnmuteRequest={onUnmuteRequest}
           onVolumeRequest={onVolumeRequest}

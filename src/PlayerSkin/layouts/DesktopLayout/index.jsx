@@ -178,6 +178,7 @@ const DesktopLayout = ({ skin, controllerRef }) => {
         <ControlBarLeft
           parts={dparts}
           keepVisibleParts={keepVisibleParts}
+          volumeOrientation={config.volumeOrientation}
           title={titleText}
           showPrev={showPrev}
           showNext={showNext}
@@ -232,6 +233,7 @@ const DesktopLayout = ({ skin, controllerRef }) => {
           <FlexibleControls
             containerParts={new Set(containers.TopBar)}
             keepVisibleParts={keepVisibleParts}
+            volumeOrientation={config.volumeOrientation}
             title={titleText}
             showPrev={showPrev}
             showNext={showNext}

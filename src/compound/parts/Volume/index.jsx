@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { PART_NAME } from '@compound/parts/partName';
 
 /**
@@ -12,4 +14,8 @@ export function Volume() {
 
 Volume[PART_NAME] = 'Volume';
 Volume.displayName = 'Volume';
-Volume.propTypes = {};
+Volume.propTypes = {
+  // `vertical` forces the open-upward vertical slider anywhere (default: horizontal in the bottom
+  // bar, vertical in sidebars). Maps to the `playerstack-volume` element's `orientation` attribute.
+  orientation: PropTypes.oneOf(['horizontal', 'vertical']),
+};
