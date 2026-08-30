@@ -9,6 +9,9 @@ import { BottomBar } from '@compound/parts/BottomBar';
 import { TopBar } from '@compound/parts/TopBar';
 import { SidebarLeft } from '@compound/parts/SidebarLeft';
 import { SidebarRight } from '@compound/parts/SidebarRight';
+import { DesktopUI } from '@compound/parts/DesktopUI';
+import { MobileUI } from '@compound/parts/MobileUI';
+import { CenterControls } from '@compound/parts/CenterControls';
 import { PrevButton } from '@compound/parts/PrevButton';
 import { NextButton } from '@compound/parts/NextButton';
 import { PlayButton } from '@compound/parts/PlayButton';
@@ -35,6 +38,9 @@ const parts = [
   [TopBar, 'TopBar'],
   [SidebarLeft, 'SidebarLeft'],
   [SidebarRight, 'SidebarRight'],
+  [DesktopUI, 'DesktopUI'],
+  [MobileUI, 'MobileUI'],
+  [CenterControls, 'CenterControls'],
   [PrevButton, 'PrevButton'],
   [NextButton, 'NextButton'],
   [PlayButton, 'PlayButton'],
@@ -81,7 +87,7 @@ describe('composable part markers', () => {
   });
 
   test('covers the full set of composable markers', () => {
-    expect(parts).toHaveLength(21);
+    expect(parts).toHaveLength(24);
   });
 
   test('Captions.Toggle is the static sub-composable named "CaptionsToggle"', () => {
@@ -105,5 +111,17 @@ describe('composable part markers', () => {
 
   test('SidebarRight declares container === true', () => {
     expect(SidebarRight.container).toBe(true);
+  });
+
+  test('DesktopUI declares container === true', () => {
+    expect(DesktopUI.container).toBe(true);
+  });
+
+  test('MobileUI declares container === true', () => {
+    expect(MobileUI.container).toBe(true);
+  });
+
+  test('CenterControls declares container === true', () => {
+    expect(CenterControls.container).toBe(true);
   });
 });

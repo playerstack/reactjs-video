@@ -28,6 +28,7 @@ export default function ProgressSlider({
   parts,
   variant,
   showTimeSlider,
+  keepVisible,
   spriteVTTFile,
   adapter,
   chapters,
@@ -42,6 +43,10 @@ export default function ProgressSlider({
   if (!parts.has('Timeline') || !showTimeSlider) {
     return null;
   }
+
+  // Req 17: reflect `data-keep-visible` on the time-slider element so the Style_Layer keeps it
+  // on screen when auto-hide fades the chrome. Omitted (undefined) when not opted out.
+  const keepAttr = keepVisible ? '' : undefined;
 
   // In live-DVR the timeline maps the seekable WINDOW and shows the negative live offset; chapters
   // + heatmap are suppressed there (parity with the original live-DVR TimeSlider `chapters={[]}`
@@ -66,6 +71,7 @@ export default function ProgressSlider({
         adMode={adModeProp}
         live={!!live}
         buffer-mode={bufferMode || 'fragmented'}
+        data-keep-visible={keepAttr}
         onSeekRequest={onSeekRequest}
         onScrubbingRequest={onScrubbingRequest}
         onPlayRequest={onPlayRequest}
@@ -80,6 +86,7 @@ export default function ProgressSlider({
       adMode={adModeProp}
       live={!!live}
       buffer-mode={bufferMode || 'fragmented'}
+      data-keep-visible={keepAttr}
       onSeekRequest={onSeekRequest}
       onScrubbingRequest={onScrubbingRequest}
       onPlayRequest={onPlayRequest}
@@ -92,6 +99,8 @@ ProgressSlider.propTypes = {
   parts: PropTypes.instanceOf(Set).isRequired,
   variant: PropTypes.oneOf(['desktop', 'mobile']).isRequired,
   showTimeSlider: PropTypes.bool,
+  // Req 17: keep the timeline visible while playing (opt out of auto-hide).
+  keepVisible: PropTypes.bool,
   spriteVTTFile: PropTypes.string,
   adapter: PropTypes.object,
   chapters: PropTypes.array,

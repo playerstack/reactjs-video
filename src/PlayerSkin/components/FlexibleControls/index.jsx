@@ -18,6 +18,9 @@ import {
   PlayerstackIcon,
 } from '@adapter/elements';
 
+// Stable empty-set default so `keepVisibleParts` is always a Set (no per-render allocation).
+const EMPTY_SET = new Set();
+
 /**
  * `FlexibleControls` renders any subset of composable controls in their canonical order.
  * Used by TopBar, SidebarLeft, and SidebarRight containers — each receives a `containerParts`
@@ -34,6 +37,11 @@ import {
  */
 const FlexibleControls = ({
   containerParts,
+  // Req 17: parts explicitly marked `keepVisible` — reflected as `data-keep-visible` per element.
+  keepVisibleParts = EMPTY_SET,
+  // Volume slider axis for THIS container: `vertical` in sidebars (native vertical drag),
+  // `horizontal` (default) in the top bar. Passed straight to `playerstack-volume`'s `orientation`.
+  volumeOrientation = 'horizontal',
   // Handlers and state from the skin bundle (same as ControlBarLeft + ControlsExtra):
   title,
   showPrev,
@@ -65,6 +73,8 @@ const FlexibleControls = ({
   onExitFullscreenRequest,
 }) => {
   const has = (name) => containerParts.has(name);
+  // Req 17: per-element `data-keep-visible` value (`''` to opt out of auto-hide, else undefined).
+  const keep = (name) => (keepVisibleParts.has(name) ? '' : undefined);
 
   return (
     <>
@@ -74,18 +84,26 @@ const FlexibleControls = ({
           className="playerstack-prev-button"
           part="prev-button"
           aria-label="Previous"
+          data-keep-visible={keep('PrevButton')}
           onClick={onPrevRequest}
         >
           <PlayerstackIcon icon={previousTrackIcon} width={36} height={36} />
         </button>
       )}
-      {has('PlayButton') && <PlayerstackPlayButton onPlayRequest={onPlayRequest} onPauseRequest={onPauseRequest} />}
+      {has('PlayButton') && (
+        <PlayerstackPlayButton
+          onPlayRequest={onPlayRequest}
+          onPauseRequest={onPauseRequest}
+          data-keep-visible={keep('PlayButton')}
+        />
+      )}
       {has('NextButton') && showNext && (
         <button
           type="button"
           className="playerstack-next-button"
           part="next-button"
           aria-label="Next"
+          data-keep-visible={keep('NextButton')}
           onClick={onNextRequest}
         >
           <PlayerstackIcon icon={nextTrackIcon} width={36} height={36} />
@@ -93,13 +111,15 @@ const FlexibleControls = ({
       )}
       {has('Volume') && (
         <PlayerstackVolume
+          orientation={volumeOrientation}
           onMuteRequest={onMuteRequest}
           onUnmuteRequest={onUnmuteRequest}
           onVolumeRequest={onVolumeRequest}
+          data-keep-visible={keep('Volume')}
         />
       )}
-      {has('PlayTime') && <PlayerstackPlayTime live={!!live} liveDVR={false} />}
-      {has('Title') && title && <PlayerstackTitle title={title} />}
+      {has('PlayTime') && <PlayerstackPlayTime live={!!live} liveDVR={false} data-keep-visible={keep('PlayTime')} />}
+      {has('Title') && title && <PlayerstackTitle title={title} data-keep-visible={keep('Title')} />}
       {has('CaptionsToggle') && captions && captions.length > 0 && (
         <button
           type="button"
@@ -108,6 +128,7 @@ const FlexibleControls = ({
           aria-label="Captions"
           aria-pressed={activeCaption ? 'true' : 'false'}
           data-active={activeCaption ? 'true' : 'false'}
+          data-keep-visible={keep('CaptionsToggle')}
           onClick={onCaptionToggle}
         >
           <PlayerstackIcon
@@ -126,6 +147,7 @@ const FlexibleControls = ({
           i18n={language ? { language } : null}
           adMode={adMode}
           live={live}
+          data-keep-visible={keep('Settings')}
           onRateRequest={onRateRequest}
           onQualityRequest={onQualityRequest}
           onCaptionRequest={onCaptionRequest}
@@ -138,6 +160,7 @@ const FlexibleControls = ({
           className="playerstack-cast-button"
           part="cast-button"
           aria-label="Google Cast"
+          data-keep-visible={keep('Cast')}
           onClick={onCastClick}
           style={{ opacity: castState === 'connected' ? 1 : 0.8 }}
         >
@@ -148,6 +171,7 @@ const FlexibleControls = ({
         <PlayerstackFullscreenButton
           onEnterFullscreenRequest={onEnterFullscreenRequest}
           onExitFullscreenRequest={onExitFullscreenRequest}
+          data-keep-visible={keep('Fullscreen')}
         />
       )}
     </>
@@ -156,6 +180,8 @@ const FlexibleControls = ({
 
 FlexibleControls.propTypes = {
   containerParts: PropTypes.instanceOf(Set).isRequired,
+  keepVisibleParts: PropTypes.instanceOf(Set),
+  volumeOrientation: PropTypes.oneOf(['horizontal', 'vertical']),
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   showPrev: PropTypes.bool,
   showNext: PropTypes.bool,

@@ -62,7 +62,11 @@ export function createReactElement(binding) {
       const value = rest[key];
       if (eventPropNames.has(key)) {
         callbackProps[key] = value;
-      } else if (attributeSet.has(key)) {
+      } else if (attributeSet.has(key) || key.startsWith('data-')) {
+        // Declared attributes AND any `data-*` prop reflect as HTML attributes. `data-*` are
+        // always DOM attributes (never JS properties), so routing them here lets the skin set
+        // presentational hooks like `data-keep-visible` on any element without listing every
+        // one in `UI_ELEMENT_BINDINGS` (the CSS Style_Layer keys off these attributes).
         attributeProps[key] = value;
       } else {
         propertyProps[key] = value;

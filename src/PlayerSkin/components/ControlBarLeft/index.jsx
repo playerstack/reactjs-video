@@ -12,6 +12,9 @@ import {
 } from '@adapter/elements';
 import LiveIndicatorSlot from '@PlayerSkin/components/LiveIndicatorSlot';
 
+// Stable empty-set default so `keepVisibleParts` is always a Set (no per-render allocation).
+const EMPTY_SET = new Set();
+
 /**
  * `ControlBarLeft` is the desktop left control cluster (parity with the monolith's
  * `.playerstack-controls-left`): transport + volume + time read-out, pinned to the left,
@@ -44,6 +47,7 @@ import LiveIndicatorSlot from '@PlayerSkin/components/LiveIndicatorSlot';
  */
 const ControlBarLeft = ({
   parts,
+  keepVisibleParts = EMPTY_SET,
   title,
   showPrev,
   showNext,
@@ -63,6 +67,8 @@ const ControlBarLeft = ({
   onLiveEdgeRequest,
 }) => {
   const has = (name) => parts.has(name);
+  // Req 17: per-element `data-keep-visible` value (`''` to opt out of auto-hide, else undefined).
+  const keep = (name) => (keepVisibleParts.has(name) ? '' : undefined);
 
   return (
     <div className="playerstack-controls-left">
@@ -74,12 +80,19 @@ const ControlBarLeft = ({
           className="playerstack-prev-button"
           part="prev-button"
           aria-label="Previous"
+          data-keep-visible={keep('PrevButton')}
           onClick={onPrevRequest}
         >
           <PlayerstackIcon icon={previousTrackIcon} width={36} height={36} />
         </button>
       )}
-      {has('PlayButton') && <PlayerstackPlayButton onPlayRequest={onPlayRequest} onPauseRequest={onPauseRequest} />}
+      {has('PlayButton') && (
+        <PlayerstackPlayButton
+          onPlayRequest={onPlayRequest}
+          onPauseRequest={onPauseRequest}
+          data-keep-visible={keep('PlayButton')}
+        />
+      )}
       {/* Next button — canonical order 65 (after PlayButton 60). Renders only when `NextButton`
           ∈ composition AND it has an `onClick` handler (`showNext`). */}
       {has('NextButton') && showNext && (
@@ -88,6 +101,7 @@ const ControlBarLeft = ({
           className="playerstack-next-button"
           part="next-button"
           aria-label="Next"
+          data-keep-visible={keep('NextButton')}
           onClick={onNextRequest}
         >
           <PlayerstackIcon icon={nextTrackIcon} width={36} height={36} />
@@ -98,6 +112,7 @@ const ControlBarLeft = ({
           onMuteRequest={onMuteRequest}
           onUnmuteRequest={onUnmuteRequest}
           onVolumeRequest={onVolumeRequest}
+          data-keep-visible={keep('Volume')}
         />
       )}
       {/* Live read-out (parity with the monolith PlayTime `live` branch), gated on the UNIFIED live
@@ -105,14 +120,16 @@ const ControlBarLeft = ({
         (no `00:00` next to the LIVE badge, like YouTube); behind the edge in DVR it shows the
         negative offset and hides `/ duration`. The LIVE badge itself is the separate
         live-indicator rendered next. */}
-      {has('PlayTime') && <PlayerstackPlayTime live={!!liveIndicator} liveDVR={!!liveDVR} />}
+      {has('PlayTime') && (
+        <PlayerstackPlayTime live={!!liveIndicator} liveDVR={!!liveDVR} data-keep-visible={keep('PlayTime')} />
+      )}
       {/* Media title read-out (canonical order 90) — renders right after PlayTime (80) and before
         the timeline region. Gated on BOTH `Title` ∈ composition AND a non-empty title text: the
         text arrives pre-normalized as `skin.composition.config.title` (collectConfig only sets it
         for non-empty content, per Req 10.4), so `title` is either a non-empty string or absent.
         When it is empty/absent the element is omitted with no effect on the rest of the cluster
         (Req 10.5). The `title` value maps to the element's `title` attribute via the binding. */}
-      {has('Title') && title && <PlayerstackTitle title={title} />}
+      {has('Title') && title && <PlayerstackTitle title={title} data-keep-visible={keep('Title')} />}
       {/* LIVE badge (dot + "Live" + offset, click-to-live). INLINE in the control bar right after
         the time read-out — parity with the monolith, where the LIVE badge lived inside PlayTime
         in the left control cluster (NOT an absolute stage corner). Gated on `liveIndicator` (the
@@ -139,6 +156,8 @@ const ControlBarLeft = ({
 ControlBarLeft.propTypes = {
   // Composition presence set from the manifest (`skin.composition.parts`); O(1) `Set.has` gating.
   parts: PropTypes.instanceOf(Set).isRequired,
+  // Req 17: parts explicitly marked `keepVisible` — reflected as `data-keep-visible` per element.
+  keepVisibleParts: PropTypes.instanceOf(Set),
   // Media title text from `skin.composition.config.title` (collected by `collectConfig` from
   // `<Title>text</Title>`; only present when non-empty). Rendered via `playerstack-title` when
   // `Title` ∈ composition. A number is accepted too (collectConfig keeps non-string nodes as-is).

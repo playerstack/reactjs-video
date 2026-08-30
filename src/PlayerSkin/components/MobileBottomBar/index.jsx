@@ -5,6 +5,9 @@ import { PlayerstackPlayTime, PlayerstackFullscreenButton } from '@adapter/eleme
 import LiveIndicatorSlot from '@PlayerSkin/components/LiveIndicatorSlot';
 import ProgressSlider from '@PlayerSkin/components/ProgressSlider';
 
+// Stable empty-set default so `keepVisibleParts` is always a Set.
+const EMPTY_SET = new Set();
+
 /**
  * `MobileBottomBar` is the mobile single-row bottom bar (parity with the monolith's
  * `.playerstack-mobile-bottom-bar`): time · (live badge | progress) · fullscreen.
@@ -30,6 +33,8 @@ import ProgressSlider from '@PlayerSkin/components/ProgressSlider';
  */
 export default function MobileBottomBar({
   parts,
+  keepVisible,
+  keepVisibleParts = EMPTY_SET,
   live,
   liveDVR,
   dvrActive,
@@ -48,14 +53,22 @@ export default function MobileBottomBar({
   onExitFullscreenRequest,
 }) {
   const has = (name) => parts.has(name);
+  // Req 17: per-element `data-keep-visible` value (`''` opts out of auto-hide, else undefined).
+  const keep = (name) => (keepVisibleParts.has(name) ? '' : undefined);
 
   return (
-    <div className="playerstack-mobile-bottom-bar" part="mobile-bottom-bar">
+    <div
+      className="playerstack-mobile-bottom-bar"
+      part="mobile-bottom-bar"
+      data-keep-visible={keepVisible ? '' : undefined}
+    >
       {/* Read-out + LIVE badge gate on the UNIFIED `live`: on ANY live stream at the edge the
           read-out shows NOTHING (no `00:00`, like YouTube). The negative offset + grey badge gate
           on `dvrActive` (a SYNCED DVR window), NOT the raw `liveDVR` — so no bogus offset flashes
           from the pre-ready transient on first load. The DVR-window slider uses raw `liveDVR`. */}
-      {has('PlayTime') && <PlayerstackPlayTime live={!!live} liveDVR={!!dvrActive} />}
+      {has('PlayTime') && (
+        <PlayerstackPlayTime live={!!live} liveDVR={!!dvrActive} data-keep-visible={keep('PlayTime')} />
+      )}
       <LiveIndicatorSlot
         live={live}
         pureLive={live && !dvrActive}
@@ -67,6 +80,7 @@ export default function MobileBottomBar({
         parts={parts}
         variant="mobile"
         showTimeSlider={showTimeSlider}
+        keepVisible={keepVisibleParts.has('Timeline')}
         chapters={chapters}
         heatmapData={heatmapData}
         adPresent={adPresent}
@@ -80,6 +94,7 @@ export default function MobileBottomBar({
         <PlayerstackFullscreenButton
           onEnterFullscreenRequest={onEnterFullscreenRequest}
           onExitFullscreenRequest={onExitFullscreenRequest}
+          data-keep-visible={keep('Fullscreen')}
         />
       )}
     </div>
@@ -89,6 +104,10 @@ export default function MobileBottomBar({
 MobileBottomBar.propTypes = {
   // Composition presence set from the manifest (`skin.composition.parts`); O(1) `Set.has` gating.
   parts: PropTypes.instanceOf(Set).isRequired,
+  // Req 17: keep the whole bottom bar visible while playing.
+  keepVisible: PropTypes.bool,
+  // Req 17: parts opted out of auto-hide — reflected per element.
+  keepVisibleParts: PropTypes.instanceOf(Set),
   live: PropTypes.bool,
   liveDVR: PropTypes.bool,
   dvrActive: PropTypes.bool,

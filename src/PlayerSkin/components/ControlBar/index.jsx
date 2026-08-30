@@ -20,7 +20,7 @@ import PropTypes from 'prop-types';
  *
  * Presentational only: no state, no effects, no callbacks.
  */
-const ControlBar = ({ parts, children }) => {
+const ControlBar = ({ parts, keepVisible, children }) => {
   if (!parts.has('BottomBar')) {
     return null;
   }
@@ -28,7 +28,8 @@ const ControlBar = ({ parts, children }) => {
   const [left, right] = Array.isArray(children) ? children : [children, null];
 
   return (
-    <div className="playerstack-controls">
+    // Req 17: `data-keep-visible` opts this bar out of the auto-hide fade (Style_Layer override).
+    <div className="playerstack-controls" data-keep-visible={keepVisible ? '' : undefined}>
       {/* Left cluster: transport + volume + time read-out (pinned to the left, matching
           the previous skin's ControlBar layout). */}
       {left}
@@ -41,6 +42,8 @@ const ControlBar = ({ parts, children }) => {
 ControlBar.propTypes = {
   // Composition presence set from the manifest (`skin.composition.parts`); O(1) `Set.has` gating.
   parts: PropTypes.instanceOf(Set).isRequired,
+  // Req 17: keep the whole bar visible while playing (opt out of auto-hide).
+  keepVisible: PropTypes.bool,
   children: PropTypes.node,
 };
 

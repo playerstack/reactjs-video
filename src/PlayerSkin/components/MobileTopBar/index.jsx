@@ -5,6 +5,9 @@ import { castIcon, captionsIcon, captionsActiveIcon } from '@playerstack/web-cor
 
 import { PlayerstackIcon } from '@adapter/elements';
 
+// Stable empty-set default so `keepVisibleParts` is always a Set.
+const EMPTY_SET = new Set();
+
 /**
  * `MobileTopBar` is the mobile top-right cluster (parity with the monolith's
  * `.playerstack-mobile-top-bar`): a captions quick-toggle + a cast (transmit) button + a
@@ -30,6 +33,8 @@ import { PlayerstackIcon } from '@adapter/elements';
  */
 export default function MobileTopBar({
   parts,
+  keepVisible,
+  keepVisibleParts = EMPTY_SET,
   hasCaptions,
   showCast,
   hideSettings,
@@ -40,6 +45,8 @@ export default function MobileTopBar({
   onOpenSettings,
 }) {
   const has = (name) => parts.has(name);
+  // Req 17: per-element `data-keep-visible` value (`''` opts out of auto-hide, else undefined).
+  const keep = (name) => (keepVisibleParts.has(name) ? '' : undefined);
   // Composition-aware button visibility: the feature condition AND the composable's presence.
   const showCaptionsToggle = hasCaptions && has('CaptionsToggle');
   const showCastButton = showCast && has('Cast');
@@ -51,9 +58,14 @@ export default function MobileTopBar({
   }
 
   return (
-    <div className="playerstack-mobile-top-bar" part="mobile-top-bar">
+    <div className="playerstack-mobile-top-bar" part="mobile-top-bar" data-keep-visible={keepVisible ? '' : undefined}>
       {showCaptionsToggle && (
-        <button type="button" aria-label="Captions" onClick={onCaptionToggle}>
+        <button
+          type="button"
+          aria-label="Captions"
+          data-keep-visible={keep('CaptionsToggle')}
+          onClick={onCaptionToggle}
+        >
           <PlayerstackIcon icon={activeCaption ? captionsActiveIcon : captionsIcon} width="24" height="24" />
         </button>
       )}
@@ -61,6 +73,7 @@ export default function MobileTopBar({
         <button
           type="button"
           aria-label="Google Cast"
+          data-keep-visible={keep('Cast')}
           onClick={onCastClick}
           style={{ opacity: castState === 'connected' ? 1 : 0.7 }}
         >
@@ -68,7 +81,7 @@ export default function MobileTopBar({
         </button>
       )}
       {showSettingsGear && (
-        <button type="button" aria-label="Settings" onClick={onOpenSettings}>
+        <button type="button" aria-label="Settings" data-keep-visible={keep('Settings')} onClick={onOpenSettings}>
           <PlayerstackIcon icon={mobileSettingsGearIcon} width="24" height="24" />
         </button>
       )}
@@ -79,6 +92,10 @@ export default function MobileTopBar({
 MobileTopBar.propTypes = {
   // Composition presence set from the manifest (`skin.composition.parts`); O(1) `Set.has` gating.
   parts: PropTypes.instanceOf(Set).isRequired,
+  // Req 17: keep the whole top bar visible while playing.
+  keepVisible: PropTypes.bool,
+  // Req 17: parts explicitly opted out of auto-hide — reflected per element.
+  keepVisibleParts: PropTypes.instanceOf(Set),
   hasCaptions: PropTypes.bool,
   showCast: PropTypes.bool,
   hideSettings: PropTypes.bool,

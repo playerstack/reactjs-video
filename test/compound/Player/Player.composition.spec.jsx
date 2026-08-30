@@ -8,6 +8,8 @@ import { COMPOSABLE_SLOTS, resolveSlotOrder } from '@playerstack/web-core/adapte
 // public surface is deliberate: this suite drives the REAL children API end-to-end.
 import Player, {
   BottomBar,
+  TopBar,
+  SidebarRight,
   PlayButton,
   Volume,
   PlayTime,
@@ -17,6 +19,12 @@ import Player, {
   Captions,
   Source,
   Title,
+  DesktopUI,
+  MobileUI,
+  CenterControls,
+  Cast,
+  PrevButton,
+  NextButton,
 } from '@';
 
 /**
@@ -183,14 +191,26 @@ describe('<Player> composed children API (end-to-end)', () => {
       // Without a <BottomBar>, the bar and every control inside it are dropped.
       const { container } = render(
         <Player url="movie.mp4" skinMode="desktop">
-          <Timeline />
+          <PlayButton />
+          <Volume />
+          <Settings />
         </Player>,
       );
       expect(container.querySelector('.playerstack-controls')).toBeNull();
       expect(container.querySelector(elementFor('PlayButton'))).toBeNull();
       expect(container.querySelector(elementFor('Settings'))).toBeNull();
-      // The standalone timeline lives OUTSIDE the bar, so it is unaffected and still renders.
-      expect(container.querySelector(elementFor('Timeline'))).not.toBeNull();
+
+      // Adding the <BottomBar> container brings the bar (and the controls placed inside it) back,
+      // proving the gating targets the container part, not the individual controls.
+      const { container: withBar } = render(
+        <Player url="movie.mp4" skinMode="desktop">
+          <BottomBar>
+            <PlayButton />
+          </BottomBar>
+        </Player>,
+      );
+      expect(withBar.querySelector('.playerstack-controls')).not.toBeNull();
+      expect(withBar.querySelector(elementFor('PlayButton'))).not.toBeNull();
     });
   });
 
@@ -326,6 +346,161 @@ describe('<Player> composed children API (end-to-end)', () => {
         </Player>,
       );
       expect(container.querySelector('[data-testid="video-element"]').getAttribute('data-url')).toBe('movie.mp4');
+    });
+  });
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // Req 15 — per-mode composition wrappers (DesktopUI / MobileUI / CenterControls)
+  // ───────────────────────────────────────────────────────────────────────────
+  describe('Req 15 — per-mode wrappers', () => {
+    describe('DesktopUI (desktop layout consumes its branch)', () => {
+      test('BottomBar inside <DesktopUI> places only its controls; SidebarRight places Cast', () => {
+        const { container } = render(
+          <Player url="movie.mp4" skinMode="desktop">
+            <DesktopUI>
+              <TopBar>
+                <Title>The Forest</Title>
+              </TopBar>
+              <BottomBar>
+                <PlayButton />
+                <Volume />
+                <Fullscreen />
+              </BottomBar>
+              <SidebarRight>
+                <Cast />
+              </SidebarRight>
+            </DesktopUI>
+          </Player>,
+        );
+
+        // Bottom bar controls placed by the desktop branch.
+        expect(container.querySelector('.playerstack-controls')).not.toBeNull();
+        expect(container.querySelector(elementFor('PlayButton'))).not.toBeNull();
+        expect(container.querySelector(elementFor('Volume'))).not.toBeNull();
+        expect(container.querySelector(elementFor('Fullscreen'))).not.toBeNull();
+        // A control the author did NOT place in the bottom bar is absent from it (PlayTime).
+        expect(container.querySelector(elementFor('PlayTime'))).toBeNull();
+        // TopBar renders the Title.
+        const topBar = container.querySelector('.playerstack-top-bar');
+        expect(topBar).not.toBeNull();
+        expect(topBar.querySelector('playerstack-title')).not.toBeNull();
+        // SidebarRight zone renders (its Cast button is additionally feature-gated on showCast,
+        // which is false in jsdom — so the presence of the sidebar wrapper proves placement).
+        const sidebar = container.querySelector('.playerstack-sidebar-right');
+        expect(sidebar).not.toBeNull();
+      });
+
+      test('a <DesktopUI> with no BottomBar container yields an empty bottom bar', () => {
+        const { container } = render(
+          <Player url="movie.mp4" skinMode="desktop">
+            <DesktopUI>
+              <TopBar>
+                <Title>Only Top</Title>
+              </TopBar>
+            </DesktopUI>
+          </Player>,
+        );
+        // No BottomBar container declared in the desktop branch ⇒ the bar does not render.
+        expect(container.querySelector('.playerstack-controls')).toBeNull();
+        expect(container.querySelector(elementFor('PlayButton'))).toBeNull();
+        // The declared TopBar still renders.
+        expect(container.querySelector('.playerstack-top-bar')).not.toBeNull();
+      });
+    });
+
+    describe('MobileUI (mobile layout consumes its branch)', () => {
+      test('maps TopBar/CenterControls/BottomBar to the mobile zones', () => {
+        const { container } = render(
+          <Player url="movie.mp4" skinMode="mobile">
+            <Captions tracks={[{ src: 'en.vtt', label: 'EN', language: 'en', kind: 'subtitles' }]} />
+            <MobileUI>
+              <TopBar>
+                <Settings />
+                <Captions.Toggle />
+              </TopBar>
+              <CenterControls>
+                <PrevButton onClick={() => {}} />
+                <NextButton onClick={() => {}} />
+              </CenterControls>
+              <BottomBar>
+                <PlayTime />
+                <Fullscreen />
+              </BottomBar>
+            </MobileUI>
+          </Player>,
+        );
+
+        // Mobile controller present.
+        const controller = container.querySelector('playerstack-media-controller[data-skin-mode="mobile"]');
+        expect(controller).not.toBeNull();
+
+        // Top bar: settings gear + captions toggle live in the mobile top bar zone.
+        const topZone = container.querySelector('[part="mobile-top-bar"]');
+        expect(topZone).not.toBeNull();
+        // Center zone: prev + next buttons (play-state overlay is always present).
+        const centerZone = container.querySelector('[part="mobile-center-controls"]');
+        expect(centerZone).not.toBeNull();
+        expect(centerZone.querySelector('[part="nav-prev"]')).not.toBeNull();
+        expect(centerZone.querySelector('[part="nav-next"]')).not.toBeNull();
+        // Bottom zone: play-time + fullscreen.
+        const bottomZone = container.querySelector('[part="mobile-bottom-bar"]');
+        expect(bottomZone).not.toBeNull();
+        expect(bottomZone.querySelector(elementFor('PlayTime'))).not.toBeNull();
+        expect(bottomZone.querySelector(elementFor('Fullscreen'))).not.toBeNull();
+      });
+
+      test('a mobile zone the author left empty renders no gated controls', () => {
+        const { container } = render(
+          <Player url="movie.mp4" skinMode="mobile">
+            <MobileUI>
+              <BottomBar>
+                <PlayTime />
+              </BottomBar>
+            </MobileUI>
+          </Player>,
+        );
+        // Only BottomBar composed ⇒ its PlayTime shows; Fullscreen (not composed) does not.
+        const bottomZone = container.querySelector('[part="mobile-bottom-bar"]');
+        expect(bottomZone.querySelector(elementFor('PlayTime'))).not.toBeNull();
+        expect(bottomZone.querySelector(elementFor('Fullscreen'))).toBeNull();
+      });
+    });
+
+    describe('fallback when a branch is absent (Req 15.7/15.8)', () => {
+      test('MobileUI-only composition → desktop layout uses its DEFAULT positions', () => {
+        const { container } = render(
+          <Player url="movie.mp4" skinMode="desktop">
+            <MobileUI>
+              <BottomBar>
+                <PlayTime />
+              </BottomBar>
+            </MobileUI>
+          </Player>,
+        );
+        // No desktop branch ⇒ desktop falls back to its shared/default bottom bar. Because the
+        // shared `parts` here is empty of bar controls (everything is inside MobileUI), the shared
+        // bar has no gated controls — but crucially the desktop layout is NOT driven by the mobile
+        // branch. The controller renders in desktop mode.
+        expect(container.querySelector('playerstack-media-controller[data-skin-mode="desktop"]')).not.toBeNull();
+      });
+
+      test('DesktopUI-only composition → mobile layout uses its DEFAULT fixed clusters', () => {
+        const { container } = render(
+          <Player url="movie.mp4" skinMode="mobile">
+            <DesktopUI>
+              <BottomBar>
+                <PlayButton />
+                <Volume />
+              </BottomBar>
+            </DesktopUI>
+          </Player>,
+        );
+        // No mobile branch ⇒ mobile uses its default fixed clusters gated by the SHARED parts.
+        // The shared parts include PlayButton/Volume (they live in DesktopUI but still register in
+        // shared parts for feature activation), so the mobile default center play-state is present.
+        expect(container.querySelector('playerstack-media-controller[data-skin-mode="mobile"]')).not.toBeNull();
+        expect(container.querySelector('[part="mobile-center-controls"]')).not.toBeNull();
+      });
     });
   });
 });

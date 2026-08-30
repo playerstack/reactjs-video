@@ -13,8 +13,12 @@ import { PlayerstackPlayState, PlayerstackIcon } from '@adapter/elements';
  *
  * Presentational only: no state, no effects, no callbacks of its own.
  */
+const EMPTY_SET = new Set();
+
 export default function MobileCenterControls({
   parts,
+  keepVisible,
+  keepVisibleParts = EMPTY_SET,
   showPrev,
   showNext,
   onPrevRequest,
@@ -22,16 +26,38 @@ export default function MobileCenterControls({
   onPlayRequest,
   onPauseRequest,
 }) {
+  // Req 17: per-element `data-keep-visible` value (`''` opts out of auto-hide, else undefined).
+  const keep = (name) => (keepVisibleParts.has(name) ? '' : undefined);
   return (
-    <div className="playerstack-mobile-center-controls" part="mobile-center-controls">
+    <div
+      className="playerstack-mobile-center-controls"
+      part="mobile-center-controls"
+      data-keep-visible={keepVisible ? '' : undefined}
+    >
       {parts.has('PrevButton') && showPrev && (
-        <button type="button" part="nav-prev" aria-label="Previous" onClick={onPrevRequest}>
+        <button
+          type="button"
+          part="nav-prev"
+          aria-label="Previous"
+          data-keep-visible={keep('PrevButton')}
+          onClick={onPrevRequest}
+        >
           <PlayerstackIcon icon={previousTrackIcon} width={48} height={48} />
         </button>
       )}
-      <PlayerstackPlayState onPlayRequest={onPlayRequest} onPauseRequest={onPauseRequest} />
+      <PlayerstackPlayState
+        onPlayRequest={onPlayRequest}
+        onPauseRequest={onPauseRequest}
+        data-keep-visible={keep('PlayButton')}
+      />
       {parts.has('NextButton') && showNext && (
-        <button type="button" part="nav-next" aria-label="Next" onClick={onNextRequest}>
+        <button
+          type="button"
+          part="nav-next"
+          aria-label="Next"
+          data-keep-visible={keep('NextButton')}
+          onClick={onNextRequest}
+        >
           <PlayerstackIcon icon={nextTrackIcon} width={48} height={48} />
         </button>
       )}
@@ -42,6 +68,10 @@ export default function MobileCenterControls({
 MobileCenterControls.propTypes = {
   // Composition presence set from the manifest (`skin.composition.parts`); O(1) `Set.has` gating.
   parts: PropTypes.instanceOf(Set).isRequired,
+  // Req 17: keep the whole center cluster visible while playing.
+  keepVisible: PropTypes.bool,
+  // Req 17: parts opted out of auto-hide — reflected per element.
+  keepVisibleParts: PropTypes.instanceOf(Set),
   // Per-button nav visibility: true only when the button ∈ composition, has an `onClick`, and no
   // ad is actively playing.
   showPrev: PropTypes.bool,

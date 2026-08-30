@@ -44,8 +44,49 @@ const MobileLayout = ({ skin, controllerRef }) => {
   // its `playerstack-*` element IF AND ONLY IF the part ∈ parts (Req 8.3/8.4). Mobile keeps its
   // own Style_Layer arrangement (design §10). The stage/system overlays below (poster, spinner,
   // prevented-tip, top-state, captions, ad, live-ad, context-menu, double-tap, sprite) stay driven
-  // by ephemeral props and are NOT gated by composition (Req 9.6).
-  const { parts } = skin.composition;
+  // by ephemeral props and are NOT gated by composition (Req 9.6/15.11).
+  const { parts, sharedParts = parts, keepVisibleParts = new Set() } = skin.composition;
+  // Per-mode mobile branch (Req 15.10): when the author wraps a `<MobileUI>`, THIS layout maps
+  // its containers to the mobile zones — `TopBar` → `[part='mobile-top-bar']`, `CenterControls` →
+  // `[part='mobile-center-controls']`, `BottomBar` → `[part='mobile-bottom-bar']`. When absent
+  // (null), the fixed mobile clusters gate on the SHARED `parts` exactly as before (Req 15.7).
+  //
+  // The mobile cluster components already gate each control by `parts.has(name)`, so the cleanest
+  // wiring is to build a per-zone Set from `mob.containers` and hand THAT to each cluster as its
+  // `parts` prop — no cluster changes needed. Absent a container list, the zone gets an empty Set,
+  // so a zone the author left empty renders nothing (its cluster collapses).
+  //
+  // SHARED parts (placed OUTSIDE any mode wrapper) belong to BOTH modes (Req 15.11), so each zone
+  // is the UNION of its `<MobileUI>` container list AND `sharedParts`. This is safe because each
+  // mobile cluster renders ONLY the controls that belong to its fixed zone (top bar →
+  // captions/cast/settings, center → prev/play/next, bottom → time/timeline/fullscreen) — a part
+  // never lands in two zones — so a shared part surfaces in exactly its natural mobile zone.
+  const mob = skin.composition.mobile;
+  const topBarParts = mob ? new Set([...(mob.containers.TopBar || []), ...sharedParts]) : parts;
+  const centerParts = mob ? new Set([...(mob.containers.CenterControls || []), ...sharedParts]) : parts;
+  const bottomParts = mob ? new Set([...(mob.containers.BottomBar || []), ...sharedParts]) : parts;
+
+  // Req 17 — keep-visible opt-out per mobile zone. `<MobileUI keepVisible>` keeps the whole mobile
+  // chrome on screen; otherwise each zone opts out via its container `keepVisible` prop. The
+  // per-part `keepVisibleParts` set is threaded to each cluster so individual controls can opt out.
+  const mobileKeep = !!(mob && mob.keepVisible);
+  const mcProps = (mob && mob.containerProps) || {};
+  const keepTopBar = mobileKeep || !!mcProps.TopBar?.keepVisible;
+  const keepCenter = mobileKeep || !!mcProps.CenterControls?.keepVisible;
+  const keepBottom = mobileKeep || !!mcProps.BottomBar?.keepVisible;
+  // The mobile settings PANEL (full-surface) opens from the gear; keep it mounted whenever
+  // `Settings` is composed ANYWHERE in mobile OR in the shared zone (Req 15.10/15.11). Without a
+  // branch, fall back to the shared `parts` gating the panel already used.
+  const mobileSettingsParts = mob
+    ? new Set(
+        [].concat(
+          mob.containers.TopBar || [],
+          mob.containers.CenterControls || [],
+          mob.containers.BottomBar || [],
+          Array.from(sharedParts),
+        ),
+      )
+    : parts;
 
   // Hide the nav buttons while an ad is actively playing (parity with the desktop layout and
   // the chapter read-out gating): only the ad affordances + essential transport stay.
@@ -122,7 +163,9 @@ const MobileLayout = ({ skin, controllerRef }) => {
       <div className="playerstack-mobile-overlay" part="mobile-overlay" />
 
       <MobileTopBar
-        parts={parts}
+        parts={topBarParts}
+        keepVisible={keepTopBar}
+        keepVisibleParts={keepVisibleParts}
         hasCaptions={hasCaptions}
         showCast={derived.showCast}
         hideSettings={hideSettings}
@@ -134,7 +177,9 @@ const MobileLayout = ({ skin, controllerRef }) => {
       />
 
       <MobileCenterControls
-        parts={parts}
+        parts={centerParts}
+        keepVisible={keepCenter}
+        keepVisibleParts={keepVisibleParts}
         showPrev={!adActive && !!state.onPrevious}
         showNext={!adActive && !!state.onNext}
         onPrevRequest={handlers.handlePrevRequest}
@@ -144,7 +189,9 @@ const MobileLayout = ({ skin, controllerRef }) => {
       />
 
       <MobileBottomBar
-        parts={parts}
+        parts={bottomParts}
+        keepVisible={keepBottom}
+        keepVisibleParts={keepVisibleParts}
         live={state.live}
         liveDVR={state.liveDVR}
         dvrActive={state.dvrActive}
@@ -164,7 +211,7 @@ const MobileLayout = ({ skin, controllerRef }) => {
       />
 
       <MobileSettingsSlot
-        parts={parts}
+        parts={mobileSettingsParts}
         mobileSettingsRef={refs.mobileSettingsRef}
         qualityOptions={derived.qualityOptions}
         captions={state.captions}

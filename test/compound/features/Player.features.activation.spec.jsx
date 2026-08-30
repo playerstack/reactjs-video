@@ -156,10 +156,13 @@ describe('Req 9.4 — composable presence activates the feature (content reaches
     expect(props.captions).toBe(TRACKS);
   });
 
+  // Timeline-bound parts are BottomBar-only (Req 16), so they are nested inside <BottomBar> here.
   test('<Timeline spriteVTTFile bufferMode> activates the sprite/scrub-preview + buffer mode', () => {
     const props = captureEngineProps(
       <Player url="movie.mp4">
-        <Timeline spriteVTTFile="sprite.vtt" bufferMode="current" />
+        <BottomBar>
+          <Timeline spriteVTTFile="sprite.vtt" bufferMode="current" />
+        </BottomBar>
       </Player>,
     );
     expect(props.spriteVTTFile).toBe('sprite.vtt');
@@ -169,7 +172,9 @@ describe('Req 9.4 — composable presence activates the feature (content reaches
   test('<Chapters chapters> activates the chapters feature', () => {
     const props = captureEngineProps(
       <Player url="movie.mp4">
-        <Chapters chapters={CHAPTERS} />
+        <BottomBar>
+          <Chapters chapters={CHAPTERS} />
+        </BottomBar>
       </Player>,
     );
     expect(props.chapters).toBe(CHAPTERS);
@@ -178,7 +183,9 @@ describe('Req 9.4 — composable presence activates the feature (content reaches
   test('<Heatmap heatmapData> activates the heatmap feature', () => {
     const props = captureEngineProps(
       <Player url="movie.mp4">
-        <Heatmap heatmapData={HEATMAP} />
+        <BottomBar>
+          <Heatmap heatmapData={HEATMAP} />
+        </BottomBar>
       </Player>,
     );
     expect(props.heatmapData).toBe(HEATMAP);

@@ -4,6 +4,9 @@ import { castIcon, captionsIcon, captionsActiveIcon } from '@playerstack/web-cor
 
 import { PlayerstackSettings, PlayerstackFullscreenButton, PlayerstackIcon } from '@adapter/elements';
 
+// Stable empty-set default so `keepVisibleParts` is always a Set (no per-render allocation).
+const EMPTY_SET = new Set();
+
 /**
  * `ControlsExtra` is the desktop right control cluster (parity with the monolith's
  * `controlsExtra`: Captions → Settings → Cast → Fullscreen). The captions CC button is a QUICK
@@ -25,6 +28,7 @@ import { PlayerstackSettings, PlayerstackFullscreenButton, PlayerstackIcon } fro
  */
 const ControlsExtra = ({
   parts,
+  keepVisibleParts = EMPTY_SET,
   captions,
   activeCaption,
   fullscreen,
@@ -45,6 +49,8 @@ const ControlsExtra = ({
   onExitFullscreenRequest,
 }) => {
   const has = (name) => parts.has(name);
+  // Req 17: per-element `data-keep-visible` value (`''` to opt out of auto-hide, else undefined).
+  const keep = (name) => (keepVisibleParts.has(name) ? '' : undefined);
 
   return (
     <>
@@ -56,6 +62,7 @@ const ControlsExtra = ({
           aria-label="Captions"
           aria-pressed={activeCaption ? 'true' : 'false'}
           data-active={activeCaption ? 'true' : 'false'}
+          data-keep-visible={keep('CaptionsToggle')}
           onClick={onCaptionToggle}
         >
           {/* CC glyph matches the other desktop control icons (parity with the original
@@ -76,6 +83,7 @@ const ControlsExtra = ({
           i18n={language ? { language } : null}
           adMode={adMode}
           live={live}
+          data-keep-visible={keep('Settings')}
           onRateRequest={onRateRequest}
           onQualityRequest={onQualityRequest}
           onCaptionRequest={onCaptionRequest}
@@ -88,6 +96,7 @@ const ControlsExtra = ({
           className="playerstack-cast-button"
           part="cast-button"
           aria-label="Google Cast"
+          data-keep-visible={keep('Cast')}
           onClick={onCastClick}
           style={{ opacity: castState === 'connected' ? 1 : 0.8 }}
         >
@@ -98,6 +107,7 @@ const ControlsExtra = ({
         <PlayerstackFullscreenButton
           onEnterFullscreenRequest={onEnterFullscreenRequest}
           onExitFullscreenRequest={onExitFullscreenRequest}
+          data-keep-visible={keep('Fullscreen')}
         />
       )}
     </>
@@ -107,6 +117,8 @@ const ControlsExtra = ({
 ControlsExtra.propTypes = {
   // Composition presence set from the manifest (`skin.composition.parts`); O(1) `Set.has` gating.
   parts: PropTypes.instanceOf(Set).isRequired,
+  // Req 17: parts explicitly marked `keepVisible` — reflected as `data-keep-visible` per element.
+  keepVisibleParts: PropTypes.instanceOf(Set),
   captions: PropTypes.array,
   activeCaption: PropTypes.string,
   fullscreen: PropTypes.bool,
