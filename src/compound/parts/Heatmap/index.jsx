@@ -6,6 +6,10 @@ import { PART_NAME } from '@compound/parts/partName';
  * Timeline (`playerstack-heatmap` + time-slider) — but it is exposed as a composable.
  * `collectConfig` normalizes `heatmapData` to `config.heatmapData`. Declarative marker:
  * returns null, no DOM, no state, no effects (A8b).
+ *
+ * Does NOT accept `keepVisible` — as a timeline rider it has no element of its own and follows
+ * the Timeline's keep-visible (see core `acceptsKeepVisible`), so `keepVisible` is not advertised
+ * in `propTypes` and is ignored by the composition resolver.
  */
 export function Heatmap() {
   return null;

@@ -33,10 +33,14 @@ const DesktopLayout = ({ skin, controllerRef }) => {
   const { state, derived, refs, adapters, handlers } = skin;
   // Composition presence set (`manifest.parts`) — threaded to the gated clusters so each renders
   // its `playerstack-*` element IF AND ONLY IF the part ∈ parts (Req 8.3/8.4). DOM order stays the
-  // canonical `COMPOSABLE_SLOTS` order per region (Req 8.5/1.8). The stage/system overlays below
-  // (poster, play-state, spinner, prevented-tip, top-state, ad, live-ad, context-menu, sprite)
-  // stay driven by ephemeral props and are NOT gated by composition (Req 9.6/15.11). `config`
-  // carries the content collected from composables (e.g. the `<Title>` text at `config.title`).
+  // canonical `COMPOSABLE_SLOTS` order per region (Req 8.5/1.8). The three composable STAGE
+  // overlays — `PlayOverlay`/`Poster`/`Captions` — ARE now composition-gated: they render off the
+  // shared `parts` set (they are stage-level, not inside a mode-wrapper container), so toggling the
+  // `<PlayOverlay/>`/`<Poster/>`/`<Captions/>` composable in/out actually adds/removes the element.
+  // Only the SYSTEM overlays (spinner, prevented-tip, top-state, ad, live-ad, context-menu, sprite,
+  // double-tap, live-indicator) remain ephemeral-driven and NOT composition-gated (Req 9.6/15.11).
+  // `config` carries the content collected from composables (e.g. the `<Title>` text at
+  // `config.title`).
   const {
     parts,
     sharedParts = parts,
@@ -92,12 +96,21 @@ const DesktopLayout = ({ skin, controllerRef }) => {
   return (
     <PlayerstackMediaController ref={controllerRef} data-skin-mode="desktop">
       {/* Poster overlay (parity with the original StyledOverlayPoster): cover image before
-          playback and after end; fades out during playback. */}
-      <PosterOverlay poster={state.poster} visible={derived.isPosterVisible ? 'true' : 'false'} />
+          playback and after end; fades out during playback. Gated on the `Poster` composable —
+          the gate is ADDITIVE to PosterOverlay's own url check, so it renders only when the author
+          composed `<Poster/>` AND a poster url exists. Suppressed while an ad is actively playing
+          (same `isAdActivePlaying` rule as nav/title/chapters) so the content cover never paints
+          over the ad — the ad's own skip-countdown preview reads `state.poster` independently. */}
+      {parts.has('Poster') && !isAdActivePlaying({ adPresent: derived.adPresent, paused: state.paused }) && (
+        <PosterOverlay poster={state.poster} visible={derived.isPosterVisible ? 'true' : 'false'} />
+      )}
 
-      {/* Overlays (Commons — Table 21-C). PlayState is a shared desktop overlay here. */}
+      {/* Overlays (Commons — Table 21-C). PlayState is a shared desktop overlay here, gated on the
+          `PlayOverlay` composable; Captions is gated on the `Captions` composable. */}
       <SkinOverlays
         includePlayState
+        showPlayState={parts.has('PlayOverlay')}
+        showCaptions={parts.has('Captions')}
         language={state.language}
         hasResource={state.hasResource}
         prevented={state.prevented}

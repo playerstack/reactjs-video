@@ -11,6 +11,11 @@ import { PlayerstackPlayState, PlayerstackIcon } from '@adapter/elements';
  * Each nav button is rendered individually so `PrevButton` and `NextButton` can be composed
  * independently. The canonical order is: Prev(50) · Play(center) · Next(65).
  *
+ * On mobile the center play button IS the `PlayerstackPlayState` element, so it is gated on the
+ * `PlayOverlay` composable (`parts.has('PlayOverlay')`) — consistent with the desktop PlayState
+ * stage overlay. Composing `<PlayOverlay/>` out therefore removes the mobile center play/pause
+ * affordance, which is the intended, consistent meaning of the `PlayOverlay` composable.
+ *
  * Presentational only: no state, no effects, no callbacks of its own.
  */
 const EMPTY_SET = new Set();
@@ -45,11 +50,13 @@ export default function MobileCenterControls({
           <PlayerstackIcon icon={previousTrackIcon} width={48} height={48} />
         </button>
       )}
-      <PlayerstackPlayState
-        onPlayRequest={onPlayRequest}
-        onPauseRequest={onPauseRequest}
-        data-keep-visible={keep('PlayButton')}
-      />
+      {parts.has('PlayOverlay') && (
+        <PlayerstackPlayState
+          onPlayRequest={onPlayRequest}
+          onPauseRequest={onPauseRequest}
+          data-keep-visible={keep('PlayButton')}
+        />
+      )}
       {parts.has('NextButton') && showNext && (
         <button
           type="button"

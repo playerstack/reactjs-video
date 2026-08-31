@@ -42,9 +42,11 @@ const MobileLayout = ({ skin, controllerRef }) => {
   const { state, derived, refs, adapters, handlers } = skin;
   // Composition presence set (`manifest.parts`) — threaded to the mobile clusters so each renders
   // its `playerstack-*` element IF AND ONLY IF the part ∈ parts (Req 8.3/8.4). Mobile keeps its
-  // own Style_Layer arrangement (design §10). The stage/system overlays below (poster, spinner,
-  // prevented-tip, top-state, captions, ad, live-ad, context-menu, double-tap, sprite) stay driven
-  // by ephemeral props and are NOT gated by composition (Req 9.6/15.11).
+  // own Style_Layer arrangement (design §10). The composable STAGE overlays `Poster`/`Captions`
+  // (and the center `PlayOverlay` play-state inside MobileCenterControls) ARE now composition-gated
+  // off the shared `parts` set — toggling the composable in/out adds/removes the element. Only the
+  // SYSTEM overlays (spinner, prevented-tip, top-state, ad, live-ad, context-menu, double-tap,
+  // sprite, live-indicator) remain ephemeral-driven and NOT composition-gated (Req 9.6/15.11).
   const { parts, sharedParts = parts, keepVisibleParts = new Set() } = skin.composition;
   // Per-mode mobile branch (Req 15.10): when the author wraps a `<MobileUI>`, THIS layout maps
   // its containers to the mobile zones — `TopBar` → `[part='mobile-top-bar']`, `CenterControls` →
@@ -102,10 +104,14 @@ const MobileLayout = ({ skin, controllerRef }) => {
 
   return (
     <PlayerstackMediaController ref={controllerRef} data-skin-mode="mobile">
-      <PosterOverlay poster={state.poster} visible={derived.isPosterVisible} />
+      {/* Poster cover suppressed while an ad is actively playing (parity with the desktop gate)
+          so it never paints over the ad; the ad skip-preview reads `state.poster` independently. */}
+      {parts.has('Poster') && !adActive && <PosterOverlay poster={state.poster} visible={derived.isPosterVisible} />}
 
       <SkinOverlays
         includePlayState={false}
+        showPlayState={parts.has('PlayOverlay')}
+        showCaptions={parts.has('Captions')}
         language={state.language}
         hasResource={state.hasResource}
         prevented={state.prevented}

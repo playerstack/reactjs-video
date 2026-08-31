@@ -20,6 +20,12 @@ import CaptionsOverlay from '@PlayerSkin/components/CaptionsOverlay';
  * `MobileCenterControls` instead, so it is NOT rendered here (`includePlayState = false`). The
  * flag is a render-arrangement switch, not logic.
  *
+ * PlayState and Captions are now COMPOSITION-GATED stage overlays: the layouts pass
+ * `showPlayState`/`showCaptions` derived from `composition.parts` (`PlayOverlay`/`Captions`), so
+ * these overlays render only when the author composed the corresponding composable. PreventedTip,
+ * Spinner and TopState are SYSTEM overlays (not composables, Req 9.6) and stay always-rendered,
+ * driven purely by ephemeral props.
+ *
  * Element order matches the monolith exactly: PreventedTip → Spinner → [PlayState] → TopState →
  * CaptionsOverlay.
  *
@@ -28,6 +34,8 @@ import CaptionsOverlay from '@PlayerSkin/components/CaptionsOverlay';
  */
 const SkinOverlays = ({
   includePlayState,
+  showPlayState = true,
+  showCaptions = true,
   language,
   hasResource,
   prevented,
@@ -54,20 +62,28 @@ const SkinOverlays = ({
       onPreventedClick={onPreventedClick}
     />
     <PlayerstackSpinner />
-    {includePlayState && <PlayerstackPlayState onPlayRequest={onPlayRequest} onPauseRequest={onPauseRequest} />}
+    {includePlayState && showPlayState && (
+      <PlayerstackPlayState onPlayRequest={onPlayRequest} onPauseRequest={onPauseRequest} />
+    )}
     <PlayerstackTopState language={language} />
-    <CaptionsOverlay
-      captions={captions}
-      activeCaption={activeCaption}
-      captionCues={captionCues}
-      captionStyle={captionStyle}
-      onCaptionRequest={onCaptionRequest}
-    />
+    {showCaptions && (
+      <CaptionsOverlay
+        captions={captions}
+        activeCaption={activeCaption}
+        captionCues={captionCues}
+        captionStyle={captionStyle}
+        onCaptionRequest={onCaptionRequest}
+      />
+    )}
   </>
 );
 
 SkinOverlays.propTypes = {
   includePlayState: PropTypes.bool,
+  // Composition gate for the desktop PlayState stage overlay (`PlayOverlay` part).
+  showPlayState: PropTypes.bool,
+  // Composition gate for the shared Captions stage overlay (`Captions` part).
+  showCaptions: PropTypes.bool,
   language: PropTypes.string,
   hasResource: PropTypes.bool,
   prevented: PropTypes.bool,

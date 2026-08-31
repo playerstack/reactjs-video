@@ -1,5 +1,10 @@
 import React from 'react';
-import { COMPOSABLE_SLOTS, DEFAULT_COMPOSITION, validateSlotPlacement } from '@playerstack/web-core/adapters/framework';
+import {
+  COMPOSABLE_SLOTS,
+  DEFAULT_COMPOSITION,
+  validateSlotPlacement,
+  acceptsKeepVisible,
+} from '@playerstack/web-core/adapters/framework';
 import { PART_NAME } from '@compound/parts/partName';
 import { collectConfig } from '@compound/hooks/collectConfig';
 
@@ -135,8 +140,11 @@ const scanModeBranch = (wrapperChildren, branch, sharedParts, sharedConfig, keep
         // (feature activation), so e.g. a `<Title>` inside a mode wrapper still activates.
         branch.parts.add(leafName);
         sharedParts.add(leafName);
-        // Req 17: a `keepVisible` leaf inside a mode wrapper opts itself out of auto-hide.
-        if (leaf.props.keepVisible) {
+        // Req 17: a `keepVisible` leaf inside a mode wrapper opts itself out of auto-hide — but
+        // only parts that ACCEPT keepVisible. Timeline riders (`Chapters`/`Heatmap`) ride the
+        // Timeline slider and follow its keep-visible, so a `keepVisible` on them is inert; core's
+        // `acceptsKeepVisible` is the single source of truth for that rule (A6/A7).
+        if (leaf.props.keepVisible && acceptsKeepVisible(leafName)) {
           keepVisibleParts.add(leafName);
         }
         collectConfig(leafName, leaf.props, sharedConfig);
@@ -260,8 +268,11 @@ export function resolveComposition(children) {
       sharedParts.add(name);
 
       // Req 17: a `keepVisible` LEAF part opts itself out of auto-hide. (Containers collect the
-      // flag on `containerProps` below so a whole subtree can opt out.)
-      if (child.props.keepVisible && !CONTAINER_NAMES.has(name)) {
+      // flag on `containerProps` below so a whole subtree can opt out.) Timeline riders
+      // (`Chapters`/`Heatmap`) are excluded: they ride the `Timeline` slider (no element of their
+      // own), so their visibility follows the Timeline's keep-visible and an independent
+      // `keepVisible` is inert. Core's `acceptsKeepVisible` is the single source of truth (A6/A7).
+      if (child.props.keepVisible && !CONTAINER_NAMES.has(name) && acceptsKeepVisible(name)) {
         keepVisibleParts.add(name);
       }
 

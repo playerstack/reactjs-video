@@ -494,5 +494,37 @@ describe('compound/hooks/useResolveComposition', () => {
 
       expect(manifest.keepVisibleParts.size).toBe(0);
     });
+
+    // Timeline riders (Chapters/Heatmap) paint ON the Timeline slider and own no element of their
+    // own, so their visibility follows the Timeline's keep-visible. A `keepVisible` on them is
+    // inert — core's `acceptsKeepVisible` (single source of truth) rejects it and the resolver
+    // must NOT add them to keepVisibleParts, while a real part (Volume) with keepVisible IS added.
+    test('a `keepVisible` on the timeline riders Chapters/Heatmap is ignored (they follow the Timeline)', () => {
+      const manifest = resolveComposition(
+        el(
+          BottomBar,
+          null,
+          el(Timeline),
+          el(Chapters, { keepVisible: true }),
+          el(Heatmap, { keepVisible: true }),
+          el(Volume, { keepVisible: true }),
+        ),
+      );
+
+      // Riders never opt into keep-visible, regardless of the (inert) prop.
+      expect(manifest.keepVisibleParts.has('Chapters')).toBe(false);
+      expect(manifest.keepVisibleParts.has('Heatmap')).toBe(false);
+      // A regular part that accepts keepVisible still lands in keepVisibleParts.
+      expect(manifest.keepVisibleParts.has('Volume')).toBe(true);
+    });
+
+    test('a `keepVisible` rider inside a mode wrapper is ignored too', () => {
+      const manifest = resolveComposition(
+        el(MobileUI, null, el(BottomBar, null, el(Chapters, { keepVisible: true }), el(Volume, { keepVisible: true }))),
+      );
+
+      expect(manifest.keepVisibleParts.has('Chapters')).toBe(false);
+      expect(manifest.keepVisibleParts.has('Volume')).toBe(true);
+    });
   });
 });

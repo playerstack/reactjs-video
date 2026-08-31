@@ -80,7 +80,9 @@ const baseProps = {
 // The desktop `playerstack-*` element the layout emits for each composition part that maps to a
 // Custom Element and is gated PURELY by composition presence under `baseProps` (no extra runtime
 // condition). `Cast`/`CaptionsToggle` are skin `<button>`s with additional runtime gating and are
-// covered separately; `PlayOverlay`/`Poster`/`Captions` are stage overlays (Req 9.6), not gated.
+// covered separately. `PlayOverlay`/`Poster`/`Captions` are STAGE overlays that ARE now
+// composition-gated too (they also carry an internal runtime check — a poster url / caption
+// tracks), so they get dedicated presence-gating cases below rather than a slot in this map.
 const ELEMENT = {
   PlayButton: 'playerstack-play-button',
   Volume: 'playerstack-volume',
@@ -167,6 +169,64 @@ describe('Presence gating: cluster renders IFF its part ∈ manifest.parts (Prop
     const { container: withoutNav } = renderSkin(DEFAULT_COMPOSITION, navHandlers);
     expect(withoutNav.querySelector('.playerstack-prev-button')).toBeNull();
     expect(withoutNav.querySelector('.playerstack-next-button')).toBeNull();
+  });
+
+  // The three composable STAGE overlays (`PlayOverlay`/`Poster`/`Captions`) are now
+  // composition-gated too. Each also carries an internal runtime check (a poster url / caption
+  // tracks / desktop placement), so we satisfy that check via props and then flip only the
+  // composition presence to prove the manifest gate is what drives element presence.
+  test("the desktop play-state overlay is gated on the 'PlayOverlay' part", () => {
+    // Present (DEFAULT_COMPOSITION includes PlayOverlay) → desktop play-state overlay renders.
+    const { container: withPlay } = renderSkin(DEFAULT_COMPOSITION);
+    expect(withPlay.querySelector('playerstack-play-state')).not.toBeNull();
+
+    // Absent → the play-state overlay disappears.
+    const { container: withoutPlay } = renderSkin(DEFAULT_COMPOSITION.filter((name) => name !== 'PlayOverlay'));
+    expect(withoutPlay.querySelector('playerstack-play-state')).toBeNull();
+  });
+
+  test("the poster overlay is gated on the 'Poster' part (additive to the poster-url check)", () => {
+    // A poster url alone is NOT enough anymore: the `Poster` composable must also be present.
+    const poster = 'x.webp';
+
+    const { container: withPoster } = renderSkin(DEFAULT_COMPOSITION, { poster });
+    expect(withPoster.querySelector('.playerstack-poster')).not.toBeNull();
+
+    // Same url, but `Poster` ∉ parts → gated off.
+    const { container: withoutPoster } = renderSkin(DEFAULT_COMPOSITION.filter((name) => name !== 'Poster'), {
+      poster,
+    });
+    expect(withoutPoster.querySelector('.playerstack-poster')).toBeNull();
+  });
+
+  test('the poster overlay is suppressed while an ad is actively playing (never paints over the ad)', () => {
+    const poster = 'x.webp';
+    const ads = { title: 'Ad', url: 'https://example.com', skipAfter: 5 };
+
+    // Ad PRESENT but paused (pre-roll not started) → still shown (parity with nav/title).
+    const { container: adPaused } = renderSkin(DEFAULT_COMPOSITION, { poster, ads, paused: true });
+    expect(adPaused.querySelector('.playerstack-poster')).not.toBeNull();
+
+    // Ad ACTIVELY playing (adPresent && !paused) → suppressed so it never covers the ad video.
+    const { container: adPlaying } = renderSkin(DEFAULT_COMPOSITION, { poster, ads, paused: false });
+    expect(adPlaying.querySelector('.playerstack-poster')).toBeNull();
+  });
+
+  test("the captions overlay is gated on the 'Captions' part (additive to the tracks check)", () => {
+    // Caption tracks are supplied so CaptionsOverlay's own `captions.length` check passes; only
+    // the composition presence is toggled to prove the manifest gate drives it.
+    const captions = [{ src: 'en.vtt', label: 'English', language: 'en' }];
+    const captionProps = { captions, activeCaption: 'en' };
+
+    const { container: withCaptions } = renderSkin(DEFAULT_COMPOSITION, captionProps);
+    expect(withCaptions.querySelector('playerstack-captions')).not.toBeNull();
+
+    // Same tracks, but `Captions` ∉ parts → gated off.
+    const { container: withoutCaptions } = renderSkin(
+      DEFAULT_COMPOSITION.filter((name) => name !== 'Captions'),
+      captionProps,
+    );
+    expect(withoutCaptions.querySelector('playerstack-captions')).toBeNull();
   });
 });
 

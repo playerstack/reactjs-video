@@ -97,8 +97,8 @@ const ControlsExtra = ({
           part="cast-button"
           aria-label="Google Cast"
           data-keep-visible={keep('Cast')}
+          data-cast-state={castState}
           onClick={onCastClick}
-          style={{ opacity: castState === 'connected' ? 1 : 0.8 }}
         >
           <PlayerstackIcon icon={castIcon} width="20" height="20" />
         </button>
