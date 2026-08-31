@@ -119,7 +119,10 @@ export async function build(positionals, args) {
     external: argsArray(args, 'external'),
     outExtension: argsObject(args, 'out-extension'),
     banner: argsObject(args, 'banner'),
-    plugins: [aliasResolvePlugin, ...Object.entries(argsObject(args, 'plugin')).map(([name, options]) => plugins[name](options))],
+    plugins: [
+      aliasResolvePlugin,
+      ...Object.entries(argsObject(args, 'plugin')).map(([name, options]) => plugins[name](options)),
+    ],
     define: {
       'globalThis.__TEST__': 'false',
       ...argsObject(args, 'define'),
